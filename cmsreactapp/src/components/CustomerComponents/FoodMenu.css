@@ -1,0 +1,41 @@
+.component {
+    max-height: 200px; /* Example maximum height */
+    overflow-x: auto; /* Enable vertical scrolling */
+  }
+  
+  .content1 {
+    padding: 30px; /*Example padding*/
+    width: 50%;
+    height: 50%;
+    align-items: center;
+    
+  }
+
+  .content2 {
+    padding: 30px; /*Example padding*/
+    width: 50%;
+    height: 50%;
+    align-items: center;
+    /* margin-left: 100px; */
+    
+  }
+  .content3 {
+    padding: 30px; /*Example padding*/
+    width: 50%;
+    height: 50%;
+    align-items: center;
+    
+  }
+  .content4 {
+    padding: 30px; /*Example padding*/
+    width: 50%;
+    height: 50%;
+    align-items: center;
+    
+  }
+
+  .content img{
+    padding: 30px;
+   display: inline-block;
+   align-items: center;
+  }

@@ -1,0 +1,25 @@
+
+  .component1 {
+    
+    height : 200px;
+    flex: 70%;
+    background-color: lightblue;
+    display: inline-block;
+    margin-top: 30px; 
+
+  }
+  
+  .component2 {
+    /* width: 30%; */
+    height : 200px;
+    flex: 30%;
+    background-color: lightgreen;
+    display: inline-block;
+    /* margin-left: 10px;
+    margin-right: 10px;*/
+    margin-top: 30px; 
+  }
+  #order-btn{
+    margin-top: 30px; 
+    margin-left: 50%;
+  }
