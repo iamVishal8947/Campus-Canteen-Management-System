@@ -1,5 +1,44 @@
 package com.app.entities;
 
+import javax.persistence.*;
+
+
+import lombok.*;
+
+@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "item_master")
 public class ItemMaster {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "item_id")
+	private Long itemId;
+	
+	@Column(name = "item_name", nullable = false, unique = true)
+	private String itemName;
+	
+	@Column(name = "item_price", nullable = false)
+	private int itemPrice;
+	
+	@Enumerated(value = EnumType.STRING)
+	@Column(name = "item_category", nullable = false)
+	private ItemCategory itemCategory;
+	
+	@Enumerated(value = EnumType.STRING)
+	@Column(name = "item_genre", nullable = false)
+	private ItemGenre itemGenre;
+	
+	@Column(name = "item_img_link", nullable = false, unique = true)
+	private String itemImgLink;
+	
+	@Column(name = "total_qty", nullable = false)
+	private int totalQty;
+	
+	@Column(name = "sold_qty", nullable = false)
+	private int soldQty;
 }
