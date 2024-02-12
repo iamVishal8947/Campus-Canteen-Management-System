@@ -1,0 +1,61 @@
+package com.app.entities;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString(exclude = "carts")
+@Entity
+@Table(name="orders")
+public class Order {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="order_id",nullable = false,unique=true)
+	private Long orderId;
+
+	private LocalDateTime time;
+	
+	@Column(name="payment_method",nullable = false)
+	private String paymentMethod;
+	
+	private Integer amount;
+	
+	@Column(name="transaction_id",nullable = false,unique = true)
+	private String transactionId;
+	
+	@Column(name="items_served",nullable = false)
+	private Integer itemsServed;
+	
+	@Column(name="is_served",nullable = false)
+	private Boolean isServed;
+	
+	@Column(name="discount_percentage",nullable = false)
+	private Integer discountPercentage;
+	
+	@Column(name="customer_id",nullable = false)
+	private Integer customerId;
+	
+	@OneToMany(mappedBy = "order", 
+			cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Cart> carts = new ArrayList<>();
+	
+	
+	
+}
