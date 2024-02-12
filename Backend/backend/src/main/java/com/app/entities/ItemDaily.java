@@ -19,8 +19,9 @@ public class ItemDaily {
 	@Column(name = "item_id")
 	private Long itemId;
 	
-	@OneToOne(mappedBy = "itemId")
-	private List<ItemMaster> dailyItemList;
+	@OneToOne
+	@JoinColumn(name = "fk_item_id")
+	private ItemMaster itemDetails;
 	
 	@Column(name = "init_qty", nullable = false)
 	private int initialQty;
