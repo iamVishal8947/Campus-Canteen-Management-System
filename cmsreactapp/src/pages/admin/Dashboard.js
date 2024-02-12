@@ -1,10 +1,10 @@
 import React from 'react'
-import CustomerList from './CustomerList'
+import CustomerControls from '../../components/admin/CustomerControls'
 
 export default function Dashboard() {
   return (
     <div>Dashboard
-        <CustomerList></CustomerList>
+        <CustomerControls></CustomerControls>
     </div>
     
   )
