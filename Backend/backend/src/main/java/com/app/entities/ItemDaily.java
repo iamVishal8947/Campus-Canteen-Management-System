@@ -1,7 +1,5 @@
 package com.app.entities;
 
-import java.util.List;
-
 import javax.persistence.*;
 
 import lombok.*;
@@ -12,16 +10,16 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "item_master")
+@Table(name = "item_daily")
 public class ItemDaily {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "item_id")
+	@Column(name = "sr_no")
 	private Long itemId;
 	
 	@OneToOne
-	@JoinColumn(name = "fk_item_id")
-	private ItemMaster itemDetails;
+	@JoinColumn(name = "item_id")
+	private ItemMaster item;
 	
 	@Column(name = "init_qty", nullable = false)
 	private int initialQty;
