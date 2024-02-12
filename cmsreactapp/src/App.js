@@ -16,7 +16,7 @@ function App() {
         <Route path="/customer/" element={<Customer></Customer>} ></Route>
         <Route path='/admin/' element={<Dashboard></Dashboard>}></Route>
         <Route path='/MenuList/' element={<MenuList></MenuList>}></Route>
-       
+        
         <Route path='/admin/customers' element={<CustomerHandler></CustomerHandler>}></Route>
         <Route path='/admin/customers/add' element={<AddCustomer></AddCustomer>}></Route>
         <Route path='/admin/customers/edit/:id' element={<EditCustomer></EditCustomer>}></Route>
