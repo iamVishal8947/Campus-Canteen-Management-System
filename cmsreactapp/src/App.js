@@ -4,6 +4,7 @@ import {Routes, Route} from 'react-router-dom';
 import Dashboard from './pages/admin/Dashboard';
 import 'bootstrap/dist/css/bootstrap.css'
 import Customer from './components/CustomerComponents/Customer';
+import MenuList from './pages/customer/MenuList'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/customer/" element={<Customer></Customer>} ></Route>
         <Route path='/admin/' element={<Dashboard></Dashboard>}></Route>
+        <Route path='/MenuList/' element={<MenuList></MenuList>}></Route>
       </Routes>
     
       {/* <header className="App-header">
