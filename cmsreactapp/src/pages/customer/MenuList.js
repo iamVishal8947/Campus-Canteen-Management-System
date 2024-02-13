@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import MenuItemService from "../../services/MenuItemService ";
 import { Link } from "react-router-dom";
+import  './MenuList.css'
+import defimg from '../../Assets/pick-meals-image.png' ;
 export default function MenuList() {
   const placeholderImage = "https://via.placeholder.com/100";
   //---------------------------
@@ -50,97 +52,92 @@ export default function MenuList() {
   }, 0);
 
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
-      <h1>Food Menu Selection</h1>
 
-      <table className="table table-bordered" style={{ width: "100%" }}>
-        <thead className="thead-dark">
-          <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Add/Remove</th>
-          </tr>
-        </thead>
-        <tbody>
-          {menuItems.map((item) => (
-            <tr key={item.item_id}>
-              <td>
-                <img
-                  src={item.image_link || placeholderImage}
-                  alt={item.item_name}
-                  className="img-fluid"
-                  width="100"
-                  height="100"
-                  // Make the image responsive
-                  onError={(e) => {
-                    console.error("Error loading image:", e.target.src);
-                    e.target.src = placeholderImage;
-                  }}
-                />
-              </td>
-              <td>{item.item_name}</td>
-              <td>{item.item_price}</td>
-              <td>
-                <button
-                  variant="success"
-                  onClick={() => addToOrder(item, item.item_name)}
-                >
-                  +
-                </button>
-                <span>{order[item.item_id] || 0}</span>
-                <button variant="danger" onClick={() => removeFromOrder(item)}>
-                  -
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
 
-      <h2>Order Checkout List</h2>
-      <table className="table table-bordered">
-        <thead className="thead-dark">
-          <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.keys(order).map((itemId) => {
-            const menuItem = menuItems.find(
-              (item) => item.item_id === parseInt(itemId)
-            );
+<div className="container"> {/* Apply the orange theme background */}
+<h1>Food Menu Selection</h1>
 
-            return (
-              <tr key={itemId}>
-                <td>{menuItem.item_name}</td>
-                <td>{menuItem.item_price}</td>
-                <td>{order[itemId]}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-      <div className="total-amount">
-        <h4>
-          <strong>Total Amount:</strong> ₹ {totalAmount.toFixed(2)}
-        </h4>
+<table className="table table-bordered">
+  <thead className="thead-dark">
+    <tr>
+      <th>Image</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <div  className="menu-items-container">
+    {menuItems.map((item) => (
+      
+      
+   <div className="menu-item" key={item.item_id}>
+      
+      <div className="menu-item-details">
+        <div className="menu-item-name">{item.item_name}</div>
+        <img
+        src={item.image_link || defimg}
+        alt={item.item_name}
+        className="menu-item-image"
+      />
+        <div className="menu-item-price">Price: {item.item_price}</div>
+        <div className="menu-item-buttons">
+          <button
+            className="btn btn-success"
+            onClick={() => addToOrder(item, item.item_name)}
+          >
+            +
+          </button>
+          <span>{order[item.item_id] || 0}</span>
+          <button
+            className="btn btn-danger"
+            onClick={() => removeFromOrder(item)}
+          >
+            -
+          </button>
+        </div>
       </div>
-      {/* <Link
-        to={{
-          pathname: "/payment",
-          state: { orderData: order, totalAmount: totalAmount },
-        }}
-      >
-        <button type="button" className="btn btn-primary">
-          Place Order
-        </button>
-      </Link> */}
-      <button type="button" class="btn btn-primary">
-        Place Order
-      </button>
     </div>
-  );
+    
+    
+     
+    ))}
+    </div>
+  </tbody>
+</table>
+
+<h2>Order Checkout List</h2>
+<table className="table table-bordered">
+  <thead className="thead-dark">
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    {Object.keys(order).map((itemId) => {
+      const menuItem = menuItems.find(
+        (item) => item.item_id === parseInt(itemId)
+      );
+
+      return (
+        <tr key={itemId}>
+          <td>{menuItem.item_name}</td>
+          <td>{menuItem.item_price}</td>
+          <td>{order[itemId]}</td>
+        </tr>
+      );
+    })}
+  </tbody>
+</table>
+<div className="total-amount">
+  <h4>
+    <strong>Total Amount:</strong> ₹ {totalAmount.toFixed(2)}
+  </h4>
+</div>
+
+<button type="button" id="order_button" className="btn btn-primary">
+  Place Order
+</button>
+</div>
+);
 }
