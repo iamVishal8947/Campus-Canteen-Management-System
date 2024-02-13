@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 
 export default function CustomerForm(props) {
   const [formDetails, setFormDetails] = useState({
@@ -11,194 +11,294 @@ export default function CustomerForm(props) {
     dob: "",
     course: "",
   });
-  //const [formErrors, setErrors] = useState({});
+  const [formErrors, setErrors] = useState({
+    id: "",
+    name: "",
+    email: "",
+    pwd: "",
+    mob: "",
+    dob: "",
+    course: "",
+  });
+  const today = new Date();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (props.action !== "add") setFormDetails({ ...props.customer });
+  }, [props.customer]);
+
+  useEffect(()=>{
+    console.log(formErrors)
+  },[formErrors])
 
   const handleChange = (event) => {
     let { name, value } = event.target;
     setFormDetails({ ...formDetails, [name]: value });
   };
-  
-  const addCustomer=()=>{
-    console.log("Inside add customer");
-  }
 
-  const editCustomer=()=>{
-    console.log("Inside edit customer")
-  }
+  const validateData = () => {
+    let id = document.getElementById("id").value;
+    /*Check how to add error message stating that id is already registered.
+    Steps:
+    1. addForm submission
+    2. Check in db
+    3. Open add form to re-enter details stating customer registered.
+    4. Repeat till new id entered
+    */
+    let errFlag = false;
+    let name = document.getElementById("name").value;
+    let regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
+    let dob = new Date(document.getElementById("dob").value);
+    let age = today.getFullYear() - dob.getFullYear();
+    const monthDiff = today.getMonth() - dob.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+      age--;
+    }
+    let course = document.getElementById("course").value;
+    let errors={}
+    if (!regName.test(name)) {
+      errors.name="Invalid name. Kindly Enter First_Name Last_Name";
+      errFlag = true;
+    } else {
+      errors.name= ""
+    }
+    if (age < 18) {
+      errors.dob= "Age must be above 18"
+      errFlag = true;
+    } else {
+        errors.dob= ""
+    }
+    if (course === undefined || course === "" || course === "notSelected") {
+      errors.course="Please select a Course." 
+      errFlag = true;
+    } else {
+      errors.course=""
+    }
+    setErrors(errors) //set the returned value from this function to useGlobally
+    if (!errFlag) {
+      submitHandler();
+    }
+  };
+
+  const resetForm = () => {
+    setFormDetails({
+      id: "",
+      name: "",
+      email: "",
+      pwd: "",
+      mob: "",
+      dob: "",
+      course: "",
+    });
+  };
+
+  const submitHandler = () => {
+    props.takeAction(formDetails);
+  };
+
+  const goToDashboard = () => {
+    navigate("/admin/");
+  };
 
   return (
-    <div>
-      <form>
-        <div className="row g-3 align-items-center">
-          <div className="col-auto">
-            <label htmlFor="id" className="form-label">
-              Customer Id
-            </label>
-          </div>
-          <div className="col-auto">
-            <input
-              type="text"
-              className="form-control"
-              name="id"
-              id="id"
-              aria-describedby="idHelp"
-              value={formDetails.id}
-              onChange={handleChange}
-            ></input>
-          </div>
-          <div className="col-auto">
-            <span id="idHelp" className="form-text">
-              Enter your id
-            </span>
-          </div>
+    <div className="container align-items-center">
+      <div className="row g-3">
+        <div className="col-md-3"></div>
+        <div className="col-md-6 border border-primary">
+          <br />
+          {props.action === "add" ? (
+            <h3>Add Customer</h3>
+          ) : (
+            <h3>Edit Customer</h3>
+          )}
+          <br />
+          <form>
+            <div className="row mb-3">
+              <label htmlFor="id" className="col-sm-5 col-form-label">
+                Customer Id
+              </label>
+
+              <div className="col-md-7">
+                <input
+                  type="text"
+                  readOnly={props.action === "add" ? false : true}
+                  className="form-control"
+                  name="id"
+                  id="id"
+                  pattern="[789][0-9]"
+                  placeholder="Enter your id"
+                  value={formDetails.id}
+                  onChange={handleChange}
+                ></input>
+                <span id="idError" style={{ color: "red", fontSize: "10px" }}>
+                  {formErrors.id}
+                </span>
+              </div>
+            </div>
+            <div className="row mb-3">
+              <label htmlFor="name" className="col-sm-5 col-form-label">
+                Customer Name
+              </label>
+
+              <div className="col-md-7">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="name"
+                  name="name"
+                  placeholder="First_Name Last_Name"
+                  value={formDetails.name}
+                  onChange={handleChange}
+                ></input>
+                <span
+                  asp-validation-for="name"
+                  className="text danger"
+                  id="nameError"
+                  style={{ color: "red", fontSize: "10px" }}
+                >
+                  {formErrors.name}
+                </span>
+              </div>
+            </div>
+
+            <div className="row mb-3">
+              <label htmlFor="email" className="col-sm-5 col-form-label">
+                Customer Email
+              </label>
+
+              <div className="col-md-7">
+                <input
+                  type="email"
+                  required
+                  className="form-control"
+                  id="email"
+                  name="email"
+                  placeholder="Enter primary email id"
+                  aria-describedby="emailHelp"
+                  value={formDetails.email}
+                  onChange={handleChange}
+                ></input>
+                <span
+                  id="emailError"
+                  style={{ color: "red", fontSize: "10px" }}
+                >
+                  {formErrors.email}
+                </span>
+              </div>
+            </div>
+
+            <div className="row mb-3">
+              <label htmlFor="mob" className="col-sm-5 col-form-label">
+                Mobile number
+              </label>
+
+              <div className="col-md-7">
+                <input
+                  type="text"
+                  className="form-control"
+                  required
+                  name="mob"
+                  id="mob"
+                  placeholder="Enter 10-digit mobile number"
+                  pattern="[789][0-9]{9}"
+                  value={formDetails.mob}
+                  onChange={handleChange}
+                ></input>
+                <span id="mobError" style={{ color: "red", fontSize: "10px" }}>
+                  {formErrors.mob}
+                </span>
+              </div>
+            </div>
+
+            <div className="row mb-3">
+              <label htmlFor="dob" className="col-sm-5 col-form-label">
+                Date of birth
+              </label>
+
+              <div className="col-md-7">
+                <input
+                  type="date"
+                  className="form-control"
+                  name="dob"
+                  required
+                  id="dob"
+                  max={today.toISOString().split("T")[0]}
+                  aria-describedby="dobHelp"
+                  value={formDetails.dob}
+                  onChange={handleChange}
+                ></input>
+                <span id="dobError" style={{ color: "red", fontSize: "10px" }}>
+                  {formErrors.dob}
+                </span>
+              </div>
+            </div>
+            <div className="row mb-3">
+              <label htmlFor="id" className="col-sm-5 col-form-label">
+                Customer Course
+              </label>
+
+              <div className="col-md-7">
+                <select
+                  className="form-select"
+                  name="course"
+                  id="course"
+                  onChange={handleChange}
+                >
+                  <option value="notSelected">Select a course</option>
+                  <option value="DAC">DAC</option>
+                  <option value="DITISS">DITISS</option>
+                  <option value="DAI">DAI</option>
+                  <option value="DBDA">DBDA</option>
+                </select>
+                <span
+                  id="courseError"
+                  style={{ color: "red", fontSize: "10px" }}
+                >
+                  {formErrors.course}
+                </span>
+              </div>
+            </div>
+            <div className="row-mb-3">
+              &nbsp;
+              <span className="col-md-4">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={validateData}
+                >
+                  {props.action === "add" ? "Add" : "Edit"}
+                </button>
+              </span>
+              &nbsp;&nbsp;&nbsp;
+              <span className="col-md-4">
+                {props.action === "add" ? (
+                  <button
+                    type="reset"
+                    className="btn btn-primary"
+                    onClick={resetForm}
+                  >
+                    Reset
+                  </button>
+                ) : null}
+                &nbsp;&nbsp;&nbsp;
+              </span>
+              <span className="col-md-4">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={goToDashboard}
+                >
+                  Cancel
+                </button>
+                &nbsp;
+              </span>
+            </div>
+            <div className="row-mb-3">
+              <br />
+            </div>
+          </form>
         </div>
-        <div className="row g-3 align-items-center">
-          <div className="col-auto">
-            <label htmlFor="name" className="form-label">
-              Customer Name
-            </label>
-          </div>
-          <div className="col-auto">
-            <input
-              type="text"
-              className="form-control"
-              id="name"
-              name="name"
-              aria-describedby="nameHelp"
-              value={formDetails.name}
-              onChange={handleChange}
-            ></input>
-          </div>
-          <div className="col-auto">
-            <span id="nameHelp" className="form-text">
-              Enter your name as First_Name Middle_Name Last_Name
-            </span>
-          </div>
-        </div>
-        <div className="row g-3 align-items-center">
-          <div className="col-auto">
-            <label htmlFor="email" className="form-label">
-              Customer Email
-            </label>
-          </div>
-          <div className="col-auto">
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              name="email"
-              aria-describedby="emailHelp"
-              value={formDetails.email}
-              onChange={handleChange}
-            ></input>
-          </div>
-          <div className="col-auto">
-            <span id="emailHelp" className="form-text">
-              Enter a valid mail id
-            </span>
-          </div>
-        </div>
-        {/* <div className="row g-3 align-items-center">
-          <div className="col-auto">
-            <label htmlFor="email" className="form-label">
-              Customer Password
-            </label>
-          </div>
-          <div className="col-auto">
-            <input
-              type="password"
-              className="form-control"
-              id="email"
-              name="pwd"
-              aria-describedby="pwdHelp"
-              value={formDetails.pwd}
-              onChange={handleChange}
-            ></input>
-          </div>
-          <div className="col-auto">
-            <span id="pwdHelp" className="form-text">
-            The password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji
-            </span>
-          </div>
-        </div> */}
-        <div className="row g-3 align-items-center">
-          <div className="col-auto">
-            <label htmlFor="mob" className="form-label">
-              Mobile number
-            </label>
-          </div>
-          <div className="col-auto">
-            <input
-              type="text"
-              className="form-control"
-              name="mob"
-              id="mob"
-              aria-describedby="mobHelp"
-              value={formDetails.mob}
-              onChange={handleChange}
-            ></input>
-          </div>
-          <div className="col-auto">
-            <span id="mobHelp" className="form-text">
-              Enter 10 digit mobile number
-            </span>
-          </div>
-        </div>
-        <div className="row g-3 align-items-center">
-          <div className="col-auto">
-            <label htmlFor="dob" className="form-label">
-              Date of birth
-            </label>
-          </div>
-          <div className="col-auto">
-            <input
-              type="date"
-              className="form-control"
-              name="dob"
-              id="dob"
-              aria-describedby="dobHelp"
-              value={formDetails.dob}
-              onChange={handleChange}
-            ></input>
-          </div>
-          <div className="col-auto">
-            <span id="dobHelp" className="form-text">
-              Customer must be greater than 18 years of age
-            </span>
-          </div>
-        </div>
-        <div className="row g-3 align-items-center">
-          <div className="col-auto">
-            <label htmlFor="id" className="form-label">
-              Customer Course
-            </label>
-          </div>
-          <div className="col-auto">
-            <select
-              className="form-select"
-              name="course"
-              id="course"
-              onChange={handleChange}
-            >
-              <option value="notSelected">Select a course</option>
-              <option value="DAC">DAC</option>
-              <option value="DITISS">DITISS</option>
-              <option value="DAI">DAI</option>
-              <option value="DBDA">DBDA</option>
-            </select>
-          </div>
-          <div className="col-auto">
-            <span id="idHelp" className="form-text">
-              Enter course name
-            </span>
-          </div>
-        </div>
-        <div className="row g-3 align-items-center">
-          <div className="col-auto">
-          {props.action==="add"?<button type="button" className="btn btn-primary" onClick={addCustomer}>Add Customer</button>:<button type="button" className="btn btn-primary" onClick={editCustomer}>Edit Customer</button>}
-          </div>
-        </div>
-      </form>
+      </div>
     </div>
   );
 }
