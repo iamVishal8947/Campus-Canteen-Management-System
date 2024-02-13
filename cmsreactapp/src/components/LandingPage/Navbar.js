@@ -17,11 +17,13 @@ import CommentRoundedIcon from "@mui/icons-material/CommentRounded";
 import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
 import LoginForm from "./LoginForm";
 import Backdrop from "./Backdrop";
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [showLoginForm, setShowLoginForm] = useState(false);
 
-  
+  const [modalOpen, setModalOpen] = useState(false);
   const menuOptions = [
     {
       text: "Home",
@@ -53,6 +55,7 @@ const Navbar = () => {
   };
 
   return (
+    <div>
     <nav>
       <div className="nav-logo-container">
         <img src={Logo} alt="" />
@@ -64,9 +67,23 @@ const Navbar = () => {
         <a href="">Contact</a>
         
         
-        <button onClick={handleLoginClick}>Login</button>
+        {/* <button onClick={handleLoginClick}>Login</button> */}
+
+        {/* -------------------------------------------- */}
+        <Link to="/LoginComp">
+        <button
+        className="openModalBtn"
+        onClick={() => {
+          setModalOpen(true);
+        }}
+      >
+        Login
+      </button>
+      </Link>
+
+     
       </div>
-      {/* Render Backdrop component and LoginForm conditionally */}
+      {/* Render Backdrop component and LoginForm conditionally
       {showLoginForm && (
         <Backdrop onClick={handleBackdropClick}>
           <LoginForm onSubmit={handleLoginSubmit} />
@@ -94,8 +111,11 @@ const Navbar = () => {
           </List>
           <Divider />
         </Box>
-      </Drawer>
+      </Drawer> */}
+
     </nav>
+    {/* {modalOpen && <LoginForm setOpenModal={setModalOpen} />} */}
+    </div>
   );
 };
 

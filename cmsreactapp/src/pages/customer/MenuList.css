@@ -1,7 +1,7 @@
-.container {
+.menu-container {
     width: 100vw;
     height: 100vh;
-    background-color: rgb(209, 176, 155); /* Set the orange theme background */
+    background-color: rgb(251, 58, 5); /* Set the orange theme background */
     padding: 20px;
     display: grid;
     place-items: center; /* Center the content both horizontally and vertically */
