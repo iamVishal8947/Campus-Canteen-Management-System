@@ -1,21 +1,3 @@
-// import React from 'react'
-// import './Customer.css'
-// import CustomerNavBar from './CustomerNavBar'
-// import FoodMenu from './FoodMenu'
-// export default function Customer() {
-//   return (
-//     <div>
-//         <CustomerNavBar />
-
-//    <div className="container">
-       
-        
-//         <div className="row">
-//         <div className="col-8 component1"> <FoodMenu></FoodMenu> </div>
-//         <div className="col-4 component2">Selected List</div>
-//       </div>        
-//        <button type="button" class="btn btn-primary" id='order-btn'>ORDER</button>
-      
 
 
 // import React from 'react';
@@ -38,7 +20,7 @@
 //               </div>
 //             </div>
 //           </div>
-//           <div className="col-lg-3">
+//           <div className="col-lg-6">
 //             <div className="card">
 //               <div className="card-body">
 //                 <h5 className="card-title">Selected List</h5>
@@ -47,10 +29,6 @@
 //             </div>
 //           </div>
 //         </div>
-
-//         <button type="button" className="btn btn-primary mt-3" id="order-btn">
-//           ORDER
-//         </button>
 
 //         <div className="row mt-4">
 //           <div className="col-lg-6">
@@ -70,16 +48,20 @@
 //             </div>
 //           </div>
 //         </div>
+
+//         <button type="button" className="btn btn-primary mt-3" id="order-btn">
+//           ORDER
+//         </button>
 //       </div>
 //     </div>
 //   );
 // }
 
-
 import React from 'react';
 import './Customer.css';
 import CustomerNavBar from './CustomerNavBar';
 import FoodMenu from './FoodMenu';
+import PreviousOrders from './PreviousOrders';
 
 export default function Customer() {
   return (
@@ -90,7 +72,7 @@ export default function Customer() {
         <div className="row">
           <div className="col-lg-6">
             <div className="card">
-              <div className="card-body">
+              <div className="card-body component1">
                 <h5 className="card-title">Food Menu</h5>
                 <FoodMenu />
               </div>
@@ -99,8 +81,8 @@ export default function Customer() {
           <div className="col-lg-6">
             <div className="card">
               <div className="card-body">
-                <h5 className="card-title">Selected List</h5>
-                {/* Add your content for the selected list */}
+                <h5 className="card-title">Previous Orders</h5>
+                <PreviousOrders></PreviousOrders>
               </div>
             </div>
           </div>

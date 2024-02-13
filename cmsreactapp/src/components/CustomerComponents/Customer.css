@@ -1,13 +1,24 @@
-
+/* 
   .component1 {
     
-    height : 200px;
-    flex: 70%;
-    background-color: lightblue;
+    height : 100%;
+    flex: 80%; 
+     background-color: lightblue;
     display: inline-block;
-    margin-top: 30px; 
+   
+  } */
+
+  .component1 {
+    flex: 1; /* Use flex property to take up remaining height */
+    /* overflow-y: auto; Add scrollbar if content exceeds height */
+    height : 500px;
 
   }
+  
+  .card {
+    height: 100%; /* Make sure the card takes up 100% height of its parent */
+  }
+  
   
   .component2 {
     /* width: 30%; */

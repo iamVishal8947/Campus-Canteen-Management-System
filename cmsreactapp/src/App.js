@@ -9,15 +9,17 @@ import CustomerHandler from './pages/admin/CustomerHandler';
 import AddCustomer from './pages/admin/AddCustomer';
 import EditCustomer from './pages/admin/EditCustomer';
 import LandingPage from './components/LandingPage/LandingPage';
+import PreviousOrdersList from './pages/customer/PreviousOrdersList';
 
 function App() {
   return (
     <div className="App">
       <Routes>
        <Route path="/" element={<LandingPage></LandingPage>} ></Route>
-        <Route path="/customer/" element={<Customer></Customer>} ></Route>
+        <Route path="/customer" element={<Customer></Customer>} ></Route>
         <Route path='/admin/' element={<Dashboard></Dashboard>}></Route>
         <Route path='/MenuList/' element={<MenuList></MenuList>}></Route>
+        <Route path='/customer/previousorderslist/' element={<PreviousOrdersList></PreviousOrdersList>}></Route>
         
         <Route path='/admin/customers' element={<CustomerHandler></CustomerHandler>}></Route>
         <Route path='/admin/customers/add' element={<AddCustomer></AddCustomer>}></Route>

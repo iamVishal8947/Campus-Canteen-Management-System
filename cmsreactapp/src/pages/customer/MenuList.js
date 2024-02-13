@@ -54,7 +54,7 @@ export default function MenuList() {
   return (
 
 
-<div className="container"> {/* Apply the orange theme background */}
+<div className="menu-container"> {/* Apply the orange theme background */}
 <h1>Food Menu Selection</h1>
 
 <table className="table table-bordered">
