@@ -18,16 +18,13 @@ function App() {
   return (
     <div className="App">
       <Routes>
-       <Route path="/" element={<LandingPage></LandingPage>} ></Route>
+       
+       <Route path="/" element={<LandingPage style={{position:"fixed"}}></LandingPage>} ></Route>
         <Route path="/customer" element={<Customer></Customer>} ></Route>
         <Route path='/admin/' element={<Dashboard></Dashboard>}></Route>
         <Route path='/MenuList/' element={<MenuList></MenuList>}></Route>
         <Route path='/customer/previousorderslist/' element={<PreviousOrdersList></PreviousOrdersList>}></Route>
         
-       <Route path="/" element={<LandingPage style={{position:"fixed"}}></LandingPage>} ></Route>
-        <Route path="/customer/" element={<Customer></Customer>} ></Route>
-        <Route path='/admin/' element={<Dashboard></Dashboard>}></Route>
-        <Route path='/MenuList/' element={<MenuList></MenuList>}></Route>
         <Route path='/LoginComp/' element={<LoginComp></LoginComp>}></Route>
         <Route path='/admin/customers' element={<CustomerHandler></CustomerHandler>}></Route>
         <Route path='/admin/customers/add' element={<AddCustomer></AddCustomer>}></Route>
