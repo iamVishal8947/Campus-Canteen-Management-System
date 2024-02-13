@@ -1,7 +1,7 @@
 import React from "react";
 import BannerBackground from "../../Assets/home-banner-background.png";
 
-import BannerImage from "../../Assets/home-banner-image.png";
+import BannerImage from "../../Assets/thali2.png";
 import Navbar from "./Navbar";
 
 
