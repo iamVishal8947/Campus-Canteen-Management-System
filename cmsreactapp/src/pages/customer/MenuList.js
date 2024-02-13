@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import MenuItemService from "../../services/MenuItemService ";
 import { Link } from "react-router-dom";
-import  './MenuList.css'
+
 import defimg from '../../Assets/pick-meals-image.png' ;
 export default function MenuList() {
   const placeholderImage = "https://via.placeholder.com/100";
