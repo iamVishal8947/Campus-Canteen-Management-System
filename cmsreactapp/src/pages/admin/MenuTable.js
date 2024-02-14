@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import MenuItemService from '../../services/MenuItemService '
 import { MenuItemTableColumns } from './MenuItemsTableColumns';
-import TableComponent from '../../components/common/TableComponent';
+import TableComponent from '../../components/common/TableComponentMenu';
 import TableColumnFilter from '../../components/common/TableColumnFilter';
 export default function MenuTable({onAddToMenu}) {
     const items = MenuItemService.getItems();
@@ -9,7 +9,8 @@ export default function MenuTable({onAddToMenu}) {
     
     const handleAddToMenuClick = (item) => {
         // Call the onAddToMenu function with the selected item
-        onAddToMenu(item);
+        console.log(item.original.item_name)
+        onAddToMenu(item.original);
       };
     
   return (
@@ -18,13 +19,19 @@ export default function MenuTable({onAddToMenu}) {
         <TableComponent
         colStructure={columns}
         data={items}
-        filterClass={TableColumnFilter}
+        filterClass={TableColumnFilter} addbtn={handleAddToMenuClick}
       ></TableComponent>
-            {items.map((item) => (
-        <button key={item.id} onClick={() => handleAddToMenuClick(item)}>
-          Add to Menu
-        </button>
+{/* 
+<ul>
+      {items.map((item) => (
+        <li key={item.id}>
+          {item.name} (ID: {item.id})
+          <button onClick={() => handleAddToMenuClick(item)}>Add to Menu</button>
+        </li>
       ))}
+    </ul>
+            */}
     </div>
   )
 }
+

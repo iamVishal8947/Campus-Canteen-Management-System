@@ -22,10 +22,5 @@ export const MenuItemTableColumns = [
         Header:"Item Price",
         accessor: "item_price",
         Footer: "Item Price"
-    },
-    {
-        Header:"Quantity",
-        accessor: "total_qty",
-        Footer: "Quantity"
     }
 ]
