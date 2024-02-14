@@ -1,5 +1,5 @@
 import React from 'react';
-import './Customer.css';
+// import './Customer.css';
 import CustomerNavBar from './CustomerNavBar';
 import FoodMenu from './FoodMenu';
 import PreviousOrders from './PreviousOrders';
