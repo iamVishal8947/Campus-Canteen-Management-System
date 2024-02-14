@@ -38,7 +38,7 @@ export default function TableComponent(props) {
         const {pageIndex} = state;//Current page index in List<Pages>
 
   return (
-    <div style={{padding: "10%"}}>
+    <div style={{padding: "5%"}}>
         <table {...getTableProps()} className='table'>
             <thead className='table-primary'>{/* Tag for table headers */}
                 {
