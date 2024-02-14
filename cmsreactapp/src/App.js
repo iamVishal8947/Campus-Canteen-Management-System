@@ -14,6 +14,7 @@ import LandingPage from './components/LandingPage/LandingPage';
 import PreviousOrdersList from './pages/customer/PreviousOrdersList';
 import LoginForm from './components/LandingPage/LoginForm';
 import LoginComp from './components/LandingPage/LoginComp';
+import CustomerTable from './pages/admin/CustomerTable';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path='/admin/customers' element={<CustomerHandler></CustomerHandler>}></Route>
         <Route path='/admin/customers/add' element={<AddCustomer></AddCustomer>}></Route>
         <Route path='/admin/customers/edit/:id' element={<EditCustomer></EditCustomer>}></Route>
+        <Route path='/admin/customers/all' element={<CustomerTable></CustomerTable>}></Route>
       </Routes>
     
       {/* <header className="App-header">
