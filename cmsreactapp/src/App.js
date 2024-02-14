@@ -13,9 +13,11 @@ import LandingPage from './components/LandingPage/LandingPage';
 import PreviousOrdersList from './pages/customer/PreviousOrdersList';
 import LoginForm from './components/LandingPage/LoginForm';
 import LoginComp from './components/LandingPage/LoginComp';
+import { DataProvider } from './DataContext';
 
 function App() {
   return (
+    <DataProvider>
     <div className="App">
       <Routes>
        
@@ -46,6 +48,8 @@ function App() {
         </a>
       </header> */}
     </div>
+    </DataProvider>
+  
   );
 }
 
