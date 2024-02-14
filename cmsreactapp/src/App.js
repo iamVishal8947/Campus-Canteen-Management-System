@@ -16,7 +16,7 @@ import LoginForm from './components/LandingPage/LoginForm';
 import LoginComp from './components/LandingPage/LoginComp';
 import { DataProvider } from './DataContext';
 import CustomerTable from './pages/admin/CustomerTable';
-
+import MenuSelecter from './pages/admin/MenuSelecter';
 function App() {
   return (
     <DataProvider>
@@ -28,7 +28,7 @@ function App() {
         <Route path='/admin/' element={<Dashboard></Dashboard>}></Route>
         <Route path='/MenuList/' element={<MenuList></MenuList>}></Route>
         <Route path='/customer/previousorderslist/' element={<PreviousOrdersList></PreviousOrdersList>}></Route>
-        
+        <Route path='/admin/menuselect/' element={<MenuSelecter></MenuSelecter>}></Route>
         <Route path='/LoginComp/' element={<LoginComp></LoginComp>}></Route>
         <Route path='/admin/customers' element={<CustomerHandler></CustomerHandler>}></Route>
         <Route path='/admin/customers/add' element={<AddCustomer></AddCustomer>}></Route>
