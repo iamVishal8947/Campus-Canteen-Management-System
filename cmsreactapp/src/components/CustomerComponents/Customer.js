@@ -3,14 +3,16 @@ import React from 'react';
 import CustomerNavBar from './CustomerNavBar';
 import FoodMenu from './FoodMenu';
 import PreviousOrders from './PreviousOrders';
-
+import BannerBackground from  '../../Assets/home-banner-background.png'
 
 export default function Customer() {
   return (
     
     <div>
       <CustomerNavBar />
-
+      <div className="home-bannerImage-container">
+          <img src={BannerBackground} alt="" />
+        </div>
       <div className="container mt-4">
         <div className="row">
           <div className="col-lg-6">
