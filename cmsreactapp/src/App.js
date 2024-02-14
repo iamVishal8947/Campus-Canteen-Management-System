@@ -2,6 +2,7 @@
 import './App.css';
 import {Routes, Route} from 'react-router-dom';
 import Dashboard from './pages/admin/Dashboard';
+import './components/CustomerComponents/Customer.css';
 import  '../src/pages/customer/MenuList.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import Customer from './components/CustomerComponents/Customer';

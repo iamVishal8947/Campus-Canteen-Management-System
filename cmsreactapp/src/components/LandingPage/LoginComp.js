@@ -96,28 +96,39 @@ export default function LoginComp() {
     //   };
     
       const goToDashboard = () => {
-        navigate("/admin/");
+        navigate("/");
       };
       const submitForm = ()=>{
         // navigate("/customer/")
         // call login backend
+        const username = document.getElementById('mob').value;
+        const password = document.getElementById('dob').value;
+    
+        if (username === 'admin' && password === 'admin') {
+          navigate("/admin")
+        } else if (username === '000000000000' && password === 'customer') {
+          navigate("/customer")
+        } else {
+          // Handle invalid credentials
+          alert('Invalid username or password');
+        }
       }
   return (
-    <div className="container vh-100 vw-100 align-items-center" style={{backgroundImage : `url(${bgimg})`, height: "100%", width : "1920px"}}>
+    <div className="container vh-100 w-100 align-items-center" style={{backgroundImage : `url(${bgimg})`, height: "100%"}}>
       <div className="row g-3" style={{marginTop : "0px"}}>
         <div className="col-md-3"></div>
         <div className="col-md-6 border border-primary">
           <br />
           
           <br />
-          <form>
+          <form >
             
 
               
             
             <div className="row mb-3">
               <label htmlFor="box" className="col-sm-5 col-form-label">
-                PRN 
+                Username 
               </label>
 
               <div className="col-md-7">
@@ -127,8 +138,7 @@ export default function LoginComp() {
                   required
                   name="mob"
                   id="mob"
-                  placeholder="Enter 12-digit PRN"
-                  pattern="[0-9]{12}"
+                  placeholder="Enter your username"
                   onChange={handleChange}
                 ></input>
                 <span id="mobError" style={{ color: "red", fontSize: "10px" }}>
@@ -147,6 +157,7 @@ export default function LoginComp() {
                   type="password"
                   className="form-control"
                   name="pwd"
+                  placeholder="Enter your password"
                   required
                   id="dob"
                   

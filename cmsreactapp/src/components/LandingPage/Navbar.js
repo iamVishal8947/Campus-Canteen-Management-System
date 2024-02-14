@@ -65,21 +65,21 @@ const Navbar = () => {
         <a href="">About</a>
         <a href="">Reviews</a>
         <a href="">Contact</a>
-        
+         <Link to="/LoginComp"> <strong>Login</strong> </Link>   
         
         {/* <button onClick={handleLoginClick}>Login</button> */}
 
         {/* -------------------------------------------- */}
-        <Link to="/LoginComp">
-        <button
+        {/* <Link to="/LoginComp">
+        <div
         className="openModalBtn"
         onClick={() => {
           setModalOpen(true);
         }}
       >
         Login
-      </button>
-      </Link>
+      </div>
+      </Link> */}
 
      
       </div>
