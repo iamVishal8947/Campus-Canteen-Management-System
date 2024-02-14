@@ -7,6 +7,7 @@ import TableComponent from '../../components/common/TableComponent'
 export default function CustomerTable1() {
     const columns = useMemo(()=>CustomerTableColumns,[]) 
     const data = useMemo(()=>MockData,[])
+    console.log("data "+data);
   return (
     <div>
         <TableComponent colStructure={columns} data={data} filterClass={TableColumnFilter}></TableComponent>
