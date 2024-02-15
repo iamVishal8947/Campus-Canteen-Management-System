@@ -13,14 +13,17 @@ class StudentService{
         console.log("in insert Student axios method ")
        //this.prodarr.push(student);
        //console.log(this.prodarr); 
-       const student1 = {name: "A b",
-       email: "xyz@gmail.com",
-       pwd: "1234",
-       mob: "9999999999",
-       dob: "",
-       course: "DAC",
-       balance : 0}
-       return axios.post("http://localhost:8080/student/register",student1)//,{header:{"content-type":"application/json",autherization:"bearer"+<localStorage.jwttoken>}})
+       const student1 = {
+        name: "Studentnew",
+        customerId: 0,
+        email: "new@new.com",
+        password: "1234",
+        mobileNo: "9999999990",
+        balance: 0,
+        dob: "2000-02-15",
+        courseName: "DAC"
+      }
+       return axios.post("http://localhost:8080/student/register",student)//,{header:{"content-type":"application/json",autherization:"bearer"+<localStorage.jwttoken>}})
     }
 
     deleteStudent(pid){
