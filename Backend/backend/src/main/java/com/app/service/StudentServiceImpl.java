@@ -2,19 +2,26 @@
 package com.app.service;
 
 import com.app.dto.StudentDTO;
+import com.app.dto.GetAllStudentDTO;
 import com.app.entities.Student;
 import com.app.repository.StudentRepository;
 import com.app.service.StudentService;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentServiceImpl implements StudentService {
 
 	private final StudentRepository studentRepository;
+	
+	@Autowired
+	private ModelMapper modelMapper;
 
 	@Autowired
 	public StudentServiceImpl(StudentRepository studentRepository) {
@@ -23,8 +30,8 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public void registerStudent(StudentDTO studentDTO) {
-		if (studentExists(studentDTO.getCustomerId())) {
-			throw new RuntimeException("Customer with this ID already exists.");
+		if (studentExists(studentDTO.getStudentId())) {
+			throw new RuntimeException("Student with this ID already exists.");
 		}
 		Student student = new Student();
 		// Map DTO fields to entity
@@ -38,13 +45,18 @@ public class StudentServiceImpl implements StudentService {
 		studentRepository.save(student);
 	}
 
-	private boolean studentExists(Long studentId) {
+	public boolean studentExists(Long studentId) {
 		Optional<Student> existingStudent = studentRepository.findById(studentId);
 		return existingStudent.isPresent();
 	}
-
+	
 	@Override
-	public List<Student> getAllStudents() {
-		return studentRepository.findAll();
-	}
+    public List<GetAllStudentDTO> getAllStudents() {
+        List<Student> students = studentRepository.findAll();
+        return students.stream()
+                .map(student -> modelMapper.map(student, GetAllStudentDTO.class))
+                .collect(Collectors.toList());
+    }
+
+	
 }

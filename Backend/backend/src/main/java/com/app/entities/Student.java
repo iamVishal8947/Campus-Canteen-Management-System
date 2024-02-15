@@ -56,7 +56,7 @@ public class Student {
 	@Column(length = 20, name = "course_name")
 	private Course courseName;
 	
-	@OneToMany(mappedBy = "student")
+	@OneToMany(mappedBy = "student",fetch = FetchType.EAGER)
 	private List<RechargeHistory> rechargeHistoryList ;
 	
 	@OneToMany(mappedBy = "student")
