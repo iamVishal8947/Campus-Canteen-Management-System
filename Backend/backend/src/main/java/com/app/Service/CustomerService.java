@@ -1,18 +1,8 @@
-package com.app.Service;
+// CustomerService.java
+package com.app.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.app.dto.CustomerDTO;
 
-import com.app.Repository.OrderRepository;
-import com.app.entities.Order;
-
-@Service
-public class CustomerService {
-	@Autowired
-	private OrderRepository orderRepo;
-	
-	public Order placeOrder(Order order) {
-		return orderRepo.save(order);
-	}
-
+public interface CustomerService {
+    void registerCustomer(CustomerDTO customerDTO);
 }
