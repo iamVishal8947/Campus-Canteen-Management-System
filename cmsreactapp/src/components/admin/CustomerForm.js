@@ -3,22 +3,24 @@ import { useNavigate } from "react-router-dom";
 
 export default function CustomerForm(props) {
   const [formDetails, setFormDetails] = useState({
-    id: "",
+    // id: "",
     name: "",
     email: "",
     pwd: "",
     mob: "",
     dob: "",
     course: "",
+    balance : 0
   });
   const [formErrors, setErrors] = useState({
-    id: "",
+    // id: "",
     name: "",
     email: "",
     pwd: "",
     mob: "",
     dob: "",
     course: "",
+    balance : 0
   });
   const today = new Date();
   const navigate = useNavigate();
@@ -37,7 +39,7 @@ export default function CustomerForm(props) {
   };
 
   const validateData = () => {
-    let id = document.getElementById("id").value;
+    // let id = document.getElementById("id").value;
     /*Check how to add error message stating that id is already registered.
     Steps:
     1. addForm submission
@@ -82,17 +84,20 @@ export default function CustomerForm(props) {
 
   const resetForm = () => {
     setFormDetails({
-      id: "",
+      // id: "",
       name: "",
       email: "",
       pwd: "",
       mob: "",
       dob: "",
       course: "",
+      balance : 0
     });
   };
 
   const submitHandler = () => {
+    console.log("in  customer form")
+
     props.takeAction(formDetails);
   };
 
@@ -113,7 +118,7 @@ export default function CustomerForm(props) {
           )}
           <br />
           <form>
-            <div className="row mb-3">
+            {/* <div className="row mb-3">
               <label htmlFor="id" className="col-sm-5 col-form-label">
                 Customer Id
               </label>
@@ -134,7 +139,7 @@ export default function CustomerForm(props) {
                   {formErrors.id}
                 </span>
               </div>
-            </div>
+            </div> */}
             <div className="row mb-3">
               <label htmlFor="name" className="col-sm-5 col-form-label">
                 Customer Name
