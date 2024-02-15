@@ -20,7 +20,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 
-@NamedQuery(name="Student.findByStudentId",query="select c from Student where c.studentId=:studentId")
+
 
 @Entity
 @Table(name = "students")
@@ -56,10 +56,10 @@ public class Student {
 	@Column(length = 20, name = "course_name")
 	private Course courseName;
 	
-	@OneToMany(mappedBy = "student",fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "student")
 	private List<RechargeHistory> rechargeHistoryList ;
 	
-	@OneToMany(mappedBy = "student",fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "student")
 	private List<Order> orderList;
 	
 	public void setDob(LocalDate dob) {
