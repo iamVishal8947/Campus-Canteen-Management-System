@@ -1,25 +1,13 @@
+.container {
+  margin: 6rem auto;
+  max-width: 95vw;
+}
 
-  .component1 {
-    
-    height : 200px;
-    flex: 70%;
-    background-color: lightblue;
-    display: inline-block;
-    margin-top: 30px; 
+.card {
+  height: 100%;
+}
 
-  }
-  
-  .component2 {
-    /* width: 30%; */
-    height : 200px;
-    flex: 30%;
-    background-color: lightgreen;
-    display: inline-block;
-    /* margin-left: 10px;
-    margin-right: 10px;*/
-    margin-top: 30px; 
-  }
-  #order-btn{
-    margin-top: 30px; 
-    margin-left: 50%;
-  }
+#order-btn {
+  margin-top: 30px;
+  margin-left: 50%;
+}

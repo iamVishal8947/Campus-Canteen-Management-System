@@ -1,0 +1,89 @@
+.menu-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(245, 228, 193); /* Set the orange theme background */
+    padding: 20px;
+    display: grid;
+    place-items: center; /* Center the content both horizontally and vertically */
+    /* background-image: url("../../Assets/MenuList-bg-img.jpeg"); */
+  }
+ 
+  .table {
+    background-color: #fff; 
+  }
+  .table tbody tr td {
+    width: 200px; /* Set width for the first cell (image) */
+    align-content: center;
+  }
+
+  /* #plus-btn{
+    margin-left: 5px;
+   
+  }
+  #minus-btn{
+    margin-right: 5px;
+    margin-left: 50%;
+  } */
+  
+  .table th, .table td {
+    padding: 10px;
+  }
+  
+  .table-bordered th, .table-bordered td {
+    border: 1px solid #ddd; 
+  }
+  
+  .total-amount {
+    margin-top: 20px;
+  }
+  
+  .btn-primary {
+    background-color: #ff5733; /* Set the button background color */
+    border-color: #ff5733; /* Set the button border color */
+  }
+  
+  .btn-primary:hover {
+    background-color: #e64a19; /* Change button background color on hover */
+    border-color: #e64a19; /* Change button border color on hover */
+  }
+
+  .menu-items-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .menu-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 25%;
+    margin-left: 30px;
+  }
+  
+  .menu-item-image {
+    width: 150px;
+    height: 150px;
+    margin-right: 20px;
+  }
+  
+  .menu-item-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .menu-item-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .menu-item-buttons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .menu-item-buttons button {
+    margin-right: 5px;
+  }
+  
+

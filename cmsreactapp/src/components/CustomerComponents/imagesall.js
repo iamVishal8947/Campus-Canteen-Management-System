@@ -3,6 +3,8 @@ import samosa from '../../Images/samosa.jpg'
 import tea from '../../Images/tea.jpg'
 import coffee from '../../Images/coffee.jpg'
 import idli from '../../Images/idli.jpg'
+import food from '../../Images/food.jpg'
+import logo from '../../Images/logo-no-background.png'
 
 
 export default{
@@ -10,5 +12,7 @@ export default{
     tea,
     coffee,
     samosa,
-    idli
+    idli,
+    food,
+    logo
 };

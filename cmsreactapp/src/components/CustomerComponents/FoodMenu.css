@@ -1,10 +1,10 @@
-.component {
-    max-height: 200px; /* Example maximum height */
-    overflow-x: auto; /* Enable vertical scrolling */
+/* .component {
+    max-height: 200px; 
+    overflow-x: auto; 
   }
   
   .content1 {
-    padding: 30px; /*Example padding*/
+    padding: 30px; 
     width: 50%;
     height: 50%;
     align-items: center;
@@ -12,22 +12,22 @@
   }
 
   .content2 {
-    padding: 30px; /*Example padding*/
+    padding: 30px; 
     width: 50%;
     height: 50%;
     align-items: center;
-    /* margin-left: 100px; */
+    
     
   }
   .content3 {
-    padding: 30px; /*Example padding*/
+    padding: 30px
     width: 50%;
     height: 50%;
     align-items: center;
     
   }
   .content4 {
-    padding: 30px; /*Example padding*/
+    padding: 30px; 
     width: 50%;
     height: 50%;
     align-items: center;
@@ -35,7 +35,44 @@
   }
 
   .content img{
-    padding: 30px;
+  padding: 30px;
    display: inline-block;
    align-items: center;
+  } *//* FoodMenu.css */
+
+.menu-item {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px; /* Adjust margin as needed */
+}
+
+.menu-item img {
+  width: 200%; /* Make the image fill its container */
+  height: 40%;
+  transition: transform 0.3s ease; /* Add a smooth transition effect */
+  
+}
+
+.menu-item:hover img {
+  transform: scale(1.1); /* Increase the size on hover */
+}
+
+#innerdiv{
+  margin-left: 30%;
+}
+
+.menu-item img{
+  padding: 10px;
+   display: inline-block;
+   align-items: center;
+   width: 100%;
+   height: 100%;
   }
+
+  .menu-image {
+    width: 100%;
+    height: auto;
+  }
+
+  

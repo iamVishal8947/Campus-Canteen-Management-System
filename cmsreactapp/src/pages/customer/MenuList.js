@@ -2,6 +2,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import MenuItemService from "../../services/MenuItemService ";
 import { Link } from "react-router-dom";
+
+import defimg from '../../Assets/pick-meals-image.png';
+
 export default function MenuList() {
   const placeholderImage = "https://via.placeholder.com/100";
   //---------------------------
@@ -50,55 +53,40 @@ export default function MenuList() {
   }, 0);
 
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
-      <h1>Food Menu Selection</h1>
-
-      <table className="table table-bordered" style={{ width: "100%" }}>
-        <thead className="thead-dark">
-          <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Add/Remove</th>
-          </tr>
-        </thead>
-        <tbody>
-          {menuItems.map((item) => (
-            <tr key={item.item_id}>
-              <td>
-                <img
-                  src={item.image_link || placeholderImage}
-                  alt={item.item_name}
-                  className="img-fluid"
-                  width="100"
-                  height="100"
-                  // Make the image responsive
-                  onError={(e) => {
-                    console.error("Error loading image:", e.target.src);
-                    e.target.src = placeholderImage;
-                  }}
-                />
-              </td>
-              <td>{item.item_name}</td>
-              <td>{item.item_price}</td>
-              <td>
+    <div className="menu-container" style={{ background: 'rgb(245, 228, 193)', padding: '20px', borderRadius: '10px',marginLeft: 'auto', marginRight: 'auto', maxWidth: '90%'  }}>
+      <h1 style={{ textAlign: 'center' }}>Food Menu Selection</h1>
+      <div className="menu-items-container">
+        {menuItems.map((item) => (
+          <div className="menu-item" key={item.item_id}>
+            <div className="menu-item-details">
+              <div className="menu-item-name">{item.item_name}</div>
+              <img
+                src={item.image_link || defimg}
+                alt={item.item_name}
+                className="menu-item-image"
+                onClick={() => addToOrder(item, item.item_name)}
+              />
+              <div className="menu-item-price">Price: {item.item_price}</div>
+              <div className="menu-item-buttons">
                 <button
-                  variant="success"
+                  className="btn btn-success"
                   onClick={() => addToOrder(item, item.item_name)}
                 >
                   +
                 </button>
                 <span>{order[item.item_id] || 0}</span>
-                <button variant="danger" onClick={() => removeFromOrder(item)}>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => removeFromOrder(item)}
+                >
                   -
                 </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      <h2>Order Checkout List</h2>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <h2 style={{ textAlign: 'center', marginTop: "60px" }}>Order Checkout List</h2>
       <table className="table table-bordered">
         <thead className="thead-dark">
           <tr>
@@ -123,22 +111,12 @@ export default function MenuList() {
           })}
         </tbody>
       </table>
-      <div className="total-amount">
+      <div className="total-amount" style={{ textAlign: 'center', marginTop: '60px' }}>
         <h4>
           <strong>Total Amount:</strong> ₹ {totalAmount.toFixed(2)}
         </h4>
       </div>
-      {/* <Link
-        to={{
-          pathname: "/payment",
-          state: { orderData: order, totalAmount: totalAmount },
-        }}
-      >
-        <button type="button" className="btn btn-primary">
-          Place Order
-        </button>
-      </Link> */}
-      <button type="button" class="btn btn-primary">
+      <button type="button" id="order_button" className="btn btn-primary" style={{ display: 'block', margin: '0 auto' }}>
         Place Order
       </button>
     </div>
