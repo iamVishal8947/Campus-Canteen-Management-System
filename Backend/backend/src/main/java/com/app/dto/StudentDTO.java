@@ -21,10 +21,10 @@ public class StudentDTO {
     private String email;
 
     @NotBlank
-    private String pwd; // ----------
+    private String password;
 
     @NotBlank
-    private String mob; //=====
+    private String mobileNo;
 
     @NotNull
     private int balance;
@@ -33,5 +33,5 @@ public class StudentDTO {
     private LocalDate dob;
 
     @NotNull
-    private Course course; //-----------
+    private Course courseName;
 }

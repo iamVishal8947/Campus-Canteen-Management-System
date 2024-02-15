@@ -29,11 +29,11 @@ public class StudentServiceImpl implements StudentService {
         // Map DTO fields to entity
         student.setName(studentDTO.getName());
         student.setEmail(studentDTO.getEmail());
-        student.setPassword(studentDTO.getPwd());
-        student.setMobileNo(studentDTO.getMob());
+        student.setPassword(studentDTO.getPassword());
+        student.setMobileNo(studentDTO.getMobileNo());
         student.setBalance(studentDTO.getBalance());
         student.setDob(studentDTO.getDob());
-        student.setCourseName(studentDTO.getCourse());
+        student.setCourseName(studentDTO.getCourseName());
         studentRepository.save(student);
     }
 
