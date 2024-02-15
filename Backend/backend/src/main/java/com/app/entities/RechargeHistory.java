@@ -32,6 +32,6 @@ public class RechargeHistory {
 	private int amountAdded;
 	
 	@ManyToOne
-	@JoinColumn(name="customer_id")
-	private Customer cust;
+	@JoinColumn(name="student_id")
+	private Student student;
 }

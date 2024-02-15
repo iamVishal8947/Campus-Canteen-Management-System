@@ -7,9 +7,14 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -46,11 +51,16 @@ public class Order {
 	@Column(name="is_served",nullable = false)
 	private Boolean isServed;
 	
+	@Enumerated(EnumType.STRING)
+    @Column(name = "order_status", nullable = false)
+    private OrderStatus orderStatus;
+	
 	@Column(name="discount_percentage",nullable = false)
 	private Integer discountPercentage;
 	
-	@Column(name="customer_id",nullable = false)
-	private Integer customerId;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "student_id") 
+	private Student student;
 	
 	@OneToMany(mappedBy = "order", 
 			cascade = CascadeType.ALL, orphanRemoval = true)
