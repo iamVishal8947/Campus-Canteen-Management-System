@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -18,6 +19,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
+@NamedQuery(name="Customer.findByCustomerId",query="select c from Customer where c.customerId=:customerId")
 
 @Entity
 @Table(name = "customers")
@@ -55,5 +58,10 @@ public class Customer {
 	
 	@OneToMany(mappedBy = "cust",fetch = FetchType.EAGER)
 	private List<RechargeHistory> rechargeHistoryList ;
+	
+	public void setDob(LocalDate dob) {
+		this.dob=dob;
+	}
+	
 	
 }
