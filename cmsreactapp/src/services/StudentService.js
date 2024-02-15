@@ -7,7 +7,7 @@ class StudentService{
     getAllStudents(){
         //return this.prodarr;
        // return axios.get(baseUrl);
-       return axios.get(baseUrl)
+       return axios.get("http://localhost:8080/admin/students")
     }
     insertStudent(student){
         console.log("in insert Student axios method ")

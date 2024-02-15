@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 export default function CustomerForm(props) {
   const [formDetails, setFormDetails] = useState({
-    // id: "",
+     
     name: "",
-        customerId: 0,
+    studentId: 0,
         email: "",
         password: "0000",
         mobileNo: "",
@@ -14,9 +14,9 @@ export default function CustomerForm(props) {
         courseName: ""
   });
   const [formErrors, setErrors] = useState({
-    // id: "",
+  
     name: "",
-        customerId: 0,
+    studentId: 0,
         email: "",
         password: "",
         mobileNo: "",
@@ -86,9 +86,9 @@ export default function CustomerForm(props) {
 
   const resetForm = () => {
     setFormDetails({
-      // id: "",
+       
       name: "",
-        customerId: 0,
+      studentId: 0,
         email: "",
         password: "0000",
         mobileNo: "",
