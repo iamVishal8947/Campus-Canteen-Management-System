@@ -2,7 +2,7 @@
 package com.app.service;
 
 import com.app.dto.CustomerDTO;
-import com.app.entities.Customer;
+import com.app.entities.Student;
 import com.app.repository.CustomerRepository;
 import com.app.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class CustomerServiceImpl implements CustomerService {
         if (customerExists(customerDTO.getCustomerId())) {
             throw new RuntimeException("Customer with this ID already exists.");
         }
-        Customer customer = new Customer();
+        Student customer = new Student();
         // Map DTO fields to entity
         customer.setName(customerDTO.getName());
         customer.setEmail(customerDTO.getEmail());
@@ -38,7 +38,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     private boolean customerExists(Long customerId) {
-        Optional<Customer> existingCustomer = customerRepository.findById(customerId);
+        Optional<Student> existingCustomer = customerRepository.findById(customerId);
         return existingCustomer.isPresent();
     }
 }

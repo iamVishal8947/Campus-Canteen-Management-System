@@ -1,4 +1,4 @@
-package com.app.application;
+package com.app;
 
 import org.modelmapper.Conditions;
 import org.modelmapper.ModelMapper;

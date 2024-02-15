@@ -20,20 +20,20 @@ import lombok.Setter;
 import lombok.ToString;
 
 
-@NamedQuery(name="Customer.findByCustomerId",query="select c from Customer where c.customerId=:customerId")
+@NamedQuery(name="Student.findByStudentId",query="select c from Student where c.studentId=:studentId")
 
 @Entity
-@Table(name = "customers")
+@Table(name = "students")
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
-public class Customer {
+public class Student {
 	
 	@Id
-	@Column( name = "customer_id")
+	@Column( name = "student_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long customerId;
+	private Long studentId;
 	
 	@Column(length = 20, name = "name")
 	private String name;
@@ -56,8 +56,11 @@ public class Customer {
 	@Column(length = 20, name = "course_name")
 	private Course courseName;
 	
-	@OneToMany(mappedBy = "cust",fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "student",fetch = FetchType.EAGER)
 	private List<RechargeHistory> rechargeHistoryList ;
+	
+	@OneToMany(mappedBy = "student",fetch = FetchType.EAGER)
+	private List<Order> orderList;
 	
 	public void setDob(LocalDate dob) {
 		this.dob=dob;
