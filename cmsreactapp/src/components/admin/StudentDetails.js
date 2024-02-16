@@ -3,6 +3,8 @@ import CardContent from '@mui/material/CardContent';
 import React from 'react'
 import { Box, IconButton, Typography, useTheme, Button } from "@mui/material";
 import { tokens } from "../../theme";
+import GroupIcon from '@mui/icons-material/Group';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function StudentDetails(props) {
     const takeAction=()=>{
@@ -31,7 +33,7 @@ export default function StudentDetails(props) {
     return (
         <Box sx={{ minWidth: 275 }} >
           <Card variant="outlined" >{card}</Card>
-          <Button variant='contained'  onClick={takeAction}>{props.action==="display"?"Back to List":"Confirm Delete"}</Button>
+          <Button variant='contained' sx={{backgroundColor:props.action==="display"?colors.blueAccent[400]:colors.redAccent[400]}} onClick={takeAction}>{props.action==="display"?<span><GroupIcon/>&nbsp;Back to List</span>:<span><DeleteIcon/>&nbsp;Delete</span>}</Button>
         </Box>
       );
 }

@@ -21,6 +21,7 @@ import SideBar from './components/admin/common/SideBar';
 import AddStudent from './pages/admin/studentPages/AddStudent';
 import StudentTable from './pages/admin/studentPages/StudentTable';
 import DisplayStudent from './pages/admin/studentPages/DisplayStudent';
+import DeleteStudent from './pages/admin/studentPages/DeleteStudent';
 function App() {
   const location = useLocation();
   const [theme, colorMode] = useMode();
@@ -42,9 +43,6 @@ function App() {
        
        <Route path="/" element={<LandingPage style={{position:"fixed"}}></LandingPage>} ></Route>
         <Route path="/customer" element={<Customer></Customer>} ></Route>
-        {/* <Route path='/admin' element={<SideBar></SideBar>}>
-          <Route path='dashboard' element= {<Dashboard/>}></Route>
-        </Route> */}
         <Route path='/admin/dashboard' element= {<Dashboard/>}></Route>
         <Route path='/MenuList/' element={<MenuList></MenuList>}></Route>
         <Route path='/customer/previousorderslist/' element={<PreviousOrdersList></PreviousOrdersList>}></Route>
@@ -53,11 +51,11 @@ function App() {
         <Route path='/admin/students/add' element={<AddStudent></AddStudent>}></Route>
         <Route path='/admin/students/edit/:id' element={<EditStudent></EditStudent>}></Route>
         <Route path='/admin/students/display/:id' element={<DisplayStudent></DisplayStudent>}></Route>
+        <Route path='/admin/students/delete/:id' element={<DeleteStudent></DeleteStudent>}></Route>
         {/* <Route path='/admin/customers/all' element={<CustomerTable></CustomerTable>}></Route> */}
         <Route path='/admin/students' element={<StudentTable></StudentTable>}></Route>
       </Routes>
-      </div>
-      
+    </div>
     </div>
     </DataProvider>
     </ThemeProvider>

@@ -94,6 +94,7 @@ export default function SideBar() {
                 selected={selected}
                 setSelected={setSelected}
               />
+              <br/>
               <Typography
                 variant="h6"
                 color={colors.grey[300]}
@@ -115,6 +116,7 @@ export default function SideBar() {
                 selected={selected}
                 setSelected={setSelected}
               />
+              <br/>
               <Typography
                 variant="h6"
                 color={colors.grey[300]}

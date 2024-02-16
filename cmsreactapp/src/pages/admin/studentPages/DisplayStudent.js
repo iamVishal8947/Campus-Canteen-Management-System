@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import StudentDetails from '../../../components/admin/StudentDetails';
 import { useNavigate } from "react-router-dom";
 
@@ -19,8 +19,7 @@ export default function DisplayStudent() {
     }
   return (
     <Box m={"20px"}>
-        <StudentDetails student={student} action="display"></StudentDetails>
-        {/* <Button variant='contained' color=colors. onClick={goBack}>Back to List</Button> */}
+        <StudentDetails student={student} action="display" takeAction={goBack}></StudentDetails>
     </Box>
   )
 }

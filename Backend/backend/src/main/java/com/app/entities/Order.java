@@ -66,6 +66,8 @@ public class Order {
 			cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Cart> carts = new ArrayList<>();
 	
-	
+	public void setStudent(Student student) {
+		this.student=student;
+	}
 	
 }
