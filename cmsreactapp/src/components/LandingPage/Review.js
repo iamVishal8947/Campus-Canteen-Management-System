@@ -4,7 +4,7 @@ import { AiFillStar } from "react-icons/ai";
 
 const Review = () => {
   return (
-    <div className="work-section-wrapper">
+    <div className="work-section-wrapper" style={{padding : "0px 0px 0px 200px"}}>
       <div className="work-section-top">
         <p className="primary-subheading">Review</p>
         <h1 className="primary-heading">What They Are Saying</h1>

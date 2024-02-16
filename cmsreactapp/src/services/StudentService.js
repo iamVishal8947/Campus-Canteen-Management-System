@@ -2,8 +2,7 @@ import axios from 'axios';
 const baseUrl="http://localhost:8080"
 class StudentService{
     constructor(){
-        
-    }
+          }
     getAllStudents(){
         //return this.prodarr;
        // return axios.get(baseUrl);
