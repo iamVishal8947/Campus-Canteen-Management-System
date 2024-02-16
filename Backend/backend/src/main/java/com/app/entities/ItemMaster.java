@@ -17,7 +17,7 @@ public class ItemMaster {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "item_id")
-	private Long itemId;
+	private Long id;
 	
 	@Column(name = "item_name", nullable = false, unique = true, length = 40)
 	private String itemName;
