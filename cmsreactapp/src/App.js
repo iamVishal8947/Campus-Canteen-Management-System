@@ -36,7 +36,7 @@ function App() {
     
     <div className="app">
     {isAdmin && <SideBar className="sidebar"/>}
-    {/* {isStudent && <SideBarStudent className="sidebar"/>} */}
+    {isStudent && <SideBarStudent className="sidebar"/>}
     <div className='content'>
       <Routes>
        
