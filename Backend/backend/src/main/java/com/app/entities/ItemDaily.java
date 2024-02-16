@@ -17,8 +17,9 @@ public class ItemDaily {
 	@Column(name = "sr_no")
 	private Long itemId;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "item_id")
+	@MapsId
 	private ItemMaster item;
 	
 	@Column(name = "init_qty", nullable = false)

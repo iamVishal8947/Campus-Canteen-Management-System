@@ -30,12 +30,7 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<String> registerStudent(@Valid @RequestBody StudentDTO studentDTO) {
-        studentService.registerStudent(studentDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Student registered successfully");
-    }
-    
+   
     @PostMapping("/{studentId}/orders")
     public ResponseEntity<Order> createOrder(@PathVariable Long studentId, @Valid @RequestBody CreateOrderDTO orderDTO) {
         try {

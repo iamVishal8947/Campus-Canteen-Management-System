@@ -1,23 +1,6 @@
 // CustomerServiceImpl.java
 package com.app.service;
 
-import com.app.dto.StudentDTO;
-import com.app.dto.CreateOrderDTO;
-import com.app.dto.GetAllStudentDTO;
-import com.app.entities.ItemDaily;
-import com.app.entities.Order;
-import com.app.entities.OrderStatus;
-import com.app.entities.Student;
-import com.app.repository.ItemDailyRepository;
-import com.app.repository.OrderRepository;
-import com.app.repository.StudentRepository;
-import com.app.service.StudentService;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -25,6 +8,22 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.app.dto.CreateOrderDTO;
+import com.app.dto.GetAllStudentDTO;
+import com.app.dto.StudentDTO;
+import com.app.entities.ItemDaily;
+import com.app.entities.Order;
+import com.app.entities.OrderStatus;
+import com.app.entities.Student;
+import com.app.repository.ItemDailyRepository;
+import com.app.repository.ItemMasterRepository;
+import com.app.repository.OrderRepository;
+import com.app.repository.StudentRepository;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -81,6 +80,7 @@ public class StudentServiceImpl implements StudentService {
 	        // Retrieve item from ItemDaily
 	        ItemDaily itemDaily = itemDailyRepository.findById(orderDTO.getItemId())
 	                .orElseThrow(() -> new IllegalArgumentException("Item not found"));
+		 	
 
 	        // Retrieve student from Student
 	        Student student = studentRepository.findById(studentId)

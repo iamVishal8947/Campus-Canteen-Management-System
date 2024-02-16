@@ -23,7 +23,7 @@ public class ItemMaster {
 	private String itemName;
 	
 	@Column(name = "item_price", nullable = false)
-	private int itemPrice;
+	private Integer itemPrice;
 	
 	@Enumerated(value = EnumType.STRING)
 	@Column(name = "item_category", nullable = false)
@@ -36,9 +36,9 @@ public class ItemMaster {
 	@Column(name = "item_img_link", nullable = false, unique = true, length = 50)
 	private String itemImgLink;
 	
-	@Column(name = "total_qty", nullable = false)
-	private int totalQty;
+	@Column(name = "total_qty", nullable = false,columnDefinition ="INT DEFAULT 0")
+	private Integer totalQty;
 	
-	@Column(name = "sold_qty", nullable = false)
-	private int soldQty;
+	@Column(name = "sold_qty", nullable = false,columnDefinition ="INT DEFAULT 0")
+	private Integer soldQty;
 }

@@ -4,9 +4,9 @@ package com.app.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.app.entities.ItemDaily;
+import com.app.entities.ItemMaster;
 
 @Repository
-public interface ItemDailyRepository extends JpaRepository<ItemDaily, Long> {
+public interface ItemMasterRepository extends JpaRepository<ItemMaster, Long> {
     
 }
