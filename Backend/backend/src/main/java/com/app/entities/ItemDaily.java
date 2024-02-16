@@ -15,7 +15,7 @@ public class ItemDaily {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "sr_no")
-	private Long itemId;
+	private Long id;
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "item_id")

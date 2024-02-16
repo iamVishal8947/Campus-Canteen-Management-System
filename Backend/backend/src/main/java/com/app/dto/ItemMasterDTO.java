@@ -16,7 +16,7 @@ import lombok.ToString;
 @ToString
 public class ItemMasterDTO {
 	@JsonProperty(access = Access.READ_ONLY) 
-	private Long itemId;
+	private Long id;
 	
 	@NotBlank
 	private String itemName;
