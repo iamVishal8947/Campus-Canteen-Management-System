@@ -56,7 +56,7 @@ const Navbar = () => {
 
   return (
     <div>
-    <nav>
+    <nav style={{display:'flex', alignItems:'center',  justifyContent:'space-between', minHeight:'90px'}}>
       <div className="nav-logo-container">
         <img src={Logo} alt="" />
       </div>

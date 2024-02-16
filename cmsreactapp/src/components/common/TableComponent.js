@@ -40,16 +40,16 @@ export default function TableComponent(props) {
   return (
     <div style={{padding: "5%"}}>
         <table {...getTableProps()} className='table'>
-            <thead className='table-primary'>{/* Tag for table headers */}
+            <thead className='table-primary'>
                 {
-                    headerGroups.map((headerGroup)=>( //Individual Header information
-                <tr {...headerGroup.getHeaderGroupProps()}>{/* Tag for individual header row */}
-                    {headerGroup.headers.map((column=>( //Each column information
-                        <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                    headerGroups.map((headerGroup)=>( 
+                <tr {...headerGroup.getHeaderGroupProps()}>
+                    {headerGroup.headers.map((column=>( 
+                        <th {...column.getHeaderProps(column.getSortByToggleProps())} style={{verticalAlign: "top"}}>
                             {column.render('Header')}
                             <div>{column.canFilter ? column.render('Filter'):null}</div>
                             <span>{column.isSorted?(column.isSortedDesc ? <SortDown></SortDown> : <SortUp></SortUp> ):''}</span>
-                            </th> //Defining <th> for all columns 
+                            </th>  
                     )))}
                 </tr>
                     ))
