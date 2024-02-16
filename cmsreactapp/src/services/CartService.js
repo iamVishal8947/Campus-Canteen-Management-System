@@ -2,10 +2,18 @@ import axios from 'axios';
 const baseUrl="http://localhost:9090/carts"
 class CartService{
     constructor(){
-        this.prodarr=[{pid:1,pname:'chair',qty:34,price:4444},
-        {pid:2,pname:'Table',qty:50,price:6666},
-        {pid:3,pname:'shelf',qty:30,price:2222}];
-    }
+        this.cartDummy = {
+            cartId: null, // This will be automatically generated on the backend
+            order: {
+              // Details of the order associated with the cart item
+              // This should match the structure of your Order entity
+              // For example:
+              orderId: null,
+              // Other properties of Order
+            },
+            qtyOrdered: 0, // Quantity ordered
+            netPrice: 0 // Net price
+          };}
     getAllCarts(){
         //return this.prodarr;
        // return axios.get(baseUrl);
