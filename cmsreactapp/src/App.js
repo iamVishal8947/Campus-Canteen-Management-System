@@ -3,7 +3,7 @@ import './App.css';
 import {Routes, Route, useLocation } from 'react-router-dom';
 import Dashboard from './pages/admin/Dashboard/Dashboard';
 //import './components/CustomerComponents/Customer.css';
-//import  '../src/pages/customer/MenuList.css'
+import  '../src/pages/customer/MenuList.css'
 //import 'bootstrap/dist/css/bootstrap.css'
 import { ColorModeContext, useMode } from "./theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
@@ -18,10 +18,12 @@ import LoginComp from './components/LandingPage/LoginComp';
 import { DataProvider } from './DataContext';
 import MenuSelecter from './pages/admin/MenuSelecter';
 import SideBar from './components/admin/common/SideBar';
+import StudentSideBar from './components/admin/common/StudentSidebar'
 import AddStudent from './pages/admin/studentPages/AddStudent';
 import StudentTable from './pages/admin/studentPages/StudentTable';
 import DisplayStudent from './pages/admin/studentPages/DisplayStudent';
 import DeleteStudent from './pages/admin/studentPages/DeleteStudent';
+import  ChangePassword from './components/CustomerComponents/ChangePassword';
 function App() {
   const location = useLocation();
   const [theme, colorMode] = useMode();
@@ -37,14 +39,15 @@ function App() {
     
     <div className="app">
     {isAdmin && <SideBar className="sidebar"/>}
-    {/* {isStudent && <SideBarStudent className="sidebar"/>} */}
+    {isStudent && <StudentSideBar className="sidebar"/>}
     <div className='content'>
       <Routes>
        
        <Route path="/" element={<LandingPage style={{position:"fixed"}}></LandingPage>} ></Route>
         <Route path="/customer" element={<Customer></Customer>} ></Route>
         <Route path='/admin/dashboard' element= {<Dashboard/>}></Route>
-        <Route path='/MenuList/' element={<MenuList></MenuList>}></Route>
+        <Route path='/student/todaysmenu/' element={<MenuList></MenuList>}></Route>
+        <Route path='/student/changePassword/' element={<ChangePassword></ChangePassword>}></Route>
         <Route path='/customer/previousorderslist/' element={<PreviousOrdersList></PreviousOrdersList>}></Route>
         <Route path='/admin/menuselect/' element={<MenuSelecter></MenuSelecter>}></Route>
         <Route path='/LoginComp/' element={<LoginComp></LoginComp>}></Route>
