@@ -37,6 +37,9 @@ public class Order {
 
 	private LocalDateTime time;
 	
+	@Column(name="quantity")
+	private int qty;
+	
 	@Column(name="payment_method",nullable = false)
 	private String paymentMethod;
 	

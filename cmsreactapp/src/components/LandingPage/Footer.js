@@ -22,21 +22,21 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-section-two">
-        <div className="footer-section-columns">
-          <span>Help</span>
-          <span>Share</span>
-          <span>Carrers</span>
-          <span>Review</span>
+        <div className="footer-section-columns" style={{color:"whitesmoke"}}>
+          <span style={{color:"whitesmoke"}} >Help</span>
+          <span style={{color:"whitesmoke"}}>Share</span>
+          <span style={{color:"whitesmoke"}}>Carrers</span>
+          <span style={{color:"whitesmoke"}}>Review</span>
         </div>
-        <div className="footer-section-columns">
-          <span>244-5333-7783</span>
-          <span>hello@cms.com</span>
-          <span>press@cms.com</span>
-          <span>contact@cms.com</span>
+        <div className="footer-section-columns" style={{color:"whitesmoke"}}>
+          <span style={{color:"whitesmoke"}}>244-5333-7783</span>
+          <span style={{color:"whitesmoke"}}>hello@cms.com</span>
+          <span style={{color:"whitesmoke"}}>press@cms.com</span>
+          <span style={{color:"whitesmoke"}}>contact@cms.com</span>
         </div>
-        <div className="footer-section-columns">
-          <span>Terms & Conditions</span>
-          <span>Privacy Policy</span>
+        <div className="footer-section-columns" style={{color:"whitesmoke"}}>
+          <span style={{color:"whitesmoke"}}>Terms & Conditions</span>
+          <span style={{color:"whitesmoke"}}>Privacy Policy</span>
         </div>
       </div>
     </div>

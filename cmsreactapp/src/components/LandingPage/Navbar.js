@@ -61,7 +61,7 @@ const Navbar = () => {
         <img src={Logo} style={{height : "90px", width: "140px"}} alt="" />
       </div>
       <div className="navbar-links-container">
-        <a href="">Home</a>
+        <a href="" style={{ color: '#fd7e14' }}>Home</a>
         <a href="">About</a>
         <a href="">Reviews</a>
         <a href="">Contact</a>
