@@ -13,7 +13,12 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import PendingActionsIcon from '@mui/icons-material/PendingActions';
 import TaskIcon from '@mui/icons-material/Task';
 import LogoutIcon from '@mui/icons-material/Logout';
-
+import FastfoodIcon from '@mui/icons-material/Fastfood';
+import ManageSearchIcon from '@mui/icons-material/ManageSearch';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
+import LockResetIcon from '@mui/icons-material/LockReset';
 //Styling for each item in menu sidebar
 const Item = ({ title, to, icon, selected, setSelected }) => {
     const theme = useTheme();
@@ -78,7 +83,7 @@ export default function SideBar() {
                   ml="15px"
                 >
                   <Typography variant="h3" color={colors.grey[100]}>
-                  Admin
+                  Student Name
                   </Typography>
                   <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                     <MenuOutlinedIcon />
@@ -89,7 +94,7 @@ export default function SideBar() {
             <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
                 title="Dashboard"
-                to="/admin/dashboard"
+                to="/student/dashboard"
                 icon={<HomeOutlinedIcon />}
                 selected={selected}
                 setSelected={setSelected}
@@ -99,33 +104,34 @@ export default function SideBar() {
                 color={colors.grey[300]}
                 sx={{ m: "15px 0 5px 20px" }}
               >
-                Customer
+                Canteen
               </Typography>
               <Item
-                title="Customers"
-                to="/admin/customers"
-                icon={<PeopleIcon />}
+                title="Today's Menu"
+                to="/student/todaysmenu/" // ===========================----------=-=-=-=-=-==-=-=-=-==>>>
+                icon={<FastfoodIcon />}
                 selected={selected}
                 setSelected={setSelected}
               />
-              <Item
-                title="Add Customer"
-                to="/admin/customers/add"
-                icon={<PersonAddIcon />}
-                selected={selected}
-                setSelected={setSelected}
-              />
+              
               <Typography
                 variant="h6"
                 color={colors.grey[300]}
                 sx={{ m: "15px 0 5px 20px" }}
               >
-                Menu
+                Balance
               </Typography>
               <Item
-                title="Menu"
+                title="Recharge History" //=-=-=-=-=-=-=-=-=-=-=-     =    =         =       =      =
                 to="/admin/menu/"
-                icon={<RestaurantMenuIcon />}
+                icon={<CurrencyRupeeIcon />}
+                selected={selected}
+                setSelected={setSelected}
+              />
+              <Item
+                title="Top up Wallet" //==============================
+                to="/student/wallet"
+                icon={<AccountBalanceWalletIcon />}
                 selected={selected}
                 setSelected={setSelected}
               />
@@ -137,19 +143,34 @@ export default function SideBar() {
                 Orders
               </Typography>
               <Item
-                title="Pending Orders"
-                to="/admin/orders/pending"
-                icon={<PendingActionsIcon />}
+                title="Order History" 
+                to="/student/orderHistory"
+                icon={<ManageSearchIcon />}
+                selected={selected}
+                setSelected={setSelected}
+              />
+               <Typography
+                variant="h6"
+                color={colors.grey[300]}
+                sx={{ m: "15px 0 5px 20px" }}
+              >
+                Profile
+              </Typography>
+              <Item
+                title="View Profile" //================================================
+                to="/student/profile" //yet to add ********* 
+                icon={<AccountCircleIcon />}
                 selected={selected}
                 setSelected={setSelected}
               />
               <Item
-                title="Completed Orders"
-                to="/admin/orders/completed"
-                icon={<TaskIcon />}
+                title="Change Password"
+                to="/student/changePassword"
+                icon={<LockResetIcon />}
                 selected={selected}
                 setSelected={setSelected}
               />
+              
               <br/>
               <br/>
               <br/>
@@ -160,6 +181,8 @@ export default function SideBar() {
                 selected={selected}
                 setSelected={setSelected}
               />
+              
+              
             </Box>
           </Menu>
         </ProSidebar>
