@@ -13,12 +13,12 @@ export default function MenuSelecter() {
   return (
     <div className="container ">
       <div className="row">
-        <div className="col-md-6">
+        <div className="col-md-10">
           <h2>Menu Items</h2>
           <MenuTable onAddToMenu={handleAddToMenu} />
           {/* Render your menu items here */}
         </div>
-        <div className="col-md-6" >
+        <div className="col-md-3" style={{marginRight:"300px"}} >
         <h2>Today's Menu</h2>
           {/* <ul>
             {selectedItems.map((item) => (

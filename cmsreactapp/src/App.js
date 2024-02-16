@@ -49,7 +49,7 @@ function App() {
         <Route path='/student/todaysmenu/' element={<MenuList></MenuList>}></Route>
         <Route path='/student/changePassword/' element={<ChangePassword></ChangePassword>}></Route>
         <Route path='/customer/previousorderslist/' element={<PreviousOrdersList></PreviousOrdersList>}></Route>
-        <Route path='/admin/menuselect/' element={<MenuSelecter></MenuSelecter>}></Route>
+        <Route path='/admin/menu/' element={<MenuSelecter></MenuSelecter>}></Route>
         <Route path='/LoginComp/' element={<LoginComp></LoginComp>}></Route>
         <Route path='/admin/students/add' element={<AddStudent></AddStudent>}></Route>
         <Route path='/admin/students/edit/:id' element={<EditStudent></EditStudent>}></Route>
