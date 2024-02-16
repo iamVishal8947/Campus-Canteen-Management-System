@@ -2,9 +2,18 @@ import axios from 'axios';
 const baseUrl="http://localhost:9090/rechargeHistorys"
 class RechargeHistoryService{
     constructor(){
-        this.prodarr=[{pid:1,pname:'chair',qty:34,price:4444},
-        {pid:2,pname:'Table',qty:50,price:6666},
-        {pid:3,pname:'shelf',qty:30,price:2222}];
+        this.rechargeHistoryDummy = {
+            transactionId: null, // This will be automatically generated on the backend
+            timeStamp: new Date().toISOString(), // Current timestamp
+            amountAdded: 0, 
+            student: {
+              // Details of the student associated with the recharge history
+              // This should match the structure of your Student entity
+              // For example:
+              studentId: null,
+              // Other properties of Student
+            }
+          };
     }
     getAllRechargeHistorys(){
         //return this.prodarr;

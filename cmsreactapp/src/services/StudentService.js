@@ -15,7 +15,7 @@ class StudentService{
        //console.log(this.prodarr); 
        const student1 = {
         name: "Studentnew",
-        customerId: 0,
+        studentId: 0,
         email: "new@new.com",
         password: "1234",
         mobileNo: "9999999990",

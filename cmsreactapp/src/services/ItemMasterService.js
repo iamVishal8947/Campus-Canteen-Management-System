@@ -2,9 +2,14 @@ import axios from 'axios';
 const baseUrl="http://localhost:9090/items"
 class ItemService{
     constructor(){
-        this.prodarr=[{pid:1,pname:'chair',qty:34,price:4444},
-        {pid:2,pname:'Table',qty:50,price:6666},
-        {pid:3,pname:'shelf',qty:30,price:2222}];
+        this.itemMasterDummy={itemId : 0, 
+            itemName : "Pattice",
+             itemPrice : 20, 
+             itemCategory : "Snacks", 
+             itemGenre : "NorthIndian", 
+             itemImgLink : "imgLink", 
+             totalQty : 200, 
+             soldQty : 0};
     }
     getAllItems(){
         //return this.prodarr;
