@@ -3,24 +3,26 @@ import { useNavigate } from "react-router-dom";
 
 export default function CustomerForm(props) {
   const [formDetails, setFormDetails] = useState({
-    // id: "",
+     
     name: "",
-    email: "",
-    pwd: "",
-    mob: "",
-    dob: "",
-    course: "",
-    balance : 0
+    studentId: 0,
+        email: "",
+        password: "0000",
+        mobileNo: "",
+        balance: 0,
+        dob: "",
+        courseName: ""
   });
   const [formErrors, setErrors] = useState({
-    // id: "",
+  
     name: "",
-    email: "",
-    pwd: "",
-    mob: "",
-    dob: "",
-    course: "",
-    balance : 0
+    studentId: 0,
+        email: "",
+        password: "",
+        mobileNo: "",
+        balance: 0,
+        dob: "",
+        courseName: ""
   });
   const today = new Date();
   const navigate = useNavigate();
@@ -56,7 +58,7 @@ export default function CustomerForm(props) {
     if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
       age--;
     }
-    let course = document.getElementById("course").value;
+    let course = document.getElementById("courseName").value;
     let errors={}
     if (!regName.test(name)) {
       errors.name="Invalid name. Kindly Enter First_Name Last_Name";
@@ -84,14 +86,15 @@ export default function CustomerForm(props) {
 
   const resetForm = () => {
     setFormDetails({
-      // id: "",
+       
       name: "",
-      email: "",
-      pwd: "",
-      mob: "",
-      dob: "",
-      course: "",
-      balance : 0
+      studentId: 0,
+        email: "",
+        password: "0000",
+        mobileNo: "",
+        balance: 0,
+        dob: "",
+        courseName: ""
     });
   };
 
@@ -193,7 +196,7 @@ export default function CustomerForm(props) {
             </div>
 
             <div className="row mb-3">
-              <label htmlFor="mob" className="col-sm-5 col-form-label">
+              <label htmlFor="mobileNo" className="col-sm-5 col-form-label">
                 Mobile number
               </label>
 
@@ -202,8 +205,8 @@ export default function CustomerForm(props) {
                   type="text"
                   className="form-control"
                   required
-                  name="mob"
-                  id="mob"
+                  name="mobileNo"
+                  id="mobileNo"
                   placeholder="Enter 10-digit mobile number"
                   pattern="[789][0-9]{9}"
                   value={formDetails.mob}
@@ -238,15 +241,15 @@ export default function CustomerForm(props) {
               </div>
             </div>
             <div className="row mb-3">
-              <label htmlFor="id" className="col-sm-5 col-form-label">
+              <label htmlFor="courseName" className="col-sm-5 col-form-label">
                 Customer Course
               </label>
 
               <div className="col-md-7">
                 <select
                   className="form-select"
-                  name="course"
-                  id="course"
+                  name="courseName"
+                  id="courseName"
                   onChange={handleChange}
                 >
                   <option value="notSelected">Select a course</option>

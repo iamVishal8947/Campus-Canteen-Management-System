@@ -7,7 +7,7 @@ import Footer from './Footer'
 
 export default function LandingPage() {
   return (
-    <div>
+    <div >
       <Home />
       <About />
       

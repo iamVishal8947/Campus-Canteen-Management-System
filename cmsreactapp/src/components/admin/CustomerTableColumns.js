@@ -1,7 +1,7 @@
 export const CustomerTableColumns = [
     {
         Header:"Customer Id",
-        accessor:'id',
+        accessor:'studentId',
         Footer:"Customer Id",
         
     },
@@ -19,7 +19,7 @@ export const CustomerTableColumns = [
     },
     {
         Header:"Mobile Number",
-        accessor:'mob',
+        accessor:'mobileNo',
         Footer:"Mobile Number",
         disableFilters : true,
     },
@@ -32,8 +32,14 @@ export const CustomerTableColumns = [
     },
     {
         Header:"Course",
-        accessor:'course',
+        accessor:'courseName',
         Footer:"Course",
+        
+    },
+    {
+        Header:"Balance",
+        accessor:'balance',
+        Footer:"Balance",
         
     }
 ]

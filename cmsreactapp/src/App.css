@@ -37,24 +37,41 @@
   }
 } */
 
-
+/*
   * {
 
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Reem Kufi", sans-serif !important;
-}
+}*/
 img {
   max-width: 100%;
   height: auto;
 }
+
+/*------------------------------------------=====================----------------*/
+.app{
+  display: flex; 
+}
+.sidebar {
+  /* Style your sidebar */
+  width: 200px; /* Adjust the width as needed */
+}
+
+.content {
+  /* Style the content area */
+  flex: 1; /* Allow content to grow and take up remaining space */
+  padding: 20px; /* Add padding as needed */
+}
+/*------------------------------------------=====================----------------*/
 .App {
   min-height: 100vh;
   width: 85vw;
   max-width: 1900px;
   margin: 0rem auto;
 }
+/*
 body {
   max-width: 100%;
   overflow-x: hidden;
@@ -63,13 +80,13 @@ body {
 body {
   background-color: #f6f6f6;
 }
-
-nav {
+*/
+/*nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   min-height: 90px;
-}
+}*/
 .navbar-menu-container {
   display: none;
 }

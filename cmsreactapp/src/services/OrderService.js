@@ -2,9 +2,34 @@ import axios from 'axios';
 const baseUrl="http://localhost:9090/orders"
 class OrderService{
     constructor(){
-        this.prodarr=[{pid:1,pname:'chair',qty:34,price:4444},
-        {pid:2,pname:'Table',qty:50,price:6666},
-        {pid:3,pname:'shelf',qty:30,price:2222}];
+        this.orderdummy={
+            orderId: null, 
+            time: new Date().toISOString(),
+            paymentMethod: "",
+            amount: 0, // 
+            transactionId: "", 
+            itemsServed: 0, 
+            isServed: false,
+            orderStatus: "", 
+            discountPercentage: 0, 
+            student: {
+              // Details of the student associated with the order
+              // This should match the structure of your Student entity
+              // For example:
+              studentId: null,
+              // Other properties of Student
+            },
+            carts: [
+              {
+                // Details of each cart item associated with the order
+                // This should match the structure of your Cart entity
+                // For example:
+                cartId: null,
+                // Other properties of Cart
+              }
+              // Add more cart items as needed
+            ]
+          };
     }
     getAllOrders(){
         //return this.prodarr;

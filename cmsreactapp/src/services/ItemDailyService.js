@@ -2,11 +2,9 @@ import axios from 'axios';
 const baseUrl="http://localhost:9090/itemDailys"
 class ItemDailyService{
     constructor(){
-        this.prodarr=[{pid:1,pname:'chair',qty:34,price:4444},
-        {pid:2,pname:'Table',qty:50,price:6666},
-        {pid:3,pname:'shelf',qty:30,price:2222}];
+        this.itemDailyDummy={itemId : 1, item : { /* item properties*/ }, initialQty : 100, soldQty : 0};
     }
-    getAllItemDailys(){
+    getAllItemsDaily(){
         //return this.prodarr;
        // return axios.get(baseUrl);
        return axios.get("http://localhost:8282/itemDailys")
