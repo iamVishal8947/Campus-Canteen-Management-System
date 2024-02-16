@@ -1,11 +1,12 @@
 import React from "react";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useTheme, Button } from "@mui/material";
 import { tokens } from "../../../theme";
 import { mockData } from "../MockData";
 import { DataGrid, GridActionsCellItem, GridRowId } from "@mui/x-data-grid";
 import Header from "../../../components/admin/common/Header";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import { useNavigate } from "react-router-dom";
 import StudentService from '../../../services/StudentService'
 
@@ -26,8 +27,11 @@ export default function StudentTable() {
   
     const displayCustomer = (params, event, details) => {
       navigate(baseUrl + "display/" + params.id);
-      
     };
+
+    const addStudent=()=>{
+      navigate(baseUrl + "add/");
+    }
 
     /*
     // State to hold the student data
@@ -159,6 +163,14 @@ export default function StudentTable() {
             onRowClick={displayCustomer}
           ></DataGrid>
         </Box>
+        <Button
+        variant="contained"
+        sx={{
+          backgroundColor:
+          colors.blueAccent[400]
+        }}
+        onClick={addStudent}
+      ><PersonAddIcon/>&nbsp;&nbsp;Add Student</Button>
       </Box>
     );
 }

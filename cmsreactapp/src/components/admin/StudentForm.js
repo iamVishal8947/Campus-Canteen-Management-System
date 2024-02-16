@@ -4,6 +4,9 @@ import { Field, Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "./common/Header";
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import EditIcon from "@mui/icons-material/Edit";
+
 export default function StudentForm(props) {
   const isNonMobile = useMediaQuery("(min-width:600px)"); //
 
@@ -74,7 +77,6 @@ export default function StudentForm(props) {
       justifyContent="center"
       minHeight={"100vh"}
     >
-      <Box ></Box>
       <Box border={"1px solid black"} m={"20px"} p="20px" borderRadius={5}>
         <Header title={props.title} subtitle={props.subtitle}></Header>
         <Formik
@@ -192,7 +194,7 @@ export default function StudentForm(props) {
                 </Box>
                 <Box display="flex" justifyContent="end" mt="20px">
                   <Button type="submit" color="secondary" variant="contained">
-                    {props.action === "add" ? "Add Student" : "Update DetailFs"}
+                    {props.action === "add" ? <span><PersonAddIcon/>&nbsp;&nbsp;Add Student</span> : <span><EditIcon/>&nbsp;&nbsp;Update Details</span>}
                   </Button>
                 </Box>
               </form>
