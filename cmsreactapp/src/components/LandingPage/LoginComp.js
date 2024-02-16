@@ -127,7 +127,7 @@ export default function LoginComp() {
               
             
             <div className="row mb-3">
-              <label htmlFor="box" className="col-sm-5 col-form-label">
+              <label htmlFor="box" className="col-sm-5 col-form-label" style={{color : "black"}}>
                 Username 
               </label>
 
@@ -147,7 +147,7 @@ export default function LoginComp() {
               </div>
             </div>
 
-            <div className="row mb-3">
+            <div className="row mb-3" style={{color : "black"}}>
               <label htmlFor="pwd" className="col-sm-5 col-form-label">
                 Password
               </label>

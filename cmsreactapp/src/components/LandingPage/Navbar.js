@@ -58,7 +58,7 @@ const Navbar = () => {
     <div>
     <nav style={{display:'flex', alignItems:'center',  justifyContent:'space-between', minHeight:'90px'}}>
       <div className="nav-logo-container">
-        <img src={Logo} alt="" />
+        <img src={Logo} style={{height : "90px", width: "140px"}} alt="" />
       </div>
       <div className="navbar-links-container">
         <a href="">Home</a>
