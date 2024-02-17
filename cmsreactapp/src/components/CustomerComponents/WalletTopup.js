@@ -6,6 +6,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../../src/components/admin/common/Header";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import EditIcon from "@mui/icons-material/Edit";
+import StudentService from "../../services/StudentService";
 export default function WalletTopup() {
 
     const isNonMobile = useMediaQuery("(min-width:600px)"); //
@@ -13,12 +14,8 @@ export default function WalletTopup() {
   const initValues =
      {
           id: "",
-          addAmount: "",
-          password: "",
-          mobileNo: "",
-          balance: 0,
-          dob: "",
-          courseName: "",
+          addAmount: 0
+          
         }
     
 
@@ -34,18 +31,22 @@ export default function WalletTopup() {
     addAmount: yup
       .string()
       .matches(addamtRegex ,"Entered amount is not valid, ")
-      .required("Required"),
-    mobileNo: yup
-      .string()
-      .matches(mobRegex, "Entered Mobile number is invalid")
-      .required("Required"),
-    dob: yup.string().required("Required"),
-    courseName: yup.string().required("Required"),
+      .required("Required")
+    
   });
 
   const handleFormSubmit = (values) => {
+    console.log("in handleformsubmit")
     console.log(values);
-   
+     StudentService.setBalance(values).then((res) => {
+      // console.log("ok")
+      // console.log("res.data :"+res.data)
+      alert("Balance Updated")
+    })
+    .catch((err) => {
+      alert(err.response?.data || err.message);
+    });
+       
   };
 
   return (
@@ -57,7 +58,7 @@ export default function WalletTopup() {
       minHeight={"100vh"}
     >
       <Box border={"1px solid black"} m={"20px"} p="20px" borderRadius={5}>
-        <Header title={"Topup Wallet"} subtitle={"Totpu"}></Header>
+        <Header title={"Top-Up Wallet"} subtitle={"Totpu"}></Header>
         <Formik
           onSubmit={handleFormSubmit}
           initialValues={initValues}
@@ -84,6 +85,7 @@ export default function WalletTopup() {
                     },
                   }}
                 >
+                  
                   <TextField
                     fullWidth
                     variant="filled"
@@ -117,7 +119,7 @@ export default function WalletTopup() {
                   
                 </Box>
                 <Box display="flex" justifyContent="end" mt="20px">
-                  <Button type="submit" color="secondary" variant="contained">
+                  <Button type="submit" color="secondary" variant="contained" >
                      <span><EditIcon/>&nbsp;&nbsp;Update Balance</span>
                   </Button>
                 </Box>

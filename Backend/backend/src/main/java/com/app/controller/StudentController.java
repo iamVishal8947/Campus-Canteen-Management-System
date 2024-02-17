@@ -1,6 +1,8 @@
 // StudentController.java
 package com.app.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,8 +35,9 @@ public class StudentController {
     }
     
     @PutMapping("/{studentId}/balance")
-    public ResponseEntity<?> setBalanceById(@PathVariable Long studentId, @RequestBody Integer newBalance) {
-    	System.out.println("in set balance " + newBalance);
+    public ResponseEntity<?> setBalanceById(@PathVariable Long studentId, @RequestBody Map<String, Integer> requestBody) {
+        Integer newBalance = requestBody.get("value");
+        System.out.println("in set balance " + newBalance);
         return ResponseEntity.ok().body(studentService.setBalanceById(studentId, newBalance));
     }
 

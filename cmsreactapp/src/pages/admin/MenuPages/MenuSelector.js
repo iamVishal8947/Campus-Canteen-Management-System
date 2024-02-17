@@ -42,8 +42,11 @@ const setFinalData = (finalData) => {
 
     finalData.forEach(element => {
         ItemDailyService.insertItemDaily(element).then((res)=>{
-            alert("Successfully added daily menu");
+            console.log("successfully added element no : "+ element.id)
+           console.log(res.data)
         })
+        alert("Successfully added daily menu");
+        window.location.reload();
     });
     
 }
