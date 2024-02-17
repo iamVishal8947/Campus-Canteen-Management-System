@@ -58,4 +58,42 @@ public class OrderServiceImpl implements OrderService {
 		return mapper.map(savedOrder, OrderDTO.class);
 		
 	}
+
+	@Override
+	public OrderDTO getOrderById(Long orderId) {
+	    Order order = orderRepository.findById(orderId)
+	            .orElseThrow(() -> new ResourceNotFoundException("Invalid Order Id !!!!"));
+
+	    OrderDTO orderDTO = mapper.map(order, OrderDTO.class);
+
+	    if (order.getStudent() != null) {
+	        // Set Student information in OrderDTO
+	        orderDTO.setStudentId(order.getStudent().getStudentId());
+	        orderDTO.setStudentName(order.getStudent().getName());
+	        // Add other student information as needed
+	    }
+
+	    return orderDTO;
+	}
+
+
+	@Override
+	public List<OrderDTO> getAllOrdersByStudentId(Long studentId) {
+	    List<Order> orderList = orderRepository.findByStudentStudentId(studentId);
+	    return orderList.stream().map(order -> {
+	        OrderDTO orderDTO = mapper.map(order, OrderDTO.class);
+
+	        if (order.getStudent() != null) {
+	            // Set Student information in OrderDTO
+	            orderDTO.setStudentId(order.getStudent().getStudentId());
+	            orderDTO.setStudentName(order.getStudent().getName());
+	            // Add other student information as needed
+	        }
+
+	        return orderDTO;
+	    }).collect(Collectors.toList());
+	}
+
+	
+	
 }

@@ -10,4 +10,11 @@ public interface OrderService {
     List<OrderDTO> getOrdersByStatus(OrderStatus orderStatus);
     
     OrderDTO createOrder(OrderDTO dto);
+    
+    OrderDTO getOrderById(Long orderId);
+    
+    List<OrderDTO> getAllOrdersByStudentId(Long StudentId);
+    
+    
+    
 }
