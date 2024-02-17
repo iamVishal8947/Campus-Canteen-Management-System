@@ -16,22 +16,19 @@ import PreviousOrdersList from './pages/customer/PreviousOrdersList';
 import LoginForm from './components/LandingPage/LoginForm';
 import LoginComp from './components/LandingPage/LoginComp';
 import { DataProvider } from './DataContext';
-import MenuSelecter from './pages/admin/MenuSelecter';
+//import MenuSelecter from './pages/admin/MenuSelecter';
 import SideBar from './components/admin/common/SideBar';
 import StudentSideBar from './components/admin/common/StudentSidebar'
 import AddStudent from './pages/admin/studentPages/AddStudent';
 import StudentTable from './pages/admin/studentPages/StudentTable';
 import DisplayStudent from './pages/admin/studentPages/DisplayStudent';
 import DeleteStudent from './pages/admin/studentPages/DeleteStudent';
-<<<<<<< HEAD
 import MenuSelector from './pages/admin/MenuPages/MenuSelector';
 import PendingOrderTable from './pages/admin/orderPages/PendingOrderTable';
 import DisplayOrder from './pages/admin/orderPages/DisplayOrder';
 import DeleteOrder from './pages/admin/orderPages/DeleteOrder';
 import CompletedOrderTable from './pages/admin/orderPages/CompletedOrderTable';
-=======
 import  ChangePassword from './components/CustomerComponents/ChangePassword';
->>>>>>> 2c16d61b553a307a03e6bcdc2dc896f44a6c9a48
 function App() {
   const location = useLocation();
   const [theme, colorMode] = useMode();
@@ -53,15 +50,12 @@ function App() {
        
        <Route path="/" element={<LandingPage style={{position:"fixed"}}></LandingPage>} ></Route>
         <Route path="/customer" element={<Customer></Customer>} ></Route>
-<<<<<<< HEAD
         <Route path='/MenuList/' element={<MenuList></MenuList>}></Route>
-=======
         <Route path='/admin/dashboard' element= {<Dashboard/>}></Route>
         <Route path='/student/todaysmenu/' element={<MenuList></MenuList>}></Route>
         <Route path='/student/changePassword/' element={<ChangePassword></ChangePassword>}></Route>
->>>>>>> 2c16d61b553a307a03e6bcdc2dc896f44a6c9a48
         <Route path='/customer/previousorderslist/' element={<PreviousOrdersList></PreviousOrdersList>}></Route>
-        <Route path='/admin/menu/' element={<MenuSelecter></MenuSelecter>}></Route>
+        {/* <Route path='/admin/menu/' element={<MenuSelecter></MenuSelecter>}></Route> */}
         <Route path='/LoginComp/' element={<LoginComp></LoginComp>}></Route>
         <Route path='/admin/dashboard' element= {<Dashboard/>}></Route>
         <Route path='/admin/students' element={<StudentTable></StudentTable>}></Route>
