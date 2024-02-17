@@ -1,10 +1,13 @@
 package com.app.service;
 
+import java.util.List;
+
+import com.app.dto.OrderDTO;
 import com.app.entities.Order;
 import com.app.entities.OrderStatus;
 
-import java.util.List;
-
 public interface OrderService {
     List<Order> getOrdersByStatus(OrderStatus orderStatus);
+    
+    OrderDTO createOrder(OrderDTO dto);
 }

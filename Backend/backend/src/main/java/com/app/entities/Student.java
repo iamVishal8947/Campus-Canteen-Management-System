@@ -66,5 +66,13 @@ public class Student {
 		this.dob=dob;
 	}
 	
+	public void addOrder(Order ord) {
+		orderList.add(ord);// dept --> emp
+		ord.setStudent(this);
+	}
+	public void removeOrder(Order ord) {
+		orderList.remove(ord);
+		ord.setStudent(null);
+	}
 	
 }
