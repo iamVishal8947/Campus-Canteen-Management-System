@@ -131,7 +131,7 @@ export default function SideBar() {
               </Typography>
               <Item
                 title="Recharge History" //=-=-=-=-=-=-=-=-=-=-=-     =    =         =       =      =
-                to="/admin/menu/"
+                to="/student/rechargehistory"
                 icon={<CurrencyRupeeIcon />}
                 selected={selected}
                 setSelected={setSelected}
