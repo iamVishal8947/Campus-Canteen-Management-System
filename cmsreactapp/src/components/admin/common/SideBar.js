@@ -100,18 +100,18 @@ export default function SideBar() {
                 color={colors.grey[300]}
                 sx={{ m: "15px 0 5px 20px" }}
               >
-                Customer
+                Student
               </Typography>
               <Item
-                title="Customers"
-                to="/admin/customers"
+                title="Students"
+                to="/admin/students"
                 icon={<PeopleIcon />}
                 selected={selected}
                 setSelected={setSelected}
               />
               <Item
-                title="Add Customer"
-                to="/admin/customers/add"
+                title="Add Student"
+                to="/admin/students/add"
                 icon={<PersonAddIcon />}
                 selected={selected}
                 setSelected={setSelected}

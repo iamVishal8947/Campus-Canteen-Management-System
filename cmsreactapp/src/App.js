@@ -22,6 +22,11 @@ import AddStudent from './pages/admin/studentPages/AddStudent';
 import StudentTable from './pages/admin/studentPages/StudentTable';
 import DisplayStudent from './pages/admin/studentPages/DisplayStudent';
 import DeleteStudent from './pages/admin/studentPages/DeleteStudent';
+import MenuSelector from './pages/admin/MenuPages/MenuSelector';
+import PendingOrderTable from './pages/admin/orderPages/PendingOrderTable';
+import DisplayOrder from './pages/admin/orderPages/DisplayOrder';
+import DeleteOrder from './pages/admin/orderPages/DeleteOrder';
+import CompletedOrderTable from './pages/admin/orderPages/CompletedOrderTable';
 function App() {
   const location = useLocation();
   const [theme, colorMode] = useMode();
@@ -43,17 +48,21 @@ function App() {
        
        <Route path="/" element={<LandingPage style={{position:"fixed"}}></LandingPage>} ></Route>
         <Route path="/customer" element={<Customer></Customer>} ></Route>
-        <Route path='/admin/dashboard' element= {<Dashboard/>}></Route>
         <Route path='/MenuList/' element={<MenuList></MenuList>}></Route>
         <Route path='/customer/previousorderslist/' element={<PreviousOrdersList></PreviousOrdersList>}></Route>
         <Route path='/admin/menuselect/' element={<MenuSelecter></MenuSelecter>}></Route>
         <Route path='/LoginComp/' element={<LoginComp></LoginComp>}></Route>
+        <Route path='/admin/dashboard' element= {<Dashboard/>}></Route>
+        <Route path='/admin/students' element={<StudentTable></StudentTable>}></Route>
         <Route path='/admin/students/add' element={<AddStudent></AddStudent>}></Route>
         <Route path='/admin/students/edit/:id' element={<EditStudent></EditStudent>}></Route>
         <Route path='/admin/students/display/:id' element={<DisplayStudent></DisplayStudent>}></Route>
         <Route path='/admin/students/delete/:id' element={<DeleteStudent></DeleteStudent>}></Route>
-        {/* <Route path='/admin/customers/all' element={<CustomerTable></CustomerTable>}></Route> */}
-        <Route path='/admin/students' element={<StudentTable></StudentTable>}></Route>
+        <Route path='/admin/menu' element={<MenuSelector></MenuSelector>}></Route>
+        <Route path='/admin/orders/pending' element={<PendingOrderTable></PendingOrderTable>}></Route>
+        <Route path='/admin/orders/completed' element={<CompletedOrderTable></CompletedOrderTable>}></Route>
+        <Route path='/admin/orders/display/:id' element={<DisplayOrder></DisplayOrder>}></Route>
+        <Route path='/admin/orders/delete/:id' element={<DeleteOrder></DeleteOrder>}></Route>
       </Routes>
     </div>
     </div>

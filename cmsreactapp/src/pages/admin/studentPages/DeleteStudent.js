@@ -20,7 +20,6 @@ export default function DeleteStudent() {
   return (
     <Box m={"20px"}>
         <StudentDetails student={student} action="delete" takeAction={deleteStudent}></StudentDetails>
-        {/* <Button variant='contained' color=colors. onClick={goBack}>Back to List</Button> */}
     </Box>
   )
 }
