@@ -34,6 +34,12 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   };
 
 export default function SideBar() {
+  const logoutHandle = () => {
+    console.log("Removing username from localStorage...");
+    localStorage.removeItem("username");
+    console.log("Username removed.");
+    navigate("/");
+  }
   // State hooks for handling the currently selected page and opening/closing of the sidebar
     const navigate = useNavigate();
     const theme = useTheme();
@@ -157,17 +163,16 @@ export default function SideBar() {
               <br/>
               <br/>
               <br/>
+              <div onClick={logoutHandle}>
               <Item
                 title="Logout"
                 
                 icon={<LogoutIcon />}
+                onClick={logoutHandle}
                 selected={selected}
-                onClick={() => {
-                  localStorage.removeItem("username");
-                  navigate("/");
-                }}
                 setSelected={setSelected}
               />
+              </div>
             </Box>
           </Menu>
         </ProSidebar>
