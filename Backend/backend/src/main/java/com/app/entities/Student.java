@@ -75,4 +75,13 @@ public class Student {
 		ord.setStudent(null);
 	}
 	
+	public void addRechargeHistory(RechargeHistory recharge) {
+		rechargeHistoryList.add(recharge);// dept --> emp
+		recharge.setStudent(this);
+	}
+	public void removeRechargeHistory(RechargeHistory recharge) {
+		rechargeHistoryList.remove(recharge);
+		recharge.setStudent(null);
+	}
+	
 }
