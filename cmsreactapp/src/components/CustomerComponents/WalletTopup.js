@@ -58,7 +58,7 @@ export default function WalletTopup() {
       minHeight={"100vh"}
     >
       <Box border={"1px solid black"} m={"20px"} p="20px" borderRadius={5}>
-        <Header title={"Top-Up Wallet"} subtitle={"Totpu"}></Header>
+        <Header title={"Top-Up Wallet"} subtitle={"Add Amount"}></Header>
         <Formik
           onSubmit={handleFormSubmit}
           initialValues={initValues}
