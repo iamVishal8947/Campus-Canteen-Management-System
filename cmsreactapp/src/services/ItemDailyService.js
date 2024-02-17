@@ -10,10 +10,13 @@ class ItemDailyService{
        return axios.get("http://localhost:8282/itemDailys")
     }
     insertItemDaily(itemDaily){
-        console.log("in service add")
+        console.log("in item daily  service insert")
        //this.prodarr.push(itemDaily);
        //console.log(this.prodarr);
-       return axios.post(baseUrl+"/itemDaily/"+itemDaily.pid,itemDaily)//,{header:{"content-type":"application/json",autherization:"bearer"+<localStorage.jwttoken>}})
+       console.log(itemDaily)
+       const itemdailyfinalfinal = { initialQty : itemDaily.initialQty, soldQty : itemDaily.soldQty}
+       console.log(itemdailyfinalfinal)
+       return axios.post("http://localhost:8080/dailyitems/"+itemDaily.id,itemdailyfinalfinal)//,{header:{"content-type":"application/json",autherization:"bearer"+<localStorage.jwttoken>}})
     }
 
     deleteitemDaily(pid){
