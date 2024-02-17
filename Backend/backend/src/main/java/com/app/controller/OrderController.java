@@ -28,13 +28,13 @@ public class OrderController {
     private OrderService orderService;
 
     @GetMapping("/pending")
-    public List<Order> getPendingOrders() {
-        return orderService.getOrdersByStatus(OrderStatus.PENDING);
+    public ResponseEntity<?> getPendingOrders() {
+        return ResponseEntity.ok().body(orderService.getOrdersByStatus(OrderStatus.PENDING));
     }
 
-    @GetMapping("/fulfilled")
-    public List<Order> getFulfilledOrders() {
-        return orderService.getOrdersByStatus(OrderStatus.SERVED);
+    @GetMapping("/served")
+    public ResponseEntity<?> getFulfilledOrders() {
+    	return ResponseEntity.ok().body(orderService.getOrdersByStatus(OrderStatus.SERVED));
     }
     
     @PostMapping
