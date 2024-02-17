@@ -1,5 +1,6 @@
-import React , {useState} from "react";
-import { Box, Typography, useTheme, Button, Grid } from "@mui/material";
+
+import React, {useEffect, useState} from "react";
+import { Box, Typography, useTheme, Button , Grid} from "@mui/material";
 import { tokens } from "../../../theme";
 import { mockData } from "./mockMenu";
 import { DataGrid, GridActionsCellItem, GridRowId } from "@mui/x-data-grid";
@@ -7,8 +8,29 @@ import Header from "../common/Header";
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
+import StudentService from "../../../services/StudentService";
+import ItemMasterService from "../../../services/ItemMasterService";
 
 export default function ItemMasterTable(props) {
+  const [itemsData, setitemsData] = useState([]);
+
+  // Function to fetch items data
+  const fetchitemsData = async () => {
+    try {
+      console.log("in fetchItems data function")
+      const response = await ItemMasterService.getAllItems();
+      console.log(response.data)
+      setitemsData(response.data); // Update state with fetched data
+      console.log(itemsData);
+      
+    } catch (error) {
+      console.error('Error fetching items data:', error);
+    }
+  };
+  // Fetch items data on component mount
+  useEffect(() => {
+    fetchitemsData();
+  }, []); 
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const navigate = useNavigate();
@@ -24,22 +46,22 @@ export default function ItemMasterTable(props) {
     },
     {
       headerName: "Item Name",
-      field: "item_name",
+      field: "itemName",
       headerAlign: "center",
       align: "center",
       flex:1
     },
     {
       headerName: "Item Price",
-      field: "item_price",
+      field: "itemPrice",
       type: "number",
       headerAlign: "left",
       align: "left",
       flex:1
     },
     {
-      headerName: "Item Time",
-      field: "item_time",
+      headerName: "Item Category",
+      field: "itemCategory",
       type: "text",
       headerAlign: "center",
       align: "center",
@@ -96,7 +118,7 @@ export default function ItemMasterTable(props) {
         }}
       >
         <DataGrid
-          rows={mockData}
+          rows={itemsData}
           columns={colStructure}
           onRowClick={displayItem}
           checkboxSelection

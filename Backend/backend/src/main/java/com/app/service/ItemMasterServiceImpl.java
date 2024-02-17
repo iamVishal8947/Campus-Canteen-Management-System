@@ -35,7 +35,7 @@ public class ItemMasterServiceImpl implements ItemMasterService{
 	public ApiResponse deleteItemDetails(Long itemId) {
 		ItemMaster item = itemRepo.findById(itemId).orElseThrow(()-> new ResourceNotFoundException("Item not found"));
 		itemRepo.delete(item);
-		return new ApiResponse("Item Details of item with ID " + item.getItemId() + " deleted....");
+		return new ApiResponse("Item Details of item with ID " + item.getId() + " deleted....");
 
 		
 	}

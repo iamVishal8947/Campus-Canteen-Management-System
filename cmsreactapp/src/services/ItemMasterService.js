@@ -14,7 +14,7 @@ class ItemService{
     getAllItems(){
         //return this.prodarr;
        // return axios.get(baseUrl);
-       return axios.get("http://localhost:8282/items")
+       return axios.get("http://localhost:8080/items")
     }
     insertItem(item){
         console.log("in service add")

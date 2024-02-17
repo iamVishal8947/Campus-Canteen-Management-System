@@ -130,7 +130,7 @@ export default function SideBar() {
               />
               <Item
                 title="Top up Wallet" //==============================
-                to="/student/wallet"
+                to="/student/wallettopup"
                 icon={<AccountBalanceWalletIcon />}
                 selected={selected}
                 setSelected={setSelected}
