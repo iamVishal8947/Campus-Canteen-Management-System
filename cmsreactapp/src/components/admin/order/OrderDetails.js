@@ -56,7 +56,11 @@ export default function OrderDetails(props) {
     </CardContent>
   );
   return (
-    <Box sx={{ minWidth: 275 }}>
+    <Box display="flex"
+    alignItems="center"
+    justifyContent="center"
+    minHeight={"100vh"}>
+    <Box sx={{ minWidth: 275 }} >
       <Card variant="outlined">{card}</Card>
       <Grid container>
       {
@@ -93,6 +97,6 @@ export default function OrderDetails(props) {
         </Grid>
     </Grid>
     </Box>
-    
+    </Box>
   );
 }

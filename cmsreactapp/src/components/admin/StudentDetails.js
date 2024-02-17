@@ -45,6 +45,10 @@ export default function StudentDetails(props) {
     </CardContent>
   );
   return (
+    <Box display="flex"
+    alignItems="center"
+    justifyContent="center"
+    minHeight={"100vh"}>
     <Box sx={{ minWidth: 275 }}>
       <Card variant="outlined">{card}</Card>
       <Button
@@ -69,6 +73,7 @@ export default function StudentDetails(props) {
           </span>
         )}
       </Button>
+    </Box>
     </Box>
   );
 }
