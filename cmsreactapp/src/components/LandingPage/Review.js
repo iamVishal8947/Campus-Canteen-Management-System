@@ -7,10 +7,9 @@ const Review = () => {
     <div className="work-section-wrapper" style={{padding : "0px 0px 0px 200px"}}>
       <div className="work-section-top">
         <p className="primary-subheading">Review</p>
-        <h1 className="primary-heading">What They Are Saying</h1>
-        <p className="primary-text">
-          Lorem ipsum dolor sit amet consectetur. Non tincidunt magna non et
-          elit. Dolor turpis molestie dui magnis facilisis at fringilla quam.
+        <h1 className="primary-heading" style={{color:"whitesmoke"}}>What They Are Saying</h1>
+        <p className="primary-text" style={{color:"whitesmoke"}}>
+        Love using the canteen app! It has completely transformed my dining experience on campus. The user-friendly interface makes it so easy to browse through the menu and place my order. 
         </p>
       </div>
       {/* <div className="testimonial-section-bottom">

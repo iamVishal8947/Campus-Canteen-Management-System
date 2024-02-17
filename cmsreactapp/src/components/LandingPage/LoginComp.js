@@ -106,8 +106,8 @@ export default function LoginComp() {
     
         if (username === 'admin' && password === 'admin') {
           navigate("/admin")
-        } else if (username === '000000000000' && password === 'customer') {
-          navigate("/customer")
+        } else if (username === 'student' && password === 'student') {
+          navigate("/student/dashboard")
         } else {
           // Handle invalid credentials
           alert('Invalid username or password');
@@ -122,10 +122,6 @@ export default function LoginComp() {
           
           <br />
           <form >
-            
-
-              
-            
             <div className="row mb-3">
               <label htmlFor="box" className="col-sm-5 col-form-label" style={{color : "black"}}>
                 Username 

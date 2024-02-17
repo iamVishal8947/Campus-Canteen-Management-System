@@ -15,10 +15,11 @@ public class ItemDaily {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "sr_no")
-	private Long itemId;
+	private Long id;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "item_id")
+	@MapsId
 	private ItemMaster item;
 	
 	@Column(name = "init_qty", nullable = false)

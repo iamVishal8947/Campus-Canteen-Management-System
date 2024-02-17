@@ -13,11 +13,11 @@ const Home = () => {
         <div className="home-bannerImage-container">
           <img src={BannerBackground} alt="" width={"600px"} />
         </div>
-        <div className="home-text-section">
-          <h1 className="primary-heading">
+        <div className="home-text-section" style={{color:"whitesmoke"}}>
+          <h1 className="primary-heading" style={{color:"whitesmoke"}}>
             Your Favourite Food Served Hot & Fresh
           </h1>
-          <p className="primary-text">
+          <p className="primary-text" style={{color:"whitesmoke"}}>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  BREAKFAST <br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  LUNCH<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  DINNER

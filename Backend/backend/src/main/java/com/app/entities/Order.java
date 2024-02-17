@@ -37,6 +37,9 @@ public class Order {
 
 	private LocalDateTime time;
 	
+	@Column(name="quantity")
+	private int qty;
+	
 	@Column(name="payment_method",nullable = false)
 	private String paymentMethod;
 	
@@ -66,6 +69,8 @@ public class Order {
 			cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Cart> carts = new ArrayList<>();
 	
-	
+	public void setStudent(Student student) {
+		this.student=student;
+	}
 	
 }

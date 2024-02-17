@@ -1,4 +1,4 @@
-import React from "react";
+import  React ,{useState, useEffect }  from "react";
 import { Box, Typography, useTheme, Button } from "@mui/material";
 import { tokens } from "../../../theme";
 import { mockData } from "../MockData";
@@ -33,7 +33,7 @@ export default function StudentTable() {
       navigate(baseUrl + "add/");
     }
 
-    /*
+    
     // State to hold the student data
   const [studentsData, setStudentsData] = useState([]);
 
@@ -52,12 +52,12 @@ export default function StudentTable() {
   useEffect(() => {
     fetchStudentsData();
   }, []); 
-  */
+  
   
     const colStructure = [
       {
-        headerName: "Customer Id",
-        field: "id",
+        headerName: "Student ID",
+        field: "studentId",
         type: "number",
         headerAlign: "left",
         align: "left",
@@ -70,29 +70,29 @@ export default function StudentTable() {
         headerAlign: "left",
         align: "left",
       },
-    //   {
-    //     headerName: "Email",
-    //     field: "email",
-    //     flex: 1,
-    //     headerAlign: "left",
-    //     align: "left",
-    //   },
-    //   {
-    //     headerName: "Mobile Number",
-    //     field: "mob",
-    //     flex: 1,
-    //     headerAlign: "left",
-    //     align: "left",
-    //   },
-    //   {
-    //     headerName: "Date of Birth",
-    //     field: "dob",
-    //     headerAlign: "left",
-    //     align: "left",
-    //   },
+      {
+        headerName: "Email",
+        field: "email",
+        flex: 1,
+        headerAlign: "left",
+        align: "left",
+      },
+      {
+        headerName: "Mobile Number",
+        field: "mobileNo",
+        flex: 1,
+        headerAlign: "left",
+        align: "left",
+      },
+      // {
+      //   headerName: "Date of Birth",
+      //   field: "dob",
+      //   headerAlign: "left",
+      //   align: "left",
+      // },
       {
         headerName: "Course",
-        field: "course",
+        field: "courseName",
         flex: 1,
         headerAlign: "left",
         align: "left",
@@ -121,7 +121,10 @@ export default function StudentTable() {
         ],
       },
     ];
-  
+    function getRowId(row) {
+      return row.studentId;
+    }
+    
     return (
       <Box m="20px">
         <Header
@@ -158,7 +161,8 @@ export default function StudentTable() {
           }}
         >
           <DataGrid
-            rows={mockData}
+          getRowId={getRowId} 
+            rows={studentsData}
             columns={colStructure}
             onRowClick={displayCustomer}
           ></DataGrid>

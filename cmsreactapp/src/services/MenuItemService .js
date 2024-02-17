@@ -3,8 +3,9 @@ import vadapav from './vada_pav.jpg'
 import idli from './idli.jpg'
 import masaladosa from '../Assets/dosa.jpg'
 import pavbhaji from '../Assets/pavbhaji.jpg'
-import samosa from '../Assets/samosa.jpg'
+import samosa1 from '../Assets/samosa.jpg'
 
+const samosa  = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.kitchensanctuary.com%2Fsamosa-recipe%2F&psig=AOvVaw1kGDdh8AbLhQFeo9APlnPU&ust=1708191723523000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCICh5Ji0sIQDFQAAAAAdAAAAABAE";
 const menuItems = [
     {
       item_id: 1,
