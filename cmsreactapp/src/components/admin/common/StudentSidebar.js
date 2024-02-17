@@ -152,7 +152,7 @@ export default function SideBar() {
               </Typography>
               <Item
                 title="Order History" 
-                to="/student/orderHistory"
+                to="/student/orderhistory/"
                 icon={<ManageSearchIcon />}
                 selected={selected}
                 setSelected={setSelected}
