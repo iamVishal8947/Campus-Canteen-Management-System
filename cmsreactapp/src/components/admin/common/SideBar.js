@@ -13,7 +13,7 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import PendingActionsIcon from '@mui/icons-material/PendingActions';
 import TaskIcon from '@mui/icons-material/Task';
 import LogoutIcon from '@mui/icons-material/Logout';
-
+import { useNavigate } from 'react-router-dom';
 //Styling for each item in menu sidebar
 const Item = ({ title, to, icon, selected, setSelected }) => {
     const theme = useTheme();
@@ -34,6 +34,14 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   };
 
 export default function SideBar() {
+  const logoutHandle = () => {
+    console.log("Removing username from localStorage...");
+    localStorage.removeItem("username");
+    console.log("Username removed.");
+    navigate("/");
+  }
+  // State hooks for handling the currently selected page and opening/closing of the sidebar
+    const navigate = useNavigate();
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const [isCollapsed, setIsCollapsed] = useState(false); //For collapsed/open sidebar
@@ -155,13 +163,16 @@ export default function SideBar() {
               <br/>
               <br/>
               <br/>
+              <div onClick={logoutHandle}>
               <Item
                 title="Logout"
-                to="/admin/logout"
+                
                 icon={<LogoutIcon />}
+                onClick={logoutHandle}
                 selected={selected}
                 setSelected={setSelected}
               />
+              </div>
             </Box>
           </Menu>
         </ProSidebar>
