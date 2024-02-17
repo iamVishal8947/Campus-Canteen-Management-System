@@ -4,7 +4,7 @@ import {Routes, Route, useLocation } from 'react-router-dom';
 import Dashboard from './pages/admin/Dashboard/Dashboard';
 //import './components/CustomerComponents/Customer.css';
 import  '../src/pages/customer/MenuList.css'
-//import 'bootstrap/dist/css/bootstrap.css'
+// import 'bootstrap/dist/css/bootstrap.css'
 import { ColorModeContext, useMode } from "./theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { useState} from 'react';
@@ -29,6 +29,8 @@ import DisplayOrder from './pages/admin/orderPages/DisplayOrder';
 import DeleteOrder from './pages/admin/orderPages/DeleteOrder';
 import CompletedOrderTable from './pages/admin/orderPages/CompletedOrderTable';
 import  ChangePassword from './components/CustomerComponents/ChangePassword';
+import WalletTopup from './components/CustomerComponents/WalletTopup';
+import PlaceOrder from './components/CustomerComponents/PlaceOrder';
 function App() {
   const location = useLocation();
   const [theme, colorMode] = useMode();
@@ -54,6 +56,8 @@ function App() {
         <Route path='/admin/dashboard' element= {<Dashboard/>}></Route>
         <Route path='/student/todaysmenu/' element={<MenuList></MenuList>}></Route>
         <Route path='/student/changePassword/' element={<ChangePassword></ChangePassword>}></Route>
+        <Route path='/student/wallettopup/' element={<WalletTopup></WalletTopup>}></Route>
+        <Route path='/student/placeorder/' element={<PlaceOrder></PlaceOrder>}></Route>
         <Route path='/customer/previousorderslist/' element={<PreviousOrdersList></PreviousOrdersList>}></Route>
         {/* <Route path='/admin/menu/' element={<MenuSelecter></MenuSelecter>}></Route> */}
         <Route path='/LoginComp/' element={<LoginComp></LoginComp>}></Route>

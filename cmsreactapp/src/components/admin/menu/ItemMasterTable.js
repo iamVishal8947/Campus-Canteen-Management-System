@@ -1,16 +1,40 @@
-import React from "react";
-import { Box, Typography, useTheme, Button } from "@mui/material";
+
+import React, {useEffect, useState} from "react";
+import { Box, Typography, useTheme, Button , Grid} from "@mui/material";
 import { tokens } from "../../../theme";
 import { mockData } from "./mockMenu";
 import { DataGrid, GridActionsCellItem, GridRowId } from "@mui/x-data-grid";
 import Header from "../common/Header";
 import PostAddIcon from '@mui/icons-material/PostAdd';
+import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
+import StudentService from "../../../services/StudentService";
+import ItemMasterService from "../../../services/ItemMasterService";
 
-export default function ItemMasterTable() {
+export default function ItemMasterTable(props) {
+  const [itemsData, setitemsData] = useState([]);
+
+  // Function to fetch items data
+  const fetchitemsData = async () => {
+    try {
+      console.log("in fetchItems data function")
+      const response = await ItemMasterService.getAllItems();
+      console.log(response.data)
+      setitemsData(response.data); // Update state with fetched data
+      console.log(itemsData);
+      
+    } catch (error) {
+      console.error('Error fetching items data:', error);
+    }
+  };
+  // Fetch items data on component mount
+  useEffect(() => {
+    fetchitemsData();
+  }, []); 
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [rowSelectionModel, setRowSelectionModel] = useState([]);
   const colStructure = [
     {
       headerName: "Item Id",
@@ -22,22 +46,22 @@ export default function ItemMasterTable() {
     },
     {
       headerName: "Item Name",
-      field: "item_name",
+      field: "itemName",
       headerAlign: "center",
       align: "center",
       flex:1
     },
     {
       headerName: "Item Price",
-      field: "item_price",
+      field: "itemPrice",
       type: "number",
       headerAlign: "left",
       align: "left",
       flex:1
     },
     {
-      headerName: "Item Time",
-      field: "item_time",
+      headerName: "Item Category",
+      field: "itemCategory",
       type: "text",
       headerAlign: "center",
       align: "center",
@@ -50,6 +74,12 @@ export default function ItemMasterTable() {
 
   const displayItem=(params, event, details)=>{
     navigate("/admin/menu/display/" + params.id)
+  }
+
+  const addToDailyMenu =() =>{
+    
+    console.log(rowSelectionModel)
+    props.selectedItems(rowSelectionModel);
   }
 
   return (
@@ -88,7 +118,7 @@ export default function ItemMasterTable() {
         }}
       >
         <DataGrid
-          rows={mockData}
+          rows={itemsData}
           columns={colStructure}
           onRowClick={displayItem}
           checkboxSelection
@@ -98,9 +128,14 @@ export default function ItemMasterTable() {
             pagination: { paginationModel: { pageSize: 5 } },
           }} 
           pageSizeOptions={[5, 10, 25]}
+          onRowSelectionModelChange={(newRowSelectionModel) => {
+            setRowSelectionModel(newRowSelectionModel);
+          }}
         ></DataGrid>
       </Box>
-      <Button
+      <Grid container>
+        <Grid item xs={12} sm={6}>
+        <Button
         variant="contained"
         sx={{
           backgroundColor: colors.blueAccent[400],
@@ -110,6 +145,21 @@ export default function ItemMasterTable() {
         <PostAddIcon />
         &nbsp;&nbsp;Add Item
       </Button>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+        <Button
+        variant="contained"
+        sx={{
+          backgroundColor: colors.blueAccent[400],
+        }}
+        onClick={addToDailyMenu}
+      >
+        <EditIcon />
+        &nbsp;&nbsp;Update Today's Menu
+      </Button>
+      <div></div>
+        </Grid>
+      </Grid>
     </Box>
   );
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import MenuItemService from "../../services/MenuItemService ";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 
 import defimg from '../../Assets/pick-meals-image.png';
 
@@ -11,7 +11,7 @@ export default function MenuList() {
 
   const [menuItems, setMenuItems] = useState([]);
   const [order, setOrder] = useState({});
-
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchMenuItems = () => {
       try {
@@ -52,6 +52,10 @@ export default function MenuList() {
     return total + menuItem.item_price * order[itemId];
   }, 0);
 
+  const placeOrder = () => {
+    console.log(order)
+    navigate("/student/placeorder", { state: { order } });
+  }
   return (
     <div className="menu-container" style={{ background: 'rgb(245, 228, 193)', padding: '20px', borderRadius: '10px',marginLeft: 'auto', marginRight: 'auto', maxWidth: '90%'  }}>
       <h1 style={{ textAlign: 'center' }}>Food Menu Selection</h1>
@@ -86,8 +90,8 @@ export default function MenuList() {
           </div>
         ))}
       </div>
-      <h2 style={{ textAlign: 'center', marginTop: "60px" }}>Order Checkout List</h2>
-      <table className="table table-bordered">
+      <h2 style={{ textAlign: 'center', marginTop: "60px" , backgroundColor : "#888" }}>Order Checkout List</h2>
+      <table className="table table-bordered" style={{ textAlign: 'center', marginTop: "60px" , backgroundColor : "#888" }} >
         <thead className="thead-dark">
           <tr>
             <th>Name</th>
@@ -102,7 +106,7 @@ export default function MenuList() {
             );
 
             return (
-              <tr key={itemId}>
+              <tr key={itemId} >
                 <td>{menuItem.item_name}</td>
                 <td>{menuItem.item_price}</td>
                 <td>{order[itemId]}</td>
@@ -111,12 +115,12 @@ export default function MenuList() {
           })}
         </tbody>
       </table>
-      <div className="total-amount" style={{ textAlign: 'center', marginTop: '60px' }}>
+      <div className="total-amount" style={{ textAlign: 'center', marginTop: '60px', backgroundColor : "#888" }}>
         <h4>
           <strong>Total Amount:</strong> ₹ {totalAmount.toFixed(2)}
         </h4>
       </div>
-      <button type="button" id="order_button" className="btn btn-primary" style={{ display: 'block', margin: '0 auto' }}>
+      <button type="button" id="order_button" className="btn btn-primary" style={{ display: 'block', margin: '0 auto' }} onClick={placeOrder}>
         Place Order
       </button>
     </div>
