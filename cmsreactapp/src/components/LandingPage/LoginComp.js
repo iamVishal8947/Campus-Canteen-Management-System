@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import bgimg from "../../Assets/bgbgbg.jpeg";
+import StudentService from "../../services/StudentService";
 
 export default function LoginComp() {
   const password = "07072000" // 
-  const passwords = {1 :"pass@123", 2:"2222",3:"3333", 4: "4444", 7:"07072000", "admin":"admin", }
+  const passwords = {1 :"pass@123", 2:"2222",3:"3333", 4: "4444", 7:"07072000", "admin":"admin",14 : "2001-02-18" }
   const usernames = [1,2,3,4,5,6,7]
   const [formDetails, setFormDetails] = useState({
     username: "",
@@ -37,35 +38,84 @@ export default function LoginComp() {
     const { name, value } = event.target;
     setFormDetails({ ...formDetails, [name]: value });
   };
+  // const getStudentFromEmail = async (email) => {
+  //   await StudentService.getStudentByEmail(email).then((res) => {
+  //     console.log(res.data)
+  //     // const studentObj = res.data;  
+  //   })
+  //   .catch((err) => {
+  //     console.error(err);
+  //   });
+  // }
+  //----------------------------------------------------
+  // const submitForm = () => {
+  //   const username = document.getElementById('username').value
+  //   const pwd = document.getElementById('password').value
 
-  const submitForm = () => {
-    
-    const username = document.getElementById('username').value
-    const pwd = document.getElementById('password').value
-    if(username === "admin" && pwd === "admin"){
-      localStorage.setItem("username", username);
-      alert("Admin Login Successful!");
-      navigate( "/admin/dashboard" );
-    }
-    else{
-    alert(username)
-
-
-    if(passwords[Number(username)]!=undefined){ //check if the username is present
-
-      if(passwords[Number(username)] === pwd){ //check if the password matches the username
-        localStorage.setItem("username", username);
-        alert(`Welcome back ${username}!`);
-        navigate('/student/dashboard');
-        }else{
-          alert("wrong  password!");
-        }
+  //   const studentCredentials = {
+  //     userName: username,
+  //     password : pwd
+  //   }
+  //   StudentService.login(studentCredentials).then((res) => {
       
-    }else{
-      alert ('Invalid User ID')
+  //     // alert(res.data)
+  //     if(res.data=== "Login successful1"){
+  //       alert("Login Successful Change your password from Dashboard")
+  //       localStorage.setItem("username", username);
+  //       StudentService.getStudentByEmail(username).then((res) => {
+          
+  //         console.log(res.data)
+  //         // const studentObj = res.data;  
+  //       })
+  //       .catch((err) => {
+  //         console.error(err);
+  //       });
+  //       navigate("/student/changePassword/")
+  //     }
+  //     else if(res.data === "Login successful1 successful2"){
+  //       alert("Login successful")
+  //       localStorage.setItem("username", username);
+
+  //       navigate("/student/dashboard")
+  //     }
+  //     else if(res.data === "Invalid password"){
+  //       alert("Password Invalid")
+  //       window.location.reload();
+  //     }
+  //     else if(res.data === "Invalid username"){
+  //       alert("Username invalid")
+  //     }
       
-    }
-  }
+  //   })
+  //   .catch((err) => {
+  //     console.error(err);
+  //   });
+  
+   //------------------------------------------------------------- 
+  //   if(username === "admin" && pwd === "admin"){
+  //     localStorage.setItem("username", username);
+  //     alert("Admin Login Successful!");
+  //     navigate( "/admin/dashboard" );
+  //   }
+  //   else{
+  //   // alert(username)
+
+
+  //   if(passwords[Number(username)]!=undefined){ //check if the username is present
+
+  //     if(passwords[Number(username)] === pwd){ //check if the password matches the username
+  //       localStorage.setItem("username", username);
+  //       alert(`Welcome back `);
+  //       navigate('/student/dashboard');
+  //       }else{
+  //         alert("wrong  password!");
+  //       }
+      
+  //   }else{
+  //     alert ('Invalid User ID')
+      
+  //   }
+  // }
     // Perform login validation
     // if (username === "admin" && pwd === "admin") {
     //   // Redirect to admin page
@@ -83,7 +133,55 @@ export default function LoginComp() {
     //   // Handle invalid credentials
     //   alert("Invalid username or password");
     // }
-  };
+    const submitForm = async () => {
+      const username = document.getElementById('username').value;
+        const pwd = document.getElementById('password').value;
+      if(username==="admin"&&pwd==="admin"){
+        alert("Welcome Back Admin")
+        localStorage.setItem("username","admin")
+        navigate("/admin/dashboard")
+      }
+      else{
+      try {
+       
+    
+        const studentCredentials = {
+          userName: username,
+          password: pwd
+        };
+    
+        const res = await StudentService.login(studentCredentials);
+        console.log()
+        if (res.data === "Login successful1") {
+          const studentRes = await StudentService.getStudentByEmail(username);
+          alert("Login Successful Change your password from Dashboard");
+          localStorage.setItem("email", username);
+          
+          console.log(studentRes.data);
+          localStorage.setItem("username",studentRes.data.studentId)
+          localStorage.setItem("name",studentRes.data.name)
+          navigate("/student/changePassword/");
+        } else if (res.data === "Login successful1 successful2") { 
+          const studentRes = await StudentService.getStudentByEmail(username);
+          alert("Login successful! Welcome " + studentRes.data.name);
+          localStorage.setItem("email", username);
+          
+          console.log(studentRes.data)
+          localStorage.setItem("username",studentRes.data.studentId)
+          localStorage.setItem("name",studentRes.data.name)
+          navigate("/student/dailymenu/");
+        } else if (res.data === "Invalid password") {
+          alert("Password Invalid");
+          window.location.reload();
+        } else if (res.data === "Invalid username") {
+          alert("Username invalid");
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    };
+    
 
   return (
     <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", backgroundImage: `url(${bgimg})` }}>

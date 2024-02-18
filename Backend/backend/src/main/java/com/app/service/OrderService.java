@@ -15,6 +15,8 @@ public interface OrderService {
     
     List<OrderDTO> getAllOrdersByStudentId(Long StudentId);
     
+    Long getCountOfOrdersByStatus(OrderStatus orderStatus);
+    
     
     
 }

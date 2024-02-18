@@ -58,4 +58,16 @@ public class OrderController {
 	}
     
     
+    @GetMapping("/pending/count")
+    public ResponseEntity<Long> getCountOfPendingOrders() {
+        Long count = orderService.getCountOfOrdersByStatus(OrderStatus.PENDING);
+        return ResponseEntity.ok(count);
+    }
+
+    @GetMapping("/served/count")
+    public ResponseEntity<Long> getCountOfServedOrders() {
+        Long count = orderService.getCountOfOrdersByStatus(OrderStatus.SERVED);
+        return ResponseEntity.ok(count);
+    }
+    
 }
