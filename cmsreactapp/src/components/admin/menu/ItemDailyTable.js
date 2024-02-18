@@ -121,7 +121,7 @@ props.setFinalData(selectedItemsWithQuantities);
               <DataGrid
                   rows={props.selectedItems}
                   columns={colStructure}
-                  checkboxSelection
+                  checkboxSelection 
                   pageSize={5}
                   autoHeight
                   onSelectionModelChange={(newSelection) => {
