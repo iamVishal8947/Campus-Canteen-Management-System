@@ -18,9 +18,6 @@ export default function WalletTopup() {
           
         }
     
-
-
-
   const nameRegex = /^[a-zA-Z]+ [a-zA-Z]+$/;
   const mobRegex = /[789][0-9]{9}/;
     const addamtRegex = /^(?:[1-9]\d{2,3}|5000)$/
@@ -35,19 +32,47 @@ export default function WalletTopup() {
     
   });
 
-  const handleFormSubmit = (values) => {
-    console.log("in handleformsubmit")
-    console.log(values);
-     StudentService.setBalance(values).then((res) => {
-      // console.log("ok")
-      // console.log("res.data :"+res.data)
-      alert("Balance Updated")
-    })
-    .catch((err) => {
-     console.log(err)
-    });
-       
-  };
+  //  const handleFormSubmit = (values) => {  
+     
+  //  };
+
+  const handleFormSubmit = (values)=>{
+  
+    //values.preventDefault();
+    if (values.addAmount === "") {
+      alert("please enter amount");
+    } else {
+      // Check if Razorpay constructor is available
+      if (window.Razorpay) {
+        var options = {
+          key: "rzp_test_AtG9VVI9mbh1sa",
+          key_secret: "yoRzFyCuMHwMGWR31mvB6ldZ",
+          amount: values.addAmount * 100,
+          currency: "INR",
+          name: "CMS",
+          description: "Total bill payment",
+          handler: function (response) {
+            alert(response.razorpay_payment_id);
+          },
+          prefill: {
+            name: "name",
+            email: "abc@gmail.com",
+            contact: "0000000000",
+          },
+          notes: {
+            address: "Cdac Acts Pune",
+          },
+          theme: {
+            color: "#3399cc",
+          },
+        };
+        var pay = new window.Razorpay(options);
+        pay.open();
+      } else {
+        alert("Razorpay SDK not loaded. Please wait and try again.");
+      }
+    }
+  }
 
   return (
     

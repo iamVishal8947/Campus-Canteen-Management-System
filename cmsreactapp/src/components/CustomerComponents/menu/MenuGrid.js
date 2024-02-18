@@ -11,8 +11,45 @@ export default function MenuGrid() {
   const [cart, setCart] = useState([]);
   const [netPrice, setNetPrice] = useState(0);
 
-  const placeOrder = () => {};
 
+
+    const placeOrder = (e)=>{
+      <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+      e.preventDefault();
+      if (netPrice === "") {
+        alert("please enter amount");
+      } else {
+        // Check if Razorpay constructor is available
+        if (window.Razorpay) {
+          var options = {
+            key: "rzp_test_AtG9VVI9mbh1sa",
+            key_secret: "yoRzFyCuMHwMGWR31mvB6ldZ",
+            amount: netPrice * 100,
+            currency: "INR",
+            name: "CMS",
+            description: "Total bill payment",
+            handler: function (response) {
+              alert(response.razorpay_payment_id);
+            },
+            prefill: {
+              name: "name",
+              email: "abc@gmail.com",
+              contact: "0000000000",
+            },
+            notes: {
+              address: "Cdac Acts Pune",
+            },
+            theme: {
+              color: "#3399cc",
+            },
+          };
+          var pay = new window.Razorpay(options);
+          pay.open();
+        } else {
+          alert("Razorpay SDK not loaded. Please wait and try again.");
+        }
+      }
+    }
   const updateCart = (cartItem) => {
     // Check if the item is already in the cart
     const existingItem = cart.find((item) => item.id === cartItem.id);
