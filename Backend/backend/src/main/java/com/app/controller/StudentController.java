@@ -4,10 +4,13 @@ package com.app.controller;
 import java.time.LocalDate;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.dto.ItemMasterDTO;
 import com.app.dto.SignInDTO;
 import com.app.dto.StudentDTO;
 import com.app.dto.UpdatePasswordDTO;
@@ -128,6 +132,21 @@ public class StudentController {
 		return ResponseEntity
 				.ok(studentService.getStudentDetails(studentId));
 
+	}
+    
+
+	@PutMapping("/{studentId}")
+	public ResponseEntity<?> updateStudent(@PathVariable Long studentId,
+			@RequestBody @Valid StudentDTO dto) {
+		System.out.println("in update student " +studentId+" "+ dto);		
+		return ResponseEntity.
+				ok(studentService.updateStudent(studentId, dto));
+	}
+	
+	@DeleteMapping("/{studentId}")
+	public ResponseEntity<?> deleteStudent(@PathVariable Long studentId) {
+		System.out.println("in delete student " + studentId);
+		return ResponseEntity.ok(studentService.deleteStudentDetails(studentId));
 	}
 
 }

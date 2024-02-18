@@ -18,6 +18,7 @@ import com.app.dto.ItemMasterDTO;
 import com.app.dto.SignInDTO;
 import com.app.dto.StudentDTO;
 import com.app.dto.UpdatePasswordDTO;
+import com.app.entities.ItemMaster;
 import com.app.entities.Student;
 import com.app.exceptions.ResourceNotFoundException;
 import com.app.repository.ItemDailyRepository;
@@ -219,6 +220,26 @@ public class StudentServiceImpl implements StudentService {
 				StudentDTO.class);
 	}
 
+	@Override
+	public ApiResponse deleteStudentDetails(Long studentId) {
+		Student student = studentRepository.findById(studentId).orElseThrow(()-> new ResourceNotFoundException("Student not found"));
+		studentRepository.delete(student);
+		return new ApiResponse("Student Details of student with ID " + student.getStudentId() + " deleted....");
+	}
+
+	@Override
+	public StudentDTO updateStudent(Long studentId, StudentDTO dto) {
+		Student student = studentRepository.findById(studentId).orElseThrow(()-> new ResourceNotFoundException("Student not found"));
+		student.setName(dto.getName());
+		student.setEmail(dto.getEmail());
+		student.setMobileNo(dto.getMobileNo());
+		student.setBalance(dto.getBalance());
+		student.setDob(dto.getDob());
+		student.setCourseName(dto.getCourseName());
+		return modelMapper.map(student, StudentDTO.class);
+	}
+	
+	
 }
 
 	
