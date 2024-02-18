@@ -7,7 +7,7 @@ import Footer from "./Footer";
 
 export default function LandingPage() {
   return (
-    <div>
+    <div style={{width:"85vw",marginLeft:"40px"}} >
       <section id="home-section">
         <Home />
       </section>

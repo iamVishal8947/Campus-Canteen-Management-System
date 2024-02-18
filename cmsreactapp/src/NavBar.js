@@ -17,7 +17,7 @@ export default function NavBar() {
 
   return (
     //Box => div + inline css
-    <Box display="flex" justifyContent="space-between" p={2}>
+    <Box display="flex" justifyContent="space-between" p={0}>
         {/* SEARCH BAR */}
       <Box
         display="flex"
