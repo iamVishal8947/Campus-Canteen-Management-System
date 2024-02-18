@@ -46,6 +46,7 @@ class StudentService{
       return axios.get("http://localhost:8080/student/"+id+"/balance");
     }
     setBalance(data){
+      console.log("in set Balance ___________________++++++++++++++++=============")
       // var existingAmount = 0;
       console.log(data.id)
       this.getBalance(data.id).then((res) => {
