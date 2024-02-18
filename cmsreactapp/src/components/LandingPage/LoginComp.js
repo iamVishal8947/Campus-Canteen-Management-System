@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import bgimg from "../../Assets/imgblurbg.jpg";
+import bgimg from "../../Assets/bgbgbg.jpeg";
 
 export default function LoginComp() {
   const password = "07072000" // 
-  const passwords = {1 :"1111", 2:"2222",3:"3333", 4: "4444", 7:"07072000" }
+  const passwords = {1 :"1111", 2:"2222",3:"3333", 4: "4444", 7:"07072000", "admin":"admin" }
   const usernames = [1,2,3,4,5,6,7]
   const [formDetails, setFormDetails] = useState({
     username: "",
@@ -41,7 +41,7 @@ export default function LoginComp() {
   const submitForm = () => {
     
     const username = document.getElementById('username').value
-    const pwd = document.getElementById('pwd').value
+    const pwd = document.getElementById('password').value
     if(username === "admin" && pwd === "admin"){
       localStorage.setItem("username", username);
       alert("Admin Login Successful!");
@@ -49,6 +49,8 @@ export default function LoginComp() {
     }
     else{
     alert(username)
+
+    
     if(passwords[Number(username)]!=undefined){ //check if the username is present
 
       if(passwords[Number(username)] === pwd){ //check if the password matches the username
@@ -84,76 +86,51 @@ export default function LoginComp() {
   };
 
   return (
-    <div className="container vh-100 w-100 align-items-center" style={{ backgroundImage: `url(${bgimg})`, height: "100%" }}>
-      <div className="row g-3" style={{ marginTop: "0px" }}>
-        <div className="col-md-3"></div>
-        <div className="col-md-6 border border-primary">
-          <br />
-          <br />
-          <form>
-            <div className="row mb-3">
-              <label htmlFor="box" className="col-sm-5 col-form-label" style={{ color: "black" }}>
-                Username
-              </label>
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", backgroundImage: `url(${bgimg})` }}>
+      <div style={{ border: "1px solid #007bff", padding: "20px", borderRadius: "5px", width: "400px" }}>
+        <form>
+          <div style={{ marginBottom: "20px" }}>
+            <label htmlFor="username" style={{ color: "black", marginRight: "10px" }}>
+              Username
+            </label>
+            <input
+              type="text"
+              required
+              name="username"
+              id="username"
+              placeholder="Enter your username"
+              onChange={handleChange}
+              style={{ width: "calc(100% - 80px)", padding: "5px", borderRadius: "3px", border: "1px solid #ccc" }}
+            />
+            <span style={{ color: "red", fontSize: "10px" }}>{formErrors.username}</span>
+          </div>
 
-              <div className="col-md-7">
-                <input
-                  type="text"
-                  className="form-control"
-                  required
-                  name="uSername"
-                  id="username"
-                  placeholder="Enter your username"
-                  onChange={handleChange}
-                ></input>
-                <span id="mobError" style={{ color: "red", fontSize: "10px" }}>
-                  {formErrors.mob}
-                </span>
-              </div>
-            </div>
+          <div style={{ marginBottom: "20px" }}>
+            <label htmlFor="password" style={{ color: "black", marginRight: "10px" }}>
+              Password
+            </label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter your password"
+              required
+              id="password"
+              onChange={handleChange}
+              style={{ width: "calc(100% - 80px)", padding: "5px", borderRadius: "3px", border: "1px solid #ccc" }}
+            />
+            <span style={{ color: "red", fontSize: "10px" }}>{formErrors.password}</span>
+          </div>
 
-            <div className="row mb-3" style={{ color: "black" }}>
-              <label htmlFor="pwd" className="col-sm-5 col-form-label">
-                Password
-              </label>
-
-              <div className="col-md-7">
-                <input
-                  type="password"
-                  className="form-control"
-                  name="pwd"
-                  placeholder="Enter your password"
-                  required
-                  id="pwd"
-                  onChange={handleChange}
-                ></input>
-                <span id="dobError" style={{ color: "red", fontSize: "10px" }}>
-                  {formErrors.dob}
-                </span>
-              </div>
-            </div>
-
-            <div className="row-mb-3">
-              &nbsp;
-              &nbsp;&nbsp;&nbsp;
-              <span className="col-md-4">
-                <button type="button" className="btn btn-primary" onClick={() => navigate("/")}>
-                  Cancel
-                </button>
-                &nbsp;
-                <button type="button" className="btn btn-primary" onClick={submitForm}>
-                  Submit
-                </button>
-              </span>
-            </div>
-
-            <div className="row-mb-3">
-              <br />
-            </div>
-          </form>
-        </div>
+          <div>
+            <button type="button" style={{ marginRight: "10px", padding: "5px 10px", background: "#007bff", color: "#fff", border: "none", borderRadius: "3px", cursor: "pointer" }} onClick={() => navigate("/")}>
+              Cancel
+            </button>
+            <button type="button" style={{ padding: "5px 10px", background: "#007bff", color: "#fff", border: "none", borderRadius: "3px", cursor: "pointer" }} onClick={submitForm}>
+              Submit
+            </button>
+          </div>
+        </form>
       </div>
-      <br></br>
     </div>
   );
 }
