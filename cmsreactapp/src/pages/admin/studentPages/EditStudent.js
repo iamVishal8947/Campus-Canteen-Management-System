@@ -12,7 +12,8 @@ export default function EditStudent() {
     const fetchUserProfile = async () => {
       try {
         setLoading(true); // Set loading state to true
-        const userData = await StudentService.getAll; // Fetch user profile data
+        const userData = await StudentService.getById(); // Fetch user profile data
+        console.log(userData)
         setUserData(userData); // Update state with fetched data
         setLoading(false); // Set loading state to false
       } catch (error) {

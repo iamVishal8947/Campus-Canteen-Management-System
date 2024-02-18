@@ -122,6 +122,12 @@ public class StudentController {
         }
     }
     
+    @GetMapping("/{studentId}")
+	public ResponseEntity<?> getStudentDetails(@PathVariable Long studentId) {
+		System.out.println("in get student " + studentId);
+		return ResponseEntity
+				.ok(studentService.getStudentDetails(studentId));
 
+	}
 
 }
