@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @Setter
 public class StudentDTO {
   
-    @JsonProperty(access = Access.READ_ONLY)
+    
     private Long studentId;
     
 	@NotBlank

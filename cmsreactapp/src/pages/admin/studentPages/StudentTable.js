@@ -15,13 +15,13 @@ export default function StudentTable() {
     const colors = tokens(theme.palette.mode);
     const baseUrl = "/admin/students/"
     const navigate = useNavigate();
-    const editCustomer = (event,id) => {
-      navigate(baseUrl + "edit/" + id);
+    const editCustomer = (event,params) => {
+      navigate(baseUrl + "edit/" + params.id);
       event.stopPropagation();
     };
   
-    const deleteCustomer = (event, id) => {
-      navigate(baseUrl + "delete/" + id);
+    const deleteCustomer = (event, params) => {
+      navigate(baseUrl + "delete/" + params.id);
       event.stopPropagation();
     };
   
@@ -107,7 +107,7 @@ export default function StudentTable() {
             icon={<EditIcon></EditIcon>}
             label="Edit"
             onClick={(event) => {
-              editCustomer(event,params.id);
+              editCustomer(event,params);
             }}
           />,
   
@@ -115,7 +115,7 @@ export default function StudentTable() {
             icon={<DeleteIcon></DeleteIcon>}
             label="Delete"
             onClick={(event) => {
-              deleteCustomer(event,params.id);
+              deleteCustomer(event,params);
             }}
           />,
         ],

@@ -1,16 +1,29 @@
 import React  from 'react'
+import { useEffect,useState } from 'react';
 import StudentForm from '../../../components/admin/StudentForm'
-
+import { useParams } from 'react-router-dom';
+import StudentService from '../../../services/StudentService';
 export default function EditStudent() {
-    const student={
-      name: "John Doe",
-      email: "john@example.com",
-      password: "john",
-      mobileNo: "9988776655",
-      balance: 100,
-      dob: "01/01/2000",
-      courseName: "DAC",
+  let { id } = useParams();
+  const [userData, setUserData] = useState(null); 
+  const [loading, setLoading] = useState(true); 
+  useEffect(() => {
+    // Function to fetch user profile data based on ID
+    const fetchUserProfile = async () => {
+      try {
+        setLoading(true); // Set loading state to true
+        const userData = await StudentService.getAll; // Fetch user profile data
+        setUserData(userData); // Update state with fetched data
+        setLoading(false); // Set loading state to false
+      } catch (error) {
+        console.error('Error fetching user profile:', error);
+        setLoading(false); // Set loading state to false
       }
+    };
+
+    fetchUserProfile(); 
+  }, [id]); 
+    
 
     const editStudent=(student)=>{
       console.log("In edit Student")
@@ -19,7 +32,7 @@ export default function EditStudent() {
     
   return (
     <div>
-        <StudentForm action="edit" takeAction={editStudent} title="Edit Student" subtitle="Update Student Details" studentData={student}></StudentForm>
+        <StudentForm action="edit" takeAction={editStudent} title="Edit Student" subtitle="Update Student Details" studentData={userData}></StudentForm>
     </div>
   )
 }

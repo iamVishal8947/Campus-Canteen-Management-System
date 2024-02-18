@@ -70,9 +70,9 @@ export default function MenuList() {
         trial();
     },[])
   return (
-    <Box m='20px' p='20px' bgcolor={colors.primary[600]} alignContent={'center'} justifyContent={'center'}>
-        <Typography variant='h4'>The below items are nearing unavailability</Typography>
-        {items.map(item=><List key={item.id} align="center" sx={{ maxWidth:'300px', bgcolor: 'background.paper' }} >
+    <Box marginLeft={'20px'} p='20px' bgcolor={colors.primary[600]} alignContent={'center'} justifyContent={'center'} >
+        <Typography variant='h4' style={{marginLeft: '70px'}}>The below items are nearing unavailability</Typography>
+        {items.map(item=><List key={item.id} align="center" sx={{ maxWidth:'300px', bgcolor: 'background.paper',marginLeft: '100px' }} >
             <ListItemText sx={{color: item.qty>0?colors.redAccent[100]:colors.redAccent[300]}} primary={`${item.name} : ${item.qty}`} />
         </List>)}
     </Box>

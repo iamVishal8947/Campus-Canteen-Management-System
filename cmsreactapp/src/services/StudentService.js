@@ -82,6 +82,11 @@ class StudentService{
       return axios.get("http://localhost:8080/student/email/"+email)
     }
 
+    getStudentCount(){
+
+      return axios.get("http://localhost:8080/admin/totalstudents")
+    }
+
 }
 
 export default new StudentService();
