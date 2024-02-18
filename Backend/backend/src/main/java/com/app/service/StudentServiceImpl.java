@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.app.dto.ApiResponse;
 import com.app.dto.GetAllStudentDTO;
+import com.app.dto.ItemMasterDTO;
 import com.app.dto.SignInDTO;
 import com.app.dto.StudentDTO;
 import com.app.dto.UpdatePasswordDTO;
@@ -210,7 +211,13 @@ public class StudentServiceImpl implements StudentService {
         return studentRepository.count();
     }
 
-	
+	@Override
+	public StudentDTO getStudentDetails(Long studentId) {
+		
+		return modelMapper.map(
+				studentRepository.findById(studentId).orElseThrow(() -> new ResourceNotFoundException("Invalid Student Id !!!!")),
+				StudentDTO.class);
+	}
 
 }
 

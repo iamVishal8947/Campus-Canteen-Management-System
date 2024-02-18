@@ -40,6 +40,8 @@ public interface StudentService {
 	String changePassword(Long id,UpdatePasswordDTO dto);
 	
 	 Long getTotalRegisteredStudents() ;
+	 
+	 StudentDTO getStudentDetails(Long studentId);
 
 	
 	
