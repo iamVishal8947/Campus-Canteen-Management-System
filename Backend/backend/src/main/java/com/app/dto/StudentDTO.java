@@ -2,6 +2,9 @@
 package com.app.dto;
 
 import com.app.entities.Course;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,10 +15,12 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class StudentDTO {
-    @NotBlank
-    private String name;
-
+  
+    @JsonProperty(access = Access.READ_ONLY)
     private Long studentId;
+    
+	@NotBlank
+    private String name;
 
     @NotBlank
     private String email;

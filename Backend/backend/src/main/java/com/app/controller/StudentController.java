@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.SignInDTO;
+import com.app.dto.StudentDTO;
 import com.app.service.StudentService;
 
 @RequestMapping(path="/student")
@@ -100,6 +101,17 @@ public class StudentController {
             return ResponseEntity.ok(dob);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student not found");
+        }
+    }
+    
+    @GetMapping("/email/{email}")
+    public ResponseEntity<?> getStudentByEmail(@PathVariable String email) {
+        StudentDTO studentDTO = studentService.getStudentByEmail(email);
+
+        if (studentDTO != null) {
+            return ResponseEntity.ok(studentDTO);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student not found for email: " + email);
         }
     }
     
