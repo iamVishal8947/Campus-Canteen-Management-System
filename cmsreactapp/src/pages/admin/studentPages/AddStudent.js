@@ -6,13 +6,13 @@ export default function AddStudent() {
   const addStudent = (student) => {
     console.log(student)
     console.log("in Add customer")
-    // StudentService.insertStudent(student).then((response) => {
-    //   //console.log(response.data.token);
-    //   return response.data.token;
-    //   })
-    //   .catch((error) => {
-    //       console.log(error);
-    //   });
+    StudentService.insertStudent(student).then((response) => {
+      //console.log(response.data.token);
+      return response.data.token;
+      })
+      .catch((error) => {
+          console.log(error);
+      });
   }
   
   return (

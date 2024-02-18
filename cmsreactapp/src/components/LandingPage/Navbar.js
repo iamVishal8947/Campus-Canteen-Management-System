@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
-import Logo from "../../Assets/logo-no-background.png";
-
+import xmsLogo from "../../Assets/logo-no-background.png";
+import Logo from '../../Assets/cms-high-resolution-logo-removebg.png'
 import { HiOutlineBars3 } from "react-icons/hi2";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";

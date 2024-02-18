@@ -10,6 +10,10 @@ class StudentService{
     }
     insertStudent(student){
         console.log("in insert Student axios method ")
+        student.courseName = "DAC";
+        student.password =String( student.dob)
+         // student.studentId = 0;
+      console.log(student)
        //this.prodarr.push(student);
        //console.log(this.prodarr); 
        const student1 = {
@@ -22,7 +26,7 @@ class StudentService{
         dob: "2000-02-15",
         courseName: "DAC"
       }
-       return axios.post("http://localhost:8080/student/register",student)//,{header:{"content-type":"application/json",autherization:"bearer"+<localStorage.jwttoken>}})
+       return axios.post("http://localhost:8080/admin/register/student",student)//,{header:{"content-type":"application/json",autherization:"bearer"+<localStorage.jwttoken>}})
     }
 
     deleteStudent(pid){
