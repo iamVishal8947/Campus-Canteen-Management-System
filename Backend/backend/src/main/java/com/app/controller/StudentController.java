@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.SignInDTO;
 import com.app.dto.StudentDTO;
+import com.app.dto.UpdatePasswordDTO;
 import com.app.service.StudentService;
 
 @RequestMapping(path="/student")
@@ -52,6 +53,12 @@ public class StudentController {
         String mesg = studentService.login(dto);
             return ResponseEntity.ok().body(mesg);
      }
+    
+    @PutMapping("/changepassword/{studId}")
+    public ResponseEntity<String> changePassword(@PathVariable Long studId,@RequestBody UpdatePasswordDTO dto) {
+        String result = studentService.changePassword(studId,dto);
+        return ResponseEntity.ok().body(result);
+    }
     
     
     @PostMapping("/logout")
