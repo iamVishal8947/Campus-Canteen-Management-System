@@ -38,6 +38,8 @@ public interface StudentService {
 	StudentDTO getStudentByEmail(String email);
 	
 	String changePassword(Long id,UpdatePasswordDTO dto);
+	
+	 Long getTotalRegisteredStudents() ;
 
 	
 	

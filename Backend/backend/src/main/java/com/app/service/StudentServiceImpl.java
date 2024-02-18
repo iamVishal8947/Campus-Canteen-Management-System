@@ -205,7 +205,10 @@ public class StudentServiceImpl implements StudentService {
 	    return student.getMobileNo();
 	}
 
-	
+	@Override
+	public Long getTotalRegisteredStudents() {
+        return studentRepository.count();
+    }
 
 	
 
