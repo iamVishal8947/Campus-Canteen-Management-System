@@ -52,11 +52,7 @@ class StudentService{
        .catch((err) => {
          alert(err.response?.data || err.message);
        });
-      // console.log(existingBalance)
-      // const newAmount = existingAmount + data.addAmount;
-      // console.log("data.id : " +data.id + "new ammount : " + newAmount)
-      //  return axios.put("http://localhost:8080/student/" + data.id+"/balance",existingAmount);
-    }
+       }
     getById(id){
        // return this.prodarr.find(p=>p.pid==id);
        return axios.get(baseUrl+"/student/"+id)
@@ -65,6 +61,18 @@ class StudentService{
         //let pos=this.prodarr.findIndex(p=>p.pid==prod.pid);
        // this.prodarr.splice(pos,1,{...prod});
        return axios.put(baseUrl+"/student/"+prod.pid,prod)//,{header:{"content-type":"application/json",autherization:"bearer"+<localStorage.jwttoken>}})
+    }
+    login(studentCredentials){
+
+      // const std = {
+      //    userName : "ac@gmail.com",
+      //    password : "2000-02-18"
+      // }
+      return axios.post("http://localhost:8080/student/login",studentCredentials)
+    }
+    getStudentByEmail(email){
+
+      
     }
 
 }

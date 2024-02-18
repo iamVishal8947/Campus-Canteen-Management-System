@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import bgimg from "../../Assets/bgbgbg.jpeg";
+import StudentService from "../../services/StudentService";
 
 export default function LoginComp() {
   const password = "07072000" // 
@@ -37,35 +38,69 @@ export default function LoginComp() {
     const { name, value } = event.target;
     setFormDetails({ ...formDetails, [name]: value });
   };
-
+  const getStudentFromEmail = () => {
+    Student
+  }
   const submitForm = () => {
-    
     const username = document.getElementById('username').value
     const pwd = document.getElementById('password').value
-    if(username === "admin" && pwd === "admin"){
-      localStorage.setItem("username", username);
-      alert("Admin Login Successful!");
-      navigate( "/admin/dashboard" );
+
+    const studentCredentials = {
+      userName: username,
+      password : pwd
     }
-    else{
-    // alert(username)
-
-
-    if(passwords[Number(username)]!=undefined){ //check if the username is present
-
-      if(passwords[Number(username)] === pwd){ //check if the password matches the username
+    StudentService.login(studentCredentials).then((res) => {
+      
+      // alert(res.data)
+      if(res.data=== "Login successful1"){
+        alert("Login Successful Change your password from Dashboard")
         localStorage.setItem("username", username);
-        alert(`Welcome back `);
-        navigate('/student/dashboard');
-        }else{
-          alert("wrong  password!");
-        }
+        navigate("/student/changePassword/")
+      }
+      else if(res.data === "Login successful1 successful2"){
+        alert("Login successful")
+        localStorage.setItem("username", username);
+
+        navigate("/student/dashboard")
+      }
+      else if(res.data === "Invalid password"){
+        alert("Password Invalid")
+        window.location.reload();
+      }
+      else if(res.data === "Invalid username"){
+        alert("Username invalid")
+      }
       
-    }else{
-      alert ('Invalid User ID')
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+  
+    
+  //   if(username === "admin" && pwd === "admin"){
+  //     localStorage.setItem("username", username);
+  //     alert("Admin Login Successful!");
+  //     navigate( "/admin/dashboard" );
+  //   }
+  //   else{
+  //   // alert(username)
+
+
+  //   if(passwords[Number(username)]!=undefined){ //check if the username is present
+
+  //     if(passwords[Number(username)] === pwd){ //check if the password matches the username
+  //       localStorage.setItem("username", username);
+  //       alert(`Welcome back `);
+  //       navigate('/student/dashboard');
+  //       }else{
+  //         alert("wrong  password!");
+  //       }
       
-    }
-  }
+  //   }else{
+  //     alert ('Invalid User ID')
+      
+  //   }
+  // }
     // Perform login validation
     // if (username === "admin" && pwd === "admin") {
     //   // Redirect to admin page
