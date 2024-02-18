@@ -44,7 +44,7 @@ export default function WalletTopup() {
       alert("Balance Updated")
     })
     .catch((err) => {
-      alert(err.response?.data || err.message);
+     console.log(err)
     });
        
   };
@@ -94,7 +94,8 @@ export default function WalletTopup() {
                     placeholder="PRN Number"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.id}
+                    value={Number(localStorage.getItem("username"))}
+                    aria-readonly={true}
                     id="id"
                     error={!!touched.id && !!errors.id}
                     helperText={touched.id && errors.id}

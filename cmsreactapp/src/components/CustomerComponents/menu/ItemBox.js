@@ -4,6 +4,8 @@ import { tokens } from "../../../theme";
 import axios from "axios";
 import AddIcon from '@mui/icons-material/Add';
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
+import ImageOnLoad from 'react-image-onload';
+
 
 export default function ItemBox(props) {
     const theme = useTheme();
@@ -38,7 +40,8 @@ export default function ItemBox(props) {
         </Grid>
         <Grid item xs={12} sm={12}>
           <div id="imageHolder">
-            <img src={props.item.img_link}></img>
+            <img  src={props.item.img_link} style={{height:"120px",width:"200px",paddingLeft:"50px"}}></img>
+
           </div>
           <br />
           <Typography variant="h5">Item price: {props.item.price}&#8377;</Typography>
