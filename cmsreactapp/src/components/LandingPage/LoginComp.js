@@ -42,6 +42,12 @@ export default function LoginComp() {
     
     const username = document.getElementById('username').value
     const pwd = document.getElementById('pwd').value
+    if(username === "admin" && pwd === "admin"){
+      localStorage.setItem("username", username);
+      alert("Admin Login Successful!");
+      navigate( "/admin/dashboard" );
+    }
+    else{
     alert(username)
     if(passwords[Number(username)]!=undefined){ //check if the username is present
 
@@ -57,6 +63,7 @@ export default function LoginComp() {
       alert ('Invalid User ID')
       
     }
+  }
     // Perform login validation
     // if (username === "admin" && pwd === "admin") {
     //   // Redirect to admin page

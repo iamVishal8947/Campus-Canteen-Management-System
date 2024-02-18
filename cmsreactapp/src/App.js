@@ -31,6 +31,9 @@ import CompletedOrderTable from './pages/admin/orderPages/CompletedOrderTable';
 import  ChangePassword from './components/CustomerComponents/ChangePassword';
 import WalletTopup from './components/CustomerComponents/WalletTopup';
 import PlaceOrder from './components/CustomerComponents/PlaceOrder';
+import DailyMenu from './pages/customer/MenuList/DailyMenu';
+import OrderHistoryTable from './components/CustomerComponents/OrderHistoryTable';
+import RechargeHistoryTable from './components/CustomerComponents/RechargeHistoryTable';
 function App() {
   const location = useLocation();
   const [theme, colorMode] = useMode();
@@ -55,7 +58,10 @@ function App() {
         <Route path='/MenuList/' element={<MenuList></MenuList>}></Route>
         <Route path='/admin/dashboard' element= {<Dashboard/>}></Route>
         <Route path='/student/todaysmenu/' element={<MenuList></MenuList>}></Route>
+        <Route path='/student/orderhistory/' element={<OrderHistoryTable></OrderHistoryTable>}></Route>
+        <Route path='/student/rechargehistory/' element={<RechargeHistoryTable></RechargeHistoryTable>}></Route>
         <Route path='/student/changePassword/' element={<ChangePassword></ChangePassword>}></Route>
+        <Route path='/student/dailymenu' element={<DailyMenu></DailyMenu>}></Route>
         <Route path='/student/wallettopup/' element={<WalletTopup></WalletTopup>}></Route>
         <Route path='/student/placeorder/' element={<PlaceOrder></PlaceOrder>}></Route>
         <Route path='/customer/previousorderslist/' element={<PreviousOrdersList></PreviousOrdersList>}></Route>

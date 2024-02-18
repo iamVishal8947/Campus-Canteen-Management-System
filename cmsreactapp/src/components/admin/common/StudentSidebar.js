@@ -116,7 +116,7 @@ export default function SideBar() {
               </Typography>
               <Item
                 title="Today's Menu"
-                to="/student/todaysmenu/" // ===========================----------=-=-=-=-=-==-=-=-=-==>>>
+                to="/student/dailymenu/" // ===========================----------=-=-=-=-=-==-=-=-=-==>>>
                 icon={<FastfoodIcon />}
                 selected={selected}
                 setSelected={setSelected}
@@ -131,7 +131,7 @@ export default function SideBar() {
               </Typography>
               <Item
                 title="Recharge History" //=-=-=-=-=-=-=-=-=-=-=-     =    =         =       =      =
-                to="/admin/menu/"
+                to="/student/rechargehistory"
                 icon={<CurrencyRupeeIcon />}
                 selected={selected}
                 setSelected={setSelected}
@@ -152,7 +152,7 @@ export default function SideBar() {
               </Typography>
               <Item
                 title="Order History" 
-                to="/student/orderHistory"
+                to="/student/orderhistory/"
                 icon={<ManageSearchIcon />}
                 selected={selected}
                 setSelected={setSelected}
