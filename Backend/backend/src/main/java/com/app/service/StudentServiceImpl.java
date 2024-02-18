@@ -1,10 +1,9 @@
 // CustomerServiceImpl.java
 package com.app.service;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
@@ -14,16 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.dto.ApiResponse;
-import com.app.dto.CreateOrderDTO;
 import com.app.dto.GetAllStudentDTO;
 import com.app.dto.StudentDTO;
-import com.app.entities.ItemDaily;
-import com.app.entities.Order;
-import com.app.entities.OrderStatus;
 import com.app.entities.Student;
 import com.app.exceptions.ResourceNotFoundException;
 import com.app.repository.ItemDailyRepository;
-import com.app.repository.ItemMasterRepository;
 import com.app.repository.OrderRepository;
 import com.app.repository.StudentRepository;
 
@@ -105,6 +99,59 @@ public class StudentServiceImpl implements StudentService {
             throw new ResourceNotFoundException("Student not found with ID: " + studentId);
         }
     }
+	
+	@Override
+	public boolean login(String email, String dob) {
+        Student student = studentRepository.findByEmailAndDob(email, LocalDate.parse(dob));
+
+        if (student != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+	
+	
+	@Override
+	public ApiResponse logout() {
+		
+		return null;
+        
+    }
+
+	@Override
+	public String getEmailByStudentID(Long studId) {
+		Student student = studentRepository.findById(studId)
+	            .orElseThrow(() -> new ResourceNotFoundException("Student not found with id: " + studId));
+
+	    return student.getEmail();
+	}
+
+	@Override
+	public String getNameByStudentID(Long studId) {
+		Student student = studentRepository.findById(studId)
+	            .orElseThrow(() -> new ResourceNotFoundException("Student not found with id: " + studId));
+
+	    return student.getName();
+	}
+
+	@Override
+	public LocalDate getDobByStudentID(Long studId) {
+		Student student = studentRepository.findById(studId)
+	            .orElseThrow(() -> new ResourceNotFoundException("Student not found with id: " + studId));
+
+	    return student.getDob();
+	}
+		
+
+	@Override
+	public String getMobileNoByStudentID(Long studId) {
+		Student student = studentRepository.findById(studId)
+	            .orElseThrow(() -> new ResourceNotFoundException("Student not found with id: " + studId));
+
+	    return student.getMobileNo();
+	}
+
 }
 
 	
