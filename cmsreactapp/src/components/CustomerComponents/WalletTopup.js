@@ -13,7 +13,7 @@ export default function WalletTopup() {
 
   const initValues =
      {
-          id: "",
+          id: Number(localStorage.getItem("username")),
           addAmount: 0
           
         }
@@ -25,9 +25,9 @@ export default function WalletTopup() {
   const mobRegex = /[789][0-9]{9}/;
     const addamtRegex = /^(?:[1-9]\d{2,3}|5000)$/
   const studentSchema = yup.object().shape({
-    id: yup
-      .string()
-      .required("Required"),
+    // id: yup
+    //   .string()
+    //   .required("Required"),
     addAmount: yup
       .string()
       .matches(addamtRegex ,"Entered amount is not valid, ")
@@ -44,7 +44,7 @@ export default function WalletTopup() {
       alert("Balance Updated")
     })
     .catch((err) => {
-      alert(err.response?.data || err.message);
+     console.log(err)
     });
        
   };
@@ -86,7 +86,7 @@ export default function WalletTopup() {
                   }}
                 >
                   
-                  <TextField
+                  {/* <TextField
                     fullWidth
                     variant="filled"
                     type="number"
@@ -94,12 +94,13 @@ export default function WalletTopup() {
                     placeholder="PRN Number"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.id}
+                    value={Number(localStorage.getItem("username"))}
+                    aria-readonly 
                     id="id"
-                    error={!!touched.id && !!errors.id}
-                    helperText={touched.id && errors.id}
+                    // error={!!touched.id && !!errors.id}
+                    // helperText={touched.id && errors.id}
                     sx={{ gridColumn: "span 4" }}
-                  />
+                  /> */}
                   <TextField
                     fullWidth
                     variant="filled"

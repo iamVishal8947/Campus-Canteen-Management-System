@@ -91,7 +91,7 @@ export default function SideBar() {
                   ml="15px"
                 >
                   <Typography variant="h3" color={colors.grey[100]}>
-                  Student Name
+                   {localStorage.getItem("name")}
                   </Typography>
                   <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                     <MenuOutlinedIcon />

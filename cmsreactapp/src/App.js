@@ -3,7 +3,7 @@ import './App.css';
 import {Routes, Route, useLocation } from 'react-router-dom';
 import Dashboard from './pages/admin/Dashboard/Dashboard';
 //import './components/CustomerComponents/Customer.css';
-import  '../src/pages/customer/MenuList.css'
+//import  '../src/pages/customer/MenuList.css'
 // import 'bootstrap/dist/css/bootstrap.css'
 import { ColorModeContext, useMode } from "./theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
@@ -34,6 +34,7 @@ import PlaceOrder from './components/CustomerComponents/PlaceOrder';
 import DailyMenu from './pages/customer/MenuList/DailyMenu';
 import OrderHistoryTable from './components/CustomerComponents/OrderHistoryTable';
 import RechargeHistoryTable from './components/CustomerComponents/RechargeHistoryTable';
+import NavBar from './NavBar';
 function App() {
   const location = useLocation();
   const [theme, colorMode] = useMode();
@@ -51,6 +52,9 @@ function App() {
     {isAdmin && <SideBar className="sidebar"/>}
     {isStudent && <StudentSideBar className="sidebar"/>}
     <div className='content'>
+    {isAdmin && <NavBar/>}
+    {isStudent && <NavBar/>}
+      
       <Routes>
        
        <Route path="/" element={<LandingPage style={{position:"fixed"}}></LandingPage>} ></Route>

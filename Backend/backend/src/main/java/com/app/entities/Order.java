@@ -67,7 +67,7 @@ public class Order {
 	
 	@OneToMany(mappedBy = "order", 
 			cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Cart> carts = new ArrayList<>();
+	private List<Cart> cartList = new ArrayList<>();
 	
 	public void setStudent(Student student) {
 		this.student=student;

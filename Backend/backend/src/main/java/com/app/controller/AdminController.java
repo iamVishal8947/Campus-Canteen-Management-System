@@ -47,4 +47,12 @@ public class AdminController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
+    
+    @GetMapping("/totalstudents")
+    public ResponseEntity<Long> getTotalRegisteredStudents() {
+        Long totalStudents = studentService.getTotalRegisteredStudents();
+        return ResponseEntity.ok(totalStudents);
+    }
+    
+    
 }

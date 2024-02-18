@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
-import Logo from "../../Assets/logo-no-background.png";
-
+import xmsLogo from "../../Assets/logo-no-background.png";
+import Logo from '../../Assets/cms-high-resolution-logo-removebg.png'
 import { HiOutlineBars3 } from "react-icons/hi2";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -61,60 +61,16 @@ const Navbar = () => {
         <img src={Logo} style={{height : "90px", width: "140px"}} alt="" />
       </div>
       <div className="navbar-links-container">
-        <a href="" style={{ color: '#fd7e14' }}>Home</a>
-        <a href="">About</a>
-        <a href="">Reviews</a>
-        <a href="">Contact</a>
+        <a href="#home-section" style={{ color: '#fd7e14' }}>Home</a>
+        <a href="#about-section">About</a>
+        <a href="#review-section">Reviews</a>
+        <a href="#contact-section">Contact</a>
          <Link to="/LoginComp"> <strong>Login</strong> </Link>   
         
-        {/* <button onClick={handleLoginClick}>Login</button> */}
-
-        {/* -------------------------------------------- */}
-        {/* <Link to="/LoginComp">
-        <div
-        className="openModalBtn"
-        onClick={() => {
-          setModalOpen(true);
-        }}
-      >
-        Login
-      </div>
-      </Link> */}
-
-     
-      </div>
-      {/* Render Backdrop component and LoginForm conditionally
-      {showLoginForm && (
-        <Backdrop onClick={handleBackdropClick}>
-          <LoginForm onSubmit={handleLoginSubmit} />
-        </Backdrop>
-      )}
-      <div className="navbar-menu-container">
-        <HiOutlineBars3 onClick={() => setOpenMenu(true)} />
-      </div>
-      <Drawer open={openMenu} onClose={() => setOpenMenu(false)} anchor="right">
-        <Box
-          sx={{ width: 250 }}
-          role="presentation"
-          onClick={() => setOpenMenu(false)}
-          onKeyDown={() => setOpenMenu(false)}
-        >
-          <List>
-            {menuOptions.map((item) => (
-              <ListItem key={item.text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>{item.icon}</ListItemIcon>
-                  <ListItemText primary={item.text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-        </Box>
-      </Drawer> */}
+       </div>
 
     </nav>
-    {/* {modalOpen && <LoginForm setOpenModal={setModalOpen} />} */}
+   
     </div>
   );
 };

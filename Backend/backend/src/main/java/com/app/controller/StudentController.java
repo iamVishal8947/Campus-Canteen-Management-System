@@ -1,18 +1,25 @@
 // StudentController.java
 package com.app.controller;
 
+import java.time.LocalDate;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.dto.SignInDTO;
+import com.app.dto.StudentDTO;
+import com.app.dto.UpdatePasswordDTO;
 import com.app.service.StudentService;
 
 @RequestMapping(path="/student")
@@ -40,6 +47,80 @@ public class StudentController {
         return ResponseEntity.ok().body(studentService.setBalanceById(studentId, newBalance));
     }
     
+    
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody SignInDTO dto) {
+        String mesg = studentService.login(dto);
+            return ResponseEntity.ok().body(mesg);
+     }
+    
+    @PutMapping("/changepassword/{studId}")
+    public ResponseEntity<String> changePassword(@PathVariable Long studId,@RequestBody UpdatePasswordDTO dto) {
+        String result = studentService.changePassword(studId,dto);
+        return ResponseEntity.ok().body(result);
+    }
+    
+    
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout() {
+        studentService.logout();
+        return ResponseEntity.ok("Logout successful");
+    }
+
+    @GetMapping("/{studentId}/name")
+    public ResponseEntity<String> getStudentNameById(@PathVariable Long studentId) {
+        String studentName = studentService.getNameByStudentID(studentId);
+
+        if (studentName != null) {
+            return ResponseEntity.ok(studentName);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student not found");
+        }
+    }
+    
+    @GetMapping("/{studentId}/email")
+    public ResponseEntity<String> getStudentEmailById(@PathVariable Long studentId) {
+        String studentEmail = studentService.getEmailByStudentID(studentId);
+
+        if (studentEmail != null) {
+            return ResponseEntity.ok(studentEmail);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student not found");
+        }
+    }
+    
+    @GetMapping("/{studentId}/mobile")
+    public ResponseEntity<String> getStudentMobileById(@PathVariable Long studentId) {
+        String mobileNo = studentService.getMobileNoByStudentID(studentId);
+
+        if (mobileNo != null) {
+            return ResponseEntity.ok(mobileNo);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student not found");
+        }
+    }
+    
+    @GetMapping("/{studentId}/dob")
+    public ResponseEntity<?> getStudentDobById(@PathVariable Long studentId) {
+       LocalDate dob = studentService.getDobByStudentID(studentId);
+
+        if (dob != null) {
+            return ResponseEntity.ok(dob);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student not found");
+        }
+    }
+    
+    @GetMapping("/email/{email}")
+    public ResponseEntity<?> getStudentByEmail(@PathVariable String email) {
+        StudentDTO studentDTO = studentService.getStudentByEmail(email);
+
+        if (studentDTO != null) {
+            return ResponseEntity.ok(studentDTO);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student not found for email: " + email);
+        }
+    }
     
 
 

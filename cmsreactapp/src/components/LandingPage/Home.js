@@ -8,7 +8,11 @@ import Navbar from "./Navbar";
 const Home = () => {
   return (
     <div className="home-container" >
+      {/* style={{ position: 'sticky', top: 0, zIndex: 1000, background: '#fff' }} */}
+      <div >
       <Navbar />
+      </div>
+      
       <div className="home-banner-container">
         <div className="home-bannerImage-container">
           <img src={BannerBackground} alt="" width={"600px"} />

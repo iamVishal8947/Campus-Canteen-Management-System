@@ -67,7 +67,7 @@ public class Student {
 	}
 	
 	public void addOrder(Order ord) {
-		orderList.add(ord);// dept --> emp
+		orderList.add(ord);
 		ord.setStudent(this);
 	}
 	public void removeOrder(Order ord) {
@@ -76,7 +76,7 @@ public class Student {
 	}
 	
 	public void addRechargeHistory(RechargeHistory recharge) {
-		rechargeHistoryList.add(recharge);// dept --> emp
+		rechargeHistoryList.add(recharge);
 		recharge.setStudent(this);
 	}
 	public void removeRechargeHistory(RechargeHistory recharge) {

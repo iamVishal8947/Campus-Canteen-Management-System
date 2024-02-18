@@ -13,13 +13,15 @@ export default function StudentForm(props) {
   const initValues =
     props.action === "add"
       ? {
+          
           name: "",
+          studentId :0,
           email: "",
           password: "",
           mobileNo: "",
           balance: 0,
           dob: "",
-          courseName: "",
+          courseName: "DAC",
         }
       : props.studentData;
 
@@ -62,8 +64,8 @@ export default function StudentForm(props) {
       .string()
       .matches(mobRegex, "Entered Mobile number is invalid")
       .required("Required"),
-    dob: yup.string().required("Required"),
-    courseName: yup.string().required("Required"),
+    dob: yup.string().required("Required")
+    // courseName: yup.string().required("Required"),
   });
 
   const handleFormSubmit = (values) => {

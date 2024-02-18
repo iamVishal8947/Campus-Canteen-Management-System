@@ -8,8 +8,19 @@ class StudentService{
        // return axios.get(baseUrl);
        return axios.get("http://localhost:8080/admin/students")
     }
+    changePassword(id,password){
+      console.log(id)
+      console.log(password)
+
+       return axios.put("http://localhost:8080/student/changepassword/"+id,password)
+
+    }
     insertStudent(student){
         console.log("in insert Student axios method ")
+        student.courseName = "DAC";
+        student.password =String( student.dob)
+         // student.studentId = 0;
+      console.log(student)
        //this.prodarr.push(student);
        //console.log(this.prodarr); 
        const student1 = {
@@ -22,7 +33,7 @@ class StudentService{
         dob: "2000-02-15",
         courseName: "DAC"
       }
-       return axios.post("http://localhost:8080/student/register",student)//,{header:{"content-type":"application/json",autherization:"bearer"+<localStorage.jwttoken>}})
+       return axios.post("http://localhost:8080/admin/register/student",student)//,{header:{"content-type":"application/json",autherization:"bearer"+<localStorage.jwttoken>}})
     }
 
     deleteStudent(pid){
@@ -48,11 +59,7 @@ class StudentService{
        .catch((err) => {
          alert(err.response?.data || err.message);
        });
-      // console.log(existingBalance)
-      // const newAmount = existingAmount + data.addAmount;
-      // console.log("data.id : " +data.id + "new ammount : " + newAmount)
-      //  return axios.put("http://localhost:8080/student/" + data.id+"/balance",existingAmount);
-    }
+       }
     getById(id){
        // return this.prodarr.find(p=>p.pid==id);
        return axios.get(baseUrl+"/student/"+id)
@@ -61,6 +68,18 @@ class StudentService{
         //let pos=this.prodarr.findIndex(p=>p.pid==prod.pid);
        // this.prodarr.splice(pos,1,{...prod});
        return axios.put(baseUrl+"/student/"+prod.pid,prod)//,{header:{"content-type":"application/json",autherization:"bearer"+<localStorage.jwttoken>}})
+    }
+    login(studentCredentials){
+
+      // const std = {
+      //    userName : "ac@gmail.com",
+      //    password : "2000-02-18"
+      // }
+      return axios.post("http://localhost:8080/student/login",studentCredentials)
+    }
+    getStudentByEmail(email){
+
+      return axios.get("http://localhost:8080/student/email/"+email)
     }
 
 }

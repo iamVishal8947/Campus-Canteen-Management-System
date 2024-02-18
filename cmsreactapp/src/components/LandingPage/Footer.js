@@ -1,6 +1,6 @@
 import React from "react";
 // import Logo from "../../Assets/Logo.svg";
-import Logo from "../../Assets/logo-no-background.png";
+import Logo from "../../Assets/cms-high-resolution-logo-removebg.png";
 import { BsTwitter } from "react-icons/bs";
 import { SiLinkedin } from "react-icons/si";
 import { BsYoutube } from "react-icons/bs";
@@ -21,6 +21,7 @@ const Footer = () => {
           <FaFacebookF />
         </div>
       </div>
+      <div style={{marginTop:"10px"}}> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <h3>अन्न हे पूर्ण ब्रह्म !</h3>  </div>
       <div className="footer-section-two">
         <div className="footer-section-columns" style={{color:"whitesmoke"}}>
           <span style={{color:"whitesmoke"}} >Help</span>
