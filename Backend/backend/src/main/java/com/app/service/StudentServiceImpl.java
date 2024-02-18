@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.app.dto.ApiResponse;
 import com.app.dto.GetAllStudentDTO;
+import com.app.dto.SignInDTO;
 import com.app.dto.StudentDTO;
 import com.app.entities.Student;
 import com.app.exceptions.ResourceNotFoundException;
@@ -100,16 +101,45 @@ public class StudentServiceImpl implements StudentService {
         }
     }
 	
+//	@Override
+//	public  boolean login(SignInDTO dto) {
+//        Student student = studentRepository.
+//
+//        if (student != null) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
+	
 	@Override
-	public boolean login(String email, String dob) {
-        Student student = studentRepository.findByEmailAndDob(email, LocalDate.parse(dob));
+	public String login(SignInDTO dto) {
+	    String userName = dto.getUserName();
+	    String password = dto.getPassword();
 
-        if (student != null) {
-            return true;
-        } else {
-            return false;
+	  
+	    Optional<Student> studentOptional = studentRepository.findByEmail(userName);
+
+	    if (studentOptional.isPresent()) {
+	        Student student = studentOptional.get();
+
+	   
+	        if (password.equals(student.getPassword())) {
+	            if (password.equals(student.getDob().toString())) {
+	                return "Login successful1";
+	            } else {
+	                return "Login successful1 successful2";
+	            }    
+	        } else {
+	        
+	            return "Invalid password";
+	        	}
+        }else {
+        	return "Invalid username";
         }
-    }
+	 } 
+	
+
 	
 	
 	@Override

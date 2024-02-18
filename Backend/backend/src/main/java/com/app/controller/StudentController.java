@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.dto.SignInDTO;
 import com.app.service.StudentService;
 
 @RequestMapping(path="/student")
@@ -44,21 +45,16 @@ public class StudentController {
         return ResponseEntity.ok().body(studentService.setBalanceById(studentId, newBalance));
     }
     
+    
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestParam String email, @RequestParam String dob) {
-        boolean loginSuccess = studentService.login(email, dob);
-
-        if (loginSuccess) {
-            return ResponseEntity.ok("Login successful");
-        } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login failed");
-        }
-    }
+    public ResponseEntity<String> login(@RequestBody SignInDTO dto) {
+        String mesg = studentService.login(dto);
+            return ResponseEntity.ok().body(mesg);
+     }
+    
     
     @PostMapping("/logout")
     public ResponseEntity<String> logout() {
-        // Assuming your StudentService has a logout method
-        // This method can perform any necessary operations for logging out
         studentService.logout();
         return ResponseEntity.ok("Logout successful");
     }
