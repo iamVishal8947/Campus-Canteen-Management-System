@@ -16,6 +16,7 @@ import com.app.dto.ApiResponse;
 import com.app.dto.GetAllStudentDTO;
 import com.app.dto.SignInDTO;
 import com.app.dto.StudentDTO;
+import com.app.dto.UpdatePasswordDTO;
 import com.app.entities.Student;
 import com.app.exceptions.ResourceNotFoundException;
 import com.app.repository.ItemDailyRepository;
@@ -128,6 +129,26 @@ public class StudentServiceImpl implements StudentService {
         }
 	 } 
 	
+	@Override
+	public String changePassword(Long id,UpdatePasswordDTO dto) {
+		String oldPassword = dto.getOldPassword();
+	    String newPassword = dto.getNewPassword();
+		
+		 Optional<Student> studentOptional = studentRepository.findById(id);
+		 
+		 if (studentOptional.isPresent()) {
+			 	Student student = studentOptional.get();
+			 	if (oldPassword.equals(student.getPassword())) {
+		            student.setPassword(newPassword);
+		            studentRepository.save(student);
+		            return "ok";
+			 	}else {
+			 		return "Invalid old password";
+			 	}
+	    } else {
+	        return "Invalid student id";
+	    }
+	}
 
 	@Override
 	public StudentDTO getStudentByEmail(String email) {
@@ -183,6 +204,8 @@ public class StudentServiceImpl implements StudentService {
 
 	    return student.getMobileNo();
 	}
+
+	
 
 	
 
