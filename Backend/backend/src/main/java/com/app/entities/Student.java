@@ -4,6 +4,7 @@ package com.app.entities;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -56,11 +57,13 @@ public class Student {
 	@Column(length = 20, name = "course_name")
 	private Course courseName;
 	
-	@OneToMany(mappedBy = "student",fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "student",fetch = FetchType.EAGER,cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<RechargeHistory> rechargeHistoryList ;
 	
-	@OneToMany(mappedBy = "student")
+	@OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Order> orderList;
+	
+	
 	
 	public void setDob(LocalDate dob) {
 		this.dob=dob;
