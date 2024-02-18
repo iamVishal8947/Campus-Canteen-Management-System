@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.app.dto.ApiResponse;
 import com.app.dto.GetAllStudentDTO;
+import com.app.dto.SignInDTO;
 import com.app.dto.StudentDTO;
 import com.app.entities.Student;
 
@@ -21,7 +22,7 @@ public interface StudentService {
 	
 	ApiResponse setBalanceById(Long studentId, Integer newBalance);
 	
-	boolean login(String email, String dob);
+	String login(SignInDTO dto);
 	
 	ApiResponse logout();
     
