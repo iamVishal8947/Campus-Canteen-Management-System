@@ -4,7 +4,6 @@ import { tokens } from "../../../theme";
 import axios from "axios";
 import AddIcon from '@mui/icons-material/Add';
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
-import ImageOnLoad from 'react-image-onload';
 
 
 export default function ItemBox(props) {
