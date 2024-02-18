@@ -115,7 +115,7 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public ApiResponse logout() {
 		
-		return null;
+		return new ApiResponse("Student logged out successfully");
         
     }
 
