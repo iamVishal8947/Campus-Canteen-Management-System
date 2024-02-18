@@ -6,7 +6,9 @@ import { useEffect,useState } from 'react';
 import StudentForm from '../../../components/admin/StudentForm'
 import { useParams } from 'react-router-dom';
 import StudentService from '../../../services/StudentService';
+import { useNavigate } from 'react-router-dom';
 export default function DeleteStudent() {
+    const navigate = useNavigate();
     let { id } = useParams();
   const [userData, setUserData] = useState(null); 
   const [loading, setLoading] = useState(true); 
@@ -41,6 +43,8 @@ export default function DeleteStudent() {
         console.log("in deleteStudent func")
         StudentService.deleteStudent(id).then((res)=>{
             console.log(res.data);
+            alert(id +" has been deleted successfully");
+            navigate('/admin/students')
         }).catch((err)=>console.log(err.response.data))
     }
   return (

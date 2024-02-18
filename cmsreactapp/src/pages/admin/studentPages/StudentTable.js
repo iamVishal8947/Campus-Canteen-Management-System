@@ -165,6 +165,13 @@ export default function StudentTable() {
             rows={studentsData}
             columns={colStructure}
             onRowClick={displayCustomer}
+            disableRowSelectionOnClick {...studentsData}
+          initialState={{
+            ...studentsData.initialState,
+            pagination: { paginationModel: { pageSize: 8 } },
+          }} 
+          pageSizeOptions={[5, 10, 25]}
+          
           ></DataGrid>
         </Box>
         <Button

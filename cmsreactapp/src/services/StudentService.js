@@ -66,10 +66,10 @@ class StudentService{
        // return this.prodarr.find(p=>p.pid==id);
        return axios.get(baseUrl+"/student/"+id)
     }
-    updateStudent(prod){
+    updateStudent(stud){
         //let pos=this.prodarr.findIndex(p=>p.pid==prod.pid);
        // this.prodarr.splice(pos,1,{...prod});
-       return axios.put(baseUrl+"/student/"+prod.pid,prod)//,{header:{"content-type":"application/json",autherization:"bearer"+<localStorage.jwttoken>}})
+       return axios.put(baseUrl+"/student/"+stud.studentId,stud)//,{header:{"content-type":"application/json",autherization:"bearer"+<localStorage.jwttoken>}})
     }
     login(studentCredentials){
 
@@ -88,6 +88,7 @@ class StudentService{
 
       return axios.get("http://localhost:8080/admin/totalstudents")
     }
+    
 
 }
 
