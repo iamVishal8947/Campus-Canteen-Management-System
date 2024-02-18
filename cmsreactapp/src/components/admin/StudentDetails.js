@@ -7,8 +7,10 @@ import GroupIcon from "@mui/icons-material/Group";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function StudentDetails(props) {
+  
   const takeAction = () => {
-    props.takeAction(props.student.id);
+    console.log(props.student.studentId)
+    props.takeAction(props.student.studentId);
   };
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);

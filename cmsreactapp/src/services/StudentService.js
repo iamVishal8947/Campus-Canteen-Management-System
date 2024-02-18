@@ -39,6 +39,7 @@ class StudentService{
     deleteStudent(pid){
        // let pos=this.prodarr.findIndex(p=>p.pid==pid);
        // this.prodarr.splice(pos,1);
+       console.log("pid in Student Service" + pid)
        return axios.delete(baseUrl+"/student/"+pid)
     }
     getBalance(id){

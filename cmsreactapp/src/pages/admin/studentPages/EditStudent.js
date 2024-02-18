@@ -12,9 +12,9 @@ export default function EditStudent() {
     const fetchUserProfile = async () => {
       try {
         setLoading(true); // Set loading state to true
-        const userData = await StudentService.getById(); // Fetch user profile data
+        const userData = await StudentService.getById(id); // Fetch user profile data
         console.log(userData)
-        setUserData(userData); // Update state with fetched data
+        setUserData(userData.data); // Update state with fetched data
         setLoading(false); // Set loading state to false
       } catch (error) {
         console.error('Error fetching user profile:', error);
@@ -33,7 +33,8 @@ export default function EditStudent() {
     
   return (
     <div>
-        <StudentForm action="edit" takeAction={editStudent} title="Edit Student" subtitle="Update Student Details" studentData={userData}></StudentForm>
+      {userData!=null  &&  <StudentForm action="edit" takeAction={editStudent} title="Edit Student" subtitle="Update Student Details" studentData={userData}/>
+}
     </div>
   )
 }
