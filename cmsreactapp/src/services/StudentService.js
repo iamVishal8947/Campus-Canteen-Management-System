@@ -9,8 +9,11 @@ class StudentService{
        return axios.get("http://localhost:8080/admin/students")
     }
     changePassword(id,password){
+      console.log(id)
+      console.log(password)
 
-      
+       return axios.put("http://localhost:8080/student/changepassword/"+id,password)
+
     }
     insertStudent(student){
         console.log("in insert Student axios method ")

@@ -134,9 +134,16 @@ export default function LoginComp() {
     //   alert("Invalid username or password");
     // }
     const submitForm = async () => {
-      try {
-        const username = document.getElementById('username').value;
+      const username = document.getElementById('username').value;
         const pwd = document.getElementById('password').value;
+      if(username==="admin"&&pwd==="admin"){
+        alert("Welcome Back Admin")
+        localStorage.setItem("username","admin")
+        navigate("/admin/dashboard")
+      }
+      else{
+      try {
+       
     
         const studentCredentials = {
           userName: username,
@@ -170,6 +177,7 @@ export default function LoginComp() {
       } catch (err) {
         console.error(err);
       }
+    }
     };
     
 

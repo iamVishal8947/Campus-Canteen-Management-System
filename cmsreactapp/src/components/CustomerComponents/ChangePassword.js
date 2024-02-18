@@ -7,8 +7,10 @@ import Header from "../../components/admin/common/Header";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import EditIcon from "@mui/icons-material/Edit";
 import StudentService from "../../services/StudentService";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export default function StudentForm(props) {
+  const navigate = useNavigate();
   const isNonMobile = useMediaQuery("(min-width:600px)"); //
 
   const initValues =
@@ -45,8 +47,10 @@ export default function StudentForm(props) {
     const updatePasswordObj = {oldPassword : values.oldpassword, newPassword : values.newpassword}
     const id = localStorage.getItem("username")
     StudentService.changePassword(id,updatePasswordObj).then((res)=>{
-       alert("Password Updated Successfully!");
-       window.location.reload();
+       alert("Password Updated Successfully! Please Login Again");
+       localStorage.clear();
+       navigate("/LoginComp")
+       
     }).catch((err)=>console.log(err));
   
   };
