@@ -19,6 +19,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import LockResetIcon from '@mui/icons-material/LockReset';
+import { useNavigate } from 'react-router-dom';
 //Styling for each item in menu sidebar
 const Item = ({ title, to, icon, selected, setSelected }) => {
     const theme = useTheme();
@@ -39,6 +40,13 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   };
 
 export default function SideBar() {
+  const logoutHandle = () => {
+    console.log("Removing username from localStorage...");
+    localStorage.removeItem("username");
+    console.log("Username removed.");
+    navigate("/");
+  }
+  const navigate = useNavigate();
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const [isCollapsed, setIsCollapsed] = useState(false); //For collapsed/open sidebar
@@ -123,7 +131,7 @@ export default function SideBar() {
               </Typography>
               <Item
                 title="Recharge History" //=-=-=-=-=-=-=-=-=-=-=-     =    =         =       =      =
-                to="/admin/menu/"
+                to="/student/rechargehistory"
                 icon={<CurrencyRupeeIcon />}
                 selected={selected}
                 setSelected={setSelected}
@@ -144,7 +152,7 @@ export default function SideBar() {
               </Typography>
               <Item
                 title="Order History" 
-                to="/student/orderHistory"
+                to="/student/orderhistory/"
                 icon={<ManageSearchIcon />}
                 selected={selected}
                 setSelected={setSelected}
@@ -163,6 +171,7 @@ export default function SideBar() {
                 selected={selected}
                 setSelected={setSelected}
               />
+              <div>
               <Item
                 title="Change Password"
                 to="/student/changePassword"
@@ -170,18 +179,20 @@ export default function SideBar() {
                 selected={selected}
                 setSelected={setSelected}
               />
-              
+              </div>
               <br/>
               <br/>
               <br/>
+              <div onClick={logoutHandle}>
               <Item
                 title="Logout"
-                to="/admin/logout"
+                
                 icon={<LogoutIcon />}
+                onClick={logoutHandle}
                 selected={selected}
                 setSelected={setSelected}
               />
-              
+              </div>
               
             </Box>
           </Menu>

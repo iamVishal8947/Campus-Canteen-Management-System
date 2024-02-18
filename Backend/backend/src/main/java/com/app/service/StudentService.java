@@ -14,9 +14,10 @@ public interface StudentService {
     
     List<GetAllStudentDTO> getAllStudents();
     
-
-	Order createOrder(Long studentId, CreateOrderDTO orderDTO);
-    
+  
+	int getBalanceById(Long studentId);
+	
+	ApiResponse setBalanceById(Long studentId, Integer newBalance);
     
 
 }

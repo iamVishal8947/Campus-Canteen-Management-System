@@ -7,7 +7,14 @@ import com.app.entities.Order;
 import com.app.entities.OrderStatus;
 
 public interface OrderService {
-    List<Order> getOrdersByStatus(OrderStatus orderStatus);
+    List<OrderDTO> getOrdersByStatus(OrderStatus orderStatus);
     
     OrderDTO createOrder(OrderDTO dto);
+    
+    OrderDTO getOrderById(Long orderId);
+    
+    List<OrderDTO> getAllOrdersByStudentId(Long StudentId);
+    
+    
+    
 }

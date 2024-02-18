@@ -30,6 +30,29 @@ class StudentService{
        // this.prodarr.splice(pos,1);
        return axios.delete(baseUrl+"/student/"+pid)
     }
+    getBalance(id){
+      return axios.get("http://localhost:8080/student/"+id+"/balance");
+    }
+    setBalance(data){
+      // var existingAmount = 0;
+      console.log(data.id)
+      this.getBalance(data.id).then((res) => {
+         // console.log("ok")
+         // console.log("res.data :"+res.data)
+         const existingAmount = res.data;
+            const newAmount =parseInt(existingAmount)  +parseInt(data.addAmount)  ;
+            console.log("data.id: " + data.id + ", new amount: " + newAmount);
+            const requestBody = { "value": newAmount };
+            return axios.put("http://localhost:8080/student/" + data.id + "/balance",requestBody);
+       })
+       .catch((err) => {
+         alert(err.response?.data || err.message);
+       });
+      // console.log(existingBalance)
+      // const newAmount = existingAmount + data.addAmount;
+      // console.log("data.id : " +data.id + "new ammount : " + newAmount)
+      //  return axios.put("http://localhost:8080/student/" + data.id+"/balance",existingAmount);
+    }
     getById(id){
        // return this.prodarr.find(p=>p.pid==id);
        return axios.get(baseUrl+"/student/"+id)

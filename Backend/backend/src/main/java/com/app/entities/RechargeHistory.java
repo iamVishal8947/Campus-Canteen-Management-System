@@ -2,7 +2,17 @@ package com.app.entities;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,15 +33,13 @@ public class RechargeHistory {
 	private Long transactionId;
 	
 	@Column(name="timestamp")
+	@NotNull
 	private LocalDateTime timeStamp;
-	
-//	@Column(length = 20,name="customer_id")
-//	private int customerId;
 	
 	@Column(name="amount_added")
 	private int amountAdded;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="student_id")
 	private Student student;
 }
