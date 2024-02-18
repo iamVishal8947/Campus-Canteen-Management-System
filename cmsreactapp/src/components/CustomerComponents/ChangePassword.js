@@ -6,6 +6,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/admin/common/Header";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import EditIcon from "@mui/icons-material/Edit";
+import StudentService from "../../services/StudentService";
 
 export default function StudentForm(props) {
   const isNonMobile = useMediaQuery("(min-width:600px)"); //
@@ -33,17 +34,21 @@ export default function StudentForm(props) {
       .string()
       .matches(pwdRegex ,"Password must contain one digit from 1 to 9, one lowercase letter, one uppercase letter, one special character, no space, and it must be 8-16 characters long.")
       .required("Required"),
-      confirmnewpassword: yup
+    confirmnewpassword: yup
     .string()
-    .matches(pwdRegex ,"Password must contain one digit from 1 to 9, one lowercase letter, one uppercase letter, one special character, no space, and it must be 8-16 characters long.")
-    .required("Required"),
-    dob: yup.string().required("Required"),
-    courseName: yup.string().required("Required"),
+    .oneOf([yup.ref('newpassword'), null], 'Passwords must match')
+
   });
 
   const handleFormSubmit = (values) => {
     console.log(values);
-    
+    const updatePasswordObj = {oldPassword : values.oldpassword, newPassword : values.newpassword}
+    const id = localStorage.getItem("username")
+    StudentService.changePassword(id,updatePasswordObj).then((res)=>{
+       alert("Password Updated Successfully!");
+       window.location.reload();
+    }).catch((err)=>console.log(err));
+  
   };
   return (
     <Box
@@ -88,7 +93,7 @@ export default function StudentForm(props) {
                     onBlur={handleBlur}
                     onChange={handleChange}
                     value={values.oldpassword}
-                    oldpassword="oldpassword"
+                    name="oldpassword"
                     error={!!touched.oldpassword && !!errors.oldpassword}
                     helperText={touched.oldpassword && errors.oldpassword}
                     sx={{ gridColumn: "span 4" }}
@@ -102,7 +107,7 @@ export default function StudentForm(props) {
                     onBlur={handleBlur}
                     onChange={handleChange}
                     value={values.newpassword}
-                    newpassword="newpassword"
+                    name="newpassword"
                     error={!!touched.newpassword && !!errors.newpassword}
                     helperText={touched.newpassword && errors.newpassword}
                     sx={{ gridColumn: "span 4" }}
@@ -116,7 +121,7 @@ export default function StudentForm(props) {
                     onBlur={handleBlur}
                     onChange={handleChange}
                     value={values.confirmnewpassword}
-                    confirmnewpassword="confirmnewpassword"
+                    name="confirmnewpassword"
                     error={!!touched.confirmnewpassword && !!errors.confirmnewpassword}
                     helperText={touched.confirmnewpassword && errors.confirmnewpassword}
                     sx={{ gridColumn: "span 4" }}

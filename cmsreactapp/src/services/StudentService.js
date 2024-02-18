@@ -8,6 +8,10 @@ class StudentService{
        // return axios.get(baseUrl);
        return axios.get("http://localhost:8080/admin/students")
     }
+    changePassword(id,password){
+
+      
+    }
     insertStudent(student){
         console.log("in insert Student axios method ")
         student.courseName = "DAC";
@@ -72,7 +76,7 @@ class StudentService{
     }
     getStudentByEmail(email){
 
-      
+      return axios.get("http://localhost:8080/student/email/"+email)
     }
 
 }

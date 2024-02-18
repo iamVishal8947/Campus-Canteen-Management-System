@@ -38,45 +38,60 @@ export default function LoginComp() {
     const { name, value } = event.target;
     setFormDetails({ ...formDetails, [name]: value });
   };
-  const getStudentFromEmail = () => {
-    Student
-  }
-  const submitForm = () => {
-    const username = document.getElementById('username').value
-    const pwd = document.getElementById('password').value
+  // const getStudentFromEmail = async (email) => {
+  //   await StudentService.getStudentByEmail(email).then((res) => {
+  //     console.log(res.data)
+  //     // const studentObj = res.data;  
+  //   })
+  //   .catch((err) => {
+  //     console.error(err);
+  //   });
+  // }
+  //----------------------------------------------------
+  // const submitForm = () => {
+  //   const username = document.getElementById('username').value
+  //   const pwd = document.getElementById('password').value
 
-    const studentCredentials = {
-      userName: username,
-      password : pwd
-    }
-    StudentService.login(studentCredentials).then((res) => {
+  //   const studentCredentials = {
+  //     userName: username,
+  //     password : pwd
+  //   }
+  //   StudentService.login(studentCredentials).then((res) => {
       
-      // alert(res.data)
-      if(res.data=== "Login successful1"){
-        alert("Login Successful Change your password from Dashboard")
-        localStorage.setItem("username", username);
-        navigate("/student/changePassword/")
-      }
-      else if(res.data === "Login successful1 successful2"){
-        alert("Login successful")
-        localStorage.setItem("username", username);
+  //     // alert(res.data)
+  //     if(res.data=== "Login successful1"){
+  //       alert("Login Successful Change your password from Dashboard")
+  //       localStorage.setItem("username", username);
+  //       StudentService.getStudentByEmail(username).then((res) => {
+          
+  //         console.log(res.data)
+  //         // const studentObj = res.data;  
+  //       })
+  //       .catch((err) => {
+  //         console.error(err);
+  //       });
+  //       navigate("/student/changePassword/")
+  //     }
+  //     else if(res.data === "Login successful1 successful2"){
+  //       alert("Login successful")
+  //       localStorage.setItem("username", username);
 
-        navigate("/student/dashboard")
-      }
-      else if(res.data === "Invalid password"){
-        alert("Password Invalid")
-        window.location.reload();
-      }
-      else if(res.data === "Invalid username"){
-        alert("Username invalid")
-      }
+  //       navigate("/student/dashboard")
+  //     }
+  //     else if(res.data === "Invalid password"){
+  //       alert("Password Invalid")
+  //       window.location.reload();
+  //     }
+  //     else if(res.data === "Invalid username"){
+  //       alert("Username invalid")
+  //     }
       
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+  //   })
+  //   .catch((err) => {
+  //     console.error(err);
+  //   });
   
-    
+   //------------------------------------------------------------- 
   //   if(username === "admin" && pwd === "admin"){
   //     localStorage.setItem("username", username);
   //     alert("Admin Login Successful!");
@@ -118,7 +133,45 @@ export default function LoginComp() {
     //   // Handle invalid credentials
     //   alert("Invalid username or password");
     // }
-  };
+    const submitForm = async () => {
+      try {
+        const username = document.getElementById('username').value;
+        const pwd = document.getElementById('password').value;
+    
+        const studentCredentials = {
+          userName: username,
+          password: pwd
+        };
+    
+        const res = await StudentService.login(studentCredentials);
+    
+        if (res.data === "Login successful1") {
+          alert("Login Successful Change your password from Dashboard");
+          localStorage.setItem("email", username);
+          const studentRes = await StudentService.getStudentByEmail(username);
+          console.log(studentRes.data);
+          localStorage.setItem("username",studentRes.data.studentId)
+          localStorage.setItem("name",studentRes.data.name)
+          navigate("/student/changePassword/");
+        } else if (res.data === "Login successful1 successful2") {
+          alert("Login successful");
+          localStorage.setItem("email", username);
+          const studentRes = await StudentService.getStudentByEmail(username);
+          console.log(studentRes.data)
+          localStorage.setItem("username",studentRes.data.studentId)
+          localStorage.setItem("name",studentRes.data.name)
+          navigate("/student/dailymenu/");
+        } else if (res.data === "Invalid password") {
+          alert("Password Invalid");
+          window.location.reload();
+        } else if (res.data === "Invalid username") {
+          alert("Username invalid");
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    
 
   return (
     <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", backgroundImage: `url(${bgimg})` }}>
