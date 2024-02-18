@@ -4,7 +4,7 @@ import bgimg from "../../Assets/bgbgbg.jpeg";
 
 export default function LoginComp() {
   const password = "07072000" // 
-  const passwords = {1 :"1111", 2:"2222",3:"3333", 4: "4444", 7:"07072000", "admin":"admin" }
+  const passwords = {1 :"pass@123", 2:"2222",3:"3333", 4: "4444", 7:"07072000", "admin":"admin", }
   const usernames = [1,2,3,4,5,6,7]
   const [formDetails, setFormDetails] = useState({
     username: "",
@@ -50,7 +50,7 @@ export default function LoginComp() {
     else{
     alert(username)
 
-    
+
     if(passwords[Number(username)]!=undefined){ //check if the username is present
 
       if(passwords[Number(username)] === pwd){ //check if the password matches the username

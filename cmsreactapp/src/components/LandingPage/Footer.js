@@ -1,6 +1,6 @@
 import React from "react";
 // import Logo from "../../Assets/Logo.svg";
-import Logo from "../../Assets/logo-no-background.png";
+import Logo from "../../Assets/cms-high-resolution-logo-removebg.png";
 import { BsTwitter } from "react-icons/bs";
 import { SiLinkedin } from "react-icons/si";
 import { BsYoutube } from "react-icons/bs";
