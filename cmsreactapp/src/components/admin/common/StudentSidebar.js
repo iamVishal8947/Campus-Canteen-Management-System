@@ -108,7 +108,7 @@ export default function SideBar() {
               </Typography>
               <Item
                 title="Today's Menu"
-                to="/student/todaysmenu/" // ===========================----------=-=-=-=-=-==-=-=-=-==>>>
+                to="/student/dailymenu/" // ===========================----------=-=-=-=-=-==-=-=-=-==>>>
                 icon={<FastfoodIcon />}
                 selected={selected}
                 setSelected={setSelected}
