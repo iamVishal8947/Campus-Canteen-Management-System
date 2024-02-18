@@ -47,9 +47,16 @@ export default function StudentForm(props) {
     const updatePasswordObj = {oldPassword : values.oldpassword, newPassword : values.newpassword}
     const id = localStorage.getItem("username")
     StudentService.changePassword(id,updatePasswordObj).then((res)=>{
+
+      if(res.data === "ok"){
        alert("Password Updated Successfully! Please Login Again");
        localStorage.clear();
        navigate("/LoginComp")
+      }
+       else if(res.data === "Invalid old password"){
+        alert("Invalid old password");
+        
+       }
        
     }).catch((err)=>console.log(err));
   

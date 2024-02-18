@@ -21,6 +21,7 @@ const Footer = () => {
           <FaFacebookF />
         </div>
       </div>
+      <div style={{marginTop:"10px"}}> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <h3>अन्न हे पूर्ण ब्रह्म !</h3>  </div>
       <div className="footer-section-two">
         <div className="footer-section-columns" style={{color:"whitesmoke"}}>
           <span style={{color:"whitesmoke"}} >Help</span>

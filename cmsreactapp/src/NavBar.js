@@ -32,6 +32,8 @@ export default function NavBar() {
 
         
       </Box>
+        
+       
       {/* ICONS */}
       <Box display="flex">
         <IconButton onClick={colorMode.toggleColorMode}>

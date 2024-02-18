@@ -151,19 +151,21 @@ export default function LoginComp() {
         };
     
         const res = await StudentService.login(studentCredentials);
-    
+        console.log()
         if (res.data === "Login successful1") {
+          const studentRes = await StudentService.getStudentByEmail(username);
           alert("Login Successful Change your password from Dashboard");
           localStorage.setItem("email", username);
-          const studentRes = await StudentService.getStudentByEmail(username);
+          
           console.log(studentRes.data);
           localStorage.setItem("username",studentRes.data.studentId)
           localStorage.setItem("name",studentRes.data.name)
           navigate("/student/changePassword/");
-        } else if (res.data === "Login successful1 successful2") {
-          alert("Login successful");
-          localStorage.setItem("email", username);
+        } else if (res.data === "Login successful1 successful2") { 
           const studentRes = await StudentService.getStudentByEmail(username);
+          alert("Login successful! Welcome " + studentRes.data.name);
+          localStorage.setItem("email", username);
+          
           console.log(studentRes.data)
           localStorage.setItem("username",studentRes.data.studentId)
           localStorage.setItem("name",studentRes.data.name)
