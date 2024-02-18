@@ -100,18 +100,7 @@ public class StudentServiceImpl implements StudentService {
             throw new ResourceNotFoundException("Student not found with ID: " + studentId);
         }
     }
-	
-//	@Override
-//	public  boolean login(SignInDTO dto) {
-//        Student student = studentRepository.
-//
-//        if (student != null) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
-	
+
 	@Override
 	public String login(SignInDTO dto) {
 	    String userName = dto.getUserName();
@@ -140,6 +129,19 @@ public class StudentServiceImpl implements StudentService {
 	 } 
 	
 
+	@Override
+	public StudentDTO getStudentByEmail(String email) {
+		Optional<Student> studentOptional = studentRepository.findByEmail(email);
+
+	    if (studentOptional.isPresent()) {
+	        Student student = studentOptional.get();
+	        StudentDTO studDto = modelMapper.map(student,StudentDTO.class);
+	        return studDto;
+	    }
+	        
+	        
+		return null;
+	}
 	
 	
 	@Override
@@ -181,6 +183,8 @@ public class StudentServiceImpl implements StudentService {
 
 	    return student.getMobileNo();
 	}
+
+	
 
 }
 

@@ -33,6 +33,8 @@ public interface StudentService {
 	LocalDate getDobByStudentID(Long studId);
 	
 	String getMobileNoByStudentID(Long studId);
+	
+	StudentDTO getStudentByEmail(String email);
 
 	
 	
