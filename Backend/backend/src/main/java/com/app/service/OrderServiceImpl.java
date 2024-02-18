@@ -94,6 +94,10 @@ public class OrderServiceImpl implements OrderService {
 	    }).collect(Collectors.toList());
 	}
 
+	@Override
+	public Long getCountOfOrdersByStatus(OrderStatus orderStatus) {
+        return orderRepository.countByOrderStatus(orderStatus);
+    }
 	
 	
 }
