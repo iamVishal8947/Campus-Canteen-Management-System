@@ -32,13 +32,11 @@ export default function WalletTopup() {
     
   });
 
-  //  const handleFormSubmit = (values) => {  
-     
-  //  };
-
-  const handleFormSubmit = (values)=>{
   
-    //values.preventDefault();
+
+  const handleFormSubmit = async (values)=>{
+  
+   
     if (values.addAmount === "") {
       alert("please enter amount");
     } else {
@@ -68,6 +66,8 @@ export default function WalletTopup() {
         };
         var pay = new window.Razorpay(options);
         pay.open();
+        const responseData = await StudentService.setBalance({id:Number(localStorage.getItem("username")),addAmount:values.addAmount})
+        
       } else {
         alert("Razorpay SDK not loaded. Please wait and try again.");
       }
@@ -111,21 +111,7 @@ export default function WalletTopup() {
                   }}
                 >
                   
-                  {/* <TextField
-                    fullWidth
-                    variant="filled"
-                    type="number"
-                    label="Id"
-                    placeholder="PRN Number"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    value={Number(localStorage.getItem("username"))}
-                    aria-readonly 
-                    id="id"
-                    // error={!!touched.id && !!errors.id}
-                    // helperText={touched.id && errors.id}
-                    sx={{ gridColumn: "span 4" }}
-                  /> */}
+                  
                   <TextField
                     fullWidth
                     variant="filled"

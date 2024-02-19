@@ -66,8 +66,8 @@ export default function RechargeHistoryTable() {
     return (
       <Box m="20px">
         <Header
-          title="Richarge History"
-          subtitle="past orders"
+          title="Recharge History"
+          subtitle=""
         ></Header>
         <Box
           m="40px 0 0 0"
