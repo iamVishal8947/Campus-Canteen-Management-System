@@ -4,6 +4,7 @@ import { tokens } from "../../../theme";
 import { DataGrid, GridActionsCellItem, GridRowId } from "@mui/x-data-grid";
 import ItemBox from "./ItemBox";
 import { itemData } from "./itemData";
+import StudentService from "../../../services/StudentService";
 
 export default function MenuGrid() {
   const theme = useTheme();
@@ -12,9 +13,16 @@ export default function MenuGrid() {
   const [netPrice, setNetPrice] = useState(0);
 
 
-
+    const payByWallet =  ()=>{
+      const id =Number(localStorage.getItem("username"))
+      console.log(netPrice)
+    //  const response = await StudentService.setBalanceAfterPayByWallet(id,netPrice)
+    //  console.log(response)
+     StudentService.setBalanceAfterPayByWallet(id,netPrice)
+    
+     
+    }
     const placeOrder = (e)=>{
-      <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
       e.preventDefault();
       if (netPrice === "") {
         alert("please enter amount");
@@ -187,7 +195,7 @@ export default function MenuGrid() {
               ></DataGrid>
             </Box>
             <Box m="40px 0 0 0">
-              <Typography variant="h4">Total Price : {netPrice}</Typography>
+              <Typography variant="h4">Total Price : {netPrice}</Typography><br></br>
               <Button
                 type="button"
                 variant="contained"
@@ -198,7 +206,20 @@ export default function MenuGrid() {
                   width: "auto",
                 }}
               >
-                Place Order
+                Pay with Razorpay
+              </Button>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <Button
+                type="button"
+                variant="contained"
+                onClick={payByWallet}
+                sx={{
+                  backgroundColor: colors.greenAccent[400],
+                  color: colors.grey[700],
+                  width: "auto",
+                }}
+              >
+                Pay with Wallet
               </Button>
             </Box>
           </Grid>

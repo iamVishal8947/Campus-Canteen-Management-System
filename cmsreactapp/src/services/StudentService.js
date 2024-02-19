@@ -89,7 +89,26 @@ class StudentService{
       return axios.get("http://localhost:8080/admin/totalstudents")
     }
     
-
+    setBalanceAfterPayByWallet(id,amount){
+      var requestBody;
+      this.getBalance(id).then((res) => {
+        // console.log("ok")
+        // console.log("res.data :"+res.data)
+        
+        console.log("in set balance wallet")
+          const existingAmount = res.data;
+           const newAmount =parseInt(existingAmount)- parseInt(amount)  ;
+           console.log("data.id: " + id + ", new amount: " + newAmount);
+            requestBody = { "value": newAmount };
+           alert("Payment succesfull using Wallet\n Remaining Balance : "+newAmount)
+           window.location.reload();
+           return axios.put("http://localhost:8080/student/" + id + "/balance",requestBody);
+      })
+      .catch((err) => {
+        alert(err.response?.data || err.message);
+      })
+      
+    }
 }
 
 export default new StudentService();
