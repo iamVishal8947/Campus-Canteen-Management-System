@@ -16,7 +16,7 @@ public class CartDTO {
 	@JsonProperty(access = Access.READ_ONLY)
 	private Long cartId;
 
-	private Long orderId;
+	//private Long orderId;
 	
 	private Long itemId;
 	

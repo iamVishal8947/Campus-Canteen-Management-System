@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.dto.CreateOrderDTO;
 import com.app.dto.OrderDTO;
+import com.app.dto.PlaceOrderRequest;
 import com.app.entities.OrderStatus;
 import com.app.service.OrderService;
 
@@ -37,11 +39,19 @@ public class OrderController {
     	return ResponseEntity.ok().body(orderService.getOrdersByStatus(OrderStatus.SERVED));
     }
     
-    @PostMapping
-	public ResponseEntity<?> createNewOrder(@RequestBody @Valid OrderDTO dto) {
-		System.out.println("in create order " + dto);
-		return ResponseEntity.status(HttpStatus.CREATED).body(orderService.createOrder(dto));
-	}
+//    @PostMapping
+//	public ResponseEntity<?> createNewOrder(@RequestBody @Valid OrderDTO dto) {
+//		System.out.println("in create order " + dto);
+//		return ResponseEntity.status(HttpStatus.CREATED).body(orderService.createOrder(dto));
+//	}
+    
+    
+    @PostMapping("/{studentId}/orders")
+    public ResponseEntity<CreateOrderDTO> placeOrder(@PathVariable Long studentId,
+                                               @RequestBody PlaceOrderRequest request) {
+        CreateOrderDTO orderDTO = orderService.placeOrder(studentId, request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(orderDTO);
+    }
     
     @GetMapping(value = "/students/{studentId}")
 	public ResponseEntity<?> getOrderDetailsByStudent(@PathVariable Long studentId)  throws IOException  {
