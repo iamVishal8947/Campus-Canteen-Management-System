@@ -14,10 +14,10 @@ import lombok.Setter;
 @Setter
 public class CreateOrderDTO {
 	
-	@JsonProperty(access = Access.READ_ONLY)
+//	@JsonProperty(access = Access.READ_ONLY)
 	private Long orderId;
 
-	private LocalDateTime time;
+	//private LocalDateTime time;
 	
 	private Integer qty;
 	
@@ -27,12 +27,14 @@ public class CreateOrderDTO {
 	
     private OrderStatus orderStatus;
 	
-	private Integer discountPercentage;
+	//private Integer discountPercentage;
 	
 	private String studentName;
 	
 	private List<CartDTO> carts;
 }
+
+
 
 //[
 // {

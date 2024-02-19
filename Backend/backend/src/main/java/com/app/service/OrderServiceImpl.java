@@ -1,6 +1,7 @@
 package com.app.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -8,7 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.dto.CartDTO;
+import com.app.dto.CartItem;
+import com.app.dto.CreateOrderDTO;
 import com.app.dto.OrderDTO;
+import com.app.dto.PlaceOrderRequest;
+import com.app.entities.Cart;
 import com.app.entities.Order;
 import com.app.entities.OrderStatus;
 import com.app.entities.Student;
@@ -23,6 +29,7 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderRepository orderRepository;
     
+   
     @Autowired
 	private StudentRepository studRepo;
     
@@ -98,6 +105,82 @@ public class OrderServiceImpl implements OrderService {
 	public Long getCountOfOrdersByStatus(OrderStatus orderStatus) {
         return orderRepository.countByOrderStatus(orderStatus);
     }
+//	
+//	@Override
+//	 public CreateOrderDTO placeOrder(Long studentId, PlaceOrderRequest request) {
+//	        
+//	        Optional<Student> studentOptional = studRepo.findById(studentId);
+//	        if (studentOptional.isEmpty()) {
+//	            throw new ResourceNotFoundException("Student not found");
+//	        }
+//
+//	        Student student = studentOptional.get();
+//
+//	       
+//	        Order order = new Order();
+//	        order.setStudent(student);
+//	        order.setQty(request.calculateTotalQty());
+//	        order.setAmount(request.calculateTotalAmount());
+//	        order.setItemsServed(0);
+//	        order.setOrderStatus(OrderStatus.PENDING);
+//
+//	       
+//	        for (CartItem cartItem : request.getItems()) {
+//	            CartDTO cart = new CartDTO();
+//	            cart.setItemId(cartItem.getItemId());
+//	            cart.setQtyOrdered(cartItem.getQtyOrdered());
+//	            cart.setNetPrice(cartItem.calculateNetPrice());
+//	            order.getCartList().add(mapper.map(cart, Cart.class));
+//	        }
+//
+//	        // Save the order to the repository
+//	        orderRepository.save(order);
+//	        
+//	        CreateOrderDTO orderdto = mapper.map(order, CreateOrderDTO.class); 
+//	        // Convert the order entity to DTO and return
+//	        return orderdto;
+//	    }
 	
+	@Override
+	public CreateOrderDTO placeOrder(Long studentId, PlaceOrderRequest request) {
+	    Optional<Student> studentOptional = studRepo.findById(studentId);
+	    if (studentOptional.isEmpty()) {
+	        throw new ResourceNotFoundException("Student not found");
+	    }
+
+	    Student student = studentOptional.get();
+
+	    Order order = new Order();
+	    order.setStudent(student);
+	    order.setIsServed(false);
+	    order.setPaymentMethod("some_value");
+	    order.setTransactionId("some_value");
+	    order.setQty(request.calculateTotalQty());
+	    order.setAmount(request.calculateTotalAmount());
+	    order.setItemsServed(0);
+	    order.setOrderStatus(OrderStatus.PENDING);
+
+	    
+	    order.setDiscountPercentage(0); 
+
+	    for (CartItem cartItem : request.getItems()) {
+	        CartDTO cart = new CartDTO();
+	        cart.setItemId(cartItem.getItemId());
+	        cart.setQtyOrdered(cartItem.getQtyOrdered());
+	        cart.setNetPrice(cartItem.calculateNetPrice());
+	        Cart cartEntity = mapper.map(cart, Cart.class);
+	        cartEntity.setOrder(order);
+	        order.getCartList().add(cartEntity);
+	        
+	    }
+
+	   
+	    orderRepository.save(order);
+
+	    CreateOrderDTO orderdto = mapper.map(order, CreateOrderDTO.class);
+	    
+	    return orderdto;
+	}
+
 	
 }

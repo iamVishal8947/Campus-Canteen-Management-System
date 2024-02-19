@@ -41,24 +41,27 @@ public class Order {
 	private int qty;
 	
 	@Column(name="payment_method",nullable = false)
-	private String paymentMethod;
+	private String paymentMethod="defualt_method";
 	
 	private Integer amount;
 	
-	@Column(name="transaction_id",nullable = false,unique = true)
-	private String transactionId;
+//	@Column(name="transaction_id",nullable = false,unique = true)
+//	private String transactionId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "transaction_id",nullable = false,unique = true)
+    private String transactionId;
 	
 	@Column(name="items_served",nullable = false)
 	private Integer itemsServed;
 	
 	@Column(name="is_served",nullable = false)
-	private Boolean isServed;
+	private Boolean isServed = false;
 	
 	@Enumerated(EnumType.STRING)
     @Column(name = "order_status", nullable = false)
     private OrderStatus orderStatus;
 	
-	@Column(name="discount_percentage",nullable = false)
+	@Column(name="discount_percentage",nullable = true)
 	private Integer discountPercentage;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -71,6 +74,15 @@ public class Order {
 	
 	public void setStudent(Student student) {
 		this.student=student;
+	}
+	
+	public void addCart(Cart cart) {
+		cartList.add(cart);
+		cart.setOrder(this);
+	}
+	public void removeCart(Cart cart) {
+		cartList.remove(cart);
+		cart.setOrder(null);
 	}
 	
 }
